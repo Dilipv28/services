@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Brief | Urban Oasis Complex</title>
+    <style>
+        :root {
+            --slate-black: #1a1a1a;
+            --modern-gold: #b39359;
+            --soft-gray: #f8f9fa;
+            --border-color: #e0e0e0;
+            --oasis-green: #2d5a27;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            margin: 0;
+            background-color: white;
+            color: var(--slate-black);
+            line-height: 1.6;
+        }
+
+        /* Status Header */
+        .planning-header {
+            background: var(--slate-black);
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        /* Layout Grid */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            line-height: 1;
+            font-weight: 800;
+        }
+
+        .location-tag {
+            font-size: 1.2rem;
+            color: var(--modern-gold);
+            margin-bottom: 20px;
+            display: block;
+            font-weight: 600;
+        }
+
+        /* Metric Bar */
+        .metric-bar {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 30px 0;
+            margin: 40px 0;
+        }
+
+        .metric-item strong {
+            display: block;
+            font-size: 1.8rem;
+        }
+
+        .metric-item span {
+            font-size: 0.8rem;
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Professional Content Sections */
+        .content-section {
+            margin-bottom: 50px;
+        }
+
+        .content-section h3 {
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            color: var(--modern-gold);
+            margin-bottom: 20px;
+        }
+
+        .pill-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .pill {
+            background: var(--soft-gray);
+            padding: 20px;
+            border-radius: 4px;
+            border-left: 4px solid var(--slate-black);
+        }
+
+        .pill h4 { margin: 0 0 5px 0; font-size: 1rem; }
+        .pill p { margin: 0; font-size: 0.9rem; color: #555; }
+
+        .cta-container {
+            margin-top: 50px;
+            padding: 40px;
+            background: var(--soft-gray);
+            text-align: center;
+        }
+
+        .btn {
+            background: var(--slate-black);
+            color: white;
+            padding: 18px 45px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--modern-gold);
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid { grid-template-columns: 1fr; gap: 30px; }
+            h1 { font-size: 2.5rem; }
+            .metric-bar { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="planning-header">Institutional Brief // Current Status: Planning & Approval Phase</div>
+
+    <div class="container">
+        <div class="hero-grid">
+            <div>
+                <span class="location-tag">Whitefield IT Corridor, Bengaluru</span>
+                <h1>RV Harmony Hub</h1>
+                <p style="font-size: 1.25rem; margin-top: 30px; color: #444;">
+                    An integrated architectural ecosystem redefining the "Live-Work-Play" paradigm through biophilic design and adaptive mixed-use planning.
+                </p>
+            </div>
+            
+            <div class="content-section">
+                <h3>Executive Summary</h3>
+                <p>
+                    The <strong>Urban Oasis Complex</strong> is a signature 30,000 Sq.Ft development positioned at the nexus of Whitefield’s commercial district. By integrating Grade-A office suites with boutique retail and luxury residential tiers, the project solves for the modern professional’s need for proximity and wellness.
+                </p>
+            </div>
+        </div>
+
+        <div class="metric-bar">
+            <div class="metric-item">
+                <span>Total Site Footprint</span>
+                <strong>30,000 Sq.Ft</strong>
+            </div>
+            <div class="metric-item">
+                <span>Green Coverage</span>
+                <strong>40% Verticality</strong>
+            </div>
+            <div class="metric-item">
+                <span>Zoning</span>
+                <strong>Mixed-Use (C-2)</strong>
+            </div>
+            <div class="metric-item">
+                <span>Est. Completion</span>
+                <strong>Q3 2028</strong>
+            </div>
+        </div>
+
+        <div class="hero-grid">
+            <div class="content-section">
+                <h3>Architectural Pillars</h3>
+                <div class="pill-grid">
+                    <div class="pill">
+                        <h4>Biophilic Integration</h4>
+                        <p>Cascading rooftop gardens and internal "green lungs" that naturally regulate building temperature.</p>
+                    </div>
+                    <div class="pill">
+                        <h4>Mixed-Use Fluidity</h4>
+                        <p>Separated circulation paths for corporate tenants and residential occupants to ensure total privacy.</p>
+                    </div>
+                    <div class="pill">
+                        <h4>Sustainable Core</h4>
+                        <p>High-performance glazing and solar-integrated facades targeting LEED Gold certification.</p>
+                    </div>
+                    <div class="pill">
+                        <h4>Smart Logistics</h4>
+                        <p>AI-managed basement parking with EV charging stations for all residential units.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>Component Breakdown</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eee;"><strong>Retail (Lvl 0-1):</strong> High-street luxury frontage.</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eee;"><strong>Corporate (Lvl 2-4):</strong> Adaptive modular floorplates.</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eee;"><strong>Residential (Lvl 5+):</strong> Limited edition sky-villas.</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eee;"><strong>Amenities:</strong> Infinity pool and glass-walled gym.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cta-container">
+            <p>Investor prospectuses and floorplans are currently restricted to private enquiry.</p>
+            <a href="#" class="btn">REQUEST SPECIFICATIONS →</a>
+        </div>
+    </div>
+
+    <footer style="padding: 50px; text-align: center; border-top: 1px solid #eee; font-size: 0.8rem; color: #888;">
+        © 2026 ARCHITECTURAL DEVELOPMENTS LTD | WHITEFIELD PROJECT OFFICE
+    </footer>
+
+</body>
+</html>

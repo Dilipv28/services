@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Obsidian Plaza | Modernist Commercial Architecture</title>
+    <style>
+        :root {
+            --obsidian: #1a1a1a;
+            --glass: rgba(255, 255, 255, 0.1);
+            --accent: #007AFF;
+            --text: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+            color: var(--text);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2070') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: -50px auto 50px;
+            padding: 20px;
+        }
+
+        .quick-specs {
+            background: #252525;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .spec-item h3 {
+            color: var(--accent);
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .spec-item p {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        section {
+            margin-top: 60px;
+        }
+
+        h2 {
+            border-left: 4px solid var(--accent);
+            padding-left: 15px;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .arch-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .description-box {
+            background: var(--glass);
+            color:#1a1a1a;
+            padding: 30px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.8rem;
+            color: #666;
+            border-top: 1px solid #333;
+        }
+
+        @media (max-width: 768px) {
+            .arch-grid { grid-template-columns: 1fr; }
+            .hero-text h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="hero-text">
+            <h1>Arvind Lake View</h1>
+            <p></p>BMRDA RERA Approved E Khata Properties</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="quick-specs">
+            <div class="spec-item">
+                <h3>Location</h3>
+                <p>Bengaluru, KA</p>
+            </div>
+            <div class="spec-item">
+                <h3>Area</h3>
+                <p>₹4,599/- per Sqft</p>
+            </div>
+            <div class="spec-item">
+                <h3>Status</h3>
+                <p>Completed 2025</p>
+            </div>
+            <div class="spec-item">
+                <h3>Typology</h3>
+                <p>Commercial / Tech HQ</p>
+            </div>
+        </div>
+
+        <section>
+            <h2 style="color: #1a1a1a;">Architectural Concept</h2>
+            <div class="arch-grid">
+                <div class="description-box">
+                    <p>
+                        The Obsidian Plaza stands as a testament to 21st-century commercial design. 
+                        The structure is defined by its <strong>Modernist glass-facade</strong>, 
+                        engineered to provide panoramic views of Bengaluru’s skyline while maintaining 
+                        high thermal efficiency.
+                    </p>
+                    <p>
+                        Designed specifically for high-growth tech headquarters, the building utilizes 
+                        an open-plan structural grid, allowing for maximum flexibility in workspace 
+                        configuration. The "Obsidian" moniker is reflected in the use of dark-tinted 
+                        reflective glazing and matte black aluminum mullions.
+                    </p>
+                </div>
+                <div>
+                    <ul style="list-style: none; padding: 0; color:#1a1a1a">
+                        <li style="margin-bottom: 20px; color:#1a1a1a"">
+                            <strong>✦ Sustainable Envelope:</strong> High-performance Low-E glass reduces solar heat gain by 40%.
+                        </li>
+                        <li style="margin-bottom: 20px; color:#1a1a1a">
+                            <strong>✦ Structural Fluidity:</strong> Column-free floor plates supported by a central core.
+                        </li>
+                        <li style="margin-bottom: 20px; color:#1a1a1a">
+                            <strong>✦ Smart Integration:</strong> Fully automated HVAC and lighting systems optimized for the IT sector.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        &copy; 2026 The Obsidian Plaza Project. Designed for Excellence.
+    </footer>
+
+</body>
+</html>
