@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arvind Lake View | Architectural Excellence</title>
+    <style>
+        :root {
+            --arch-slate: #243447;
+            --arch-teal: #008080;
+            --canvas: #ffffff;
+            --muted-gray: #f8f9fa;
+            --text-body: #4a4a4a;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--canvas);
+            color: var(--text-body);
+            line-height: 1.6;
+        }
+
+        .hero-banner {
+            background: var(--arch-slate);
+            color: white;
+            padding: 120px 20px;
+            text-align: center;
+            border-bottom: 12px solid var(--arch-teal);
+            background-image: linear-gradient(rgba(36, 52, 71, 0.8), rgba(36, 52, 71, 0.8)), url('https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-banner h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        .hero-banner p {
+            font-size: 1rem;
+            letter-spacing: 4px;
+            margin-top: 15px;
+            color: var(--arch-teal);
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 0;
+            color: var(--arch-slate);
+        }
+
+        .line {
+            flex-grow: 1;
+            height: 1px;
+            background: #ddd;
+        }
+
+        .main-specs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .spec-item {
+            border-left: 1px solid #eee;
+            padding-left: 20px;
+        }
+
+        .spec-item label {
+            display: block;
+            font-size: 0.75rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+        }
+
+        .spec-item span {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--arch-slate);
+        }
+
+        .about-project {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            background: var(--muted-gray);
+            padding: 60px;
+            margin-bottom: 80px;
+        }
+
+        .legal-tag {
+            background: var(--arch-teal);
+            color: white;
+            padding: 5px 15px;
+            display: inline-block;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .feature-list li {
+            padding: 20px;
+            background: white;
+            border: 1px solid #eee;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-list li:hover {
+            border-color: var(--arch-teal);
+            transform: translateY(-5px);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 60px;
+            border-top: 1px solid #eee;
+            color: #bbb;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .main-specs, .about-project, .feature-list {
+                grid-template-columns: 1fr;
+            }
+            .hero-banner h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero-banner">
+        <h1>Arvind Lake View</h1>
+        <p>A MASTERPIECE OF MODERN LIVING</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="section-header">
+            <h2>The Specification</h2>
+            <div class="line"></div>
+        </div>
+
+        <div class="main-specs">
+            <div class="spec-item">
+                <label>Location</label>
+                <span>Bengaluru, KA</span>
+            </div>
+            <div class="spec-item">
+                <label>Valuation</label>
+                <span>₹4,599/Sqft</span>
+            </div>
+            <div class="spec-item">
+                <label>Classification</label>
+                <span>Architectural Plots</span>
+            </div>
+        </div>
+
+        <section class="about-project">
+            <div>
+                <div class="legal-tag">BMRDA & RERA APPROVED</div>
+                <h3 style="font-size: 2rem; margin-top: 0; color: var(--arch-slate);">Designed for the Discerning.</h3>
+                <p>Arvind Lake View is an architectural statement nestled in the heart of Bengaluru. Beyond its <strong>E-Khata</strong> compliance, the project is defined by its intelligent spatial planning and seamless integration with the surrounding natural landscape.</p>
+                <p>Whether you are looking for high appreciation potential or a canvas to build your dream home, this BMRDA-approved sanctuary provides the perfect structural foundation for a legacy property.</p>
+            </div>
+            <div style="text-align: center;">
+                <div style="border: 10px solid var(--arch-teal); padding: 40px; font-weight: bold; font-size: 1.2rem; color: var(--arch-teal);">
+                    EXCELLENT <br> CONNECTIVITY
+                </div>
+            </div>
+        </section>
+
+        <div class="section-header">
+            <h2>The Experience</h2>
+            <div class="line"></div>
+        </div>
+
+        <ul class="feature-list">
+            <li>
+                <strong>Luxury Amenities</strong>
+                <p>Curated spaces for wellness, recreation, and community social life.</p>
+            </li>
+            <li>
+                <strong>Strategic Location</strong>
+                <p>Proximity to Bengaluru's major tech corridors and transport hubs.</p>
+            </li>
+            <li>
+                <strong>Clear Documentation</strong>
+                <p>BMRDA approved with individual E-Khata for complete peace of mind.</p>
+            </li>
+            <li>
+                <strong>Appreciation Potential</strong>
+                <p>Located in a high-growth zone with consistent value upward trends.</p>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="footer">
+        <p> © 2025 Apti Reality Real Estate Solutions. Built with Precision.</p>
+    </div>
+
+</body>
+</html>
