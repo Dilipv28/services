@@ -78,6 +78,158 @@
             color: var(--primary);
             border-bottom: 2px solid var(--primary);
         }
+        /* --- HERO SECTION --- */
+        /*homepage hero section styles*/
+        :root {
+    --primary-navy: #0a192f;
+    --gold-accent: #c5a059;
+    --text-white: #ffffff;
+    --text-muted: #cbd5e1;
+}
+
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    /* Replace with your actual hero image */
+    background: url('https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&q=80&w=1600') no-repeat center center/cover;
+    overflow: hidden;
+}
+
+/* Gradient overlay for contrast */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(10, 25, 47, 0.95), rgba(10, 25, 47, 0.4));
+    z-index: 1;
+}
+
+.hero-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 20px;
+    width: 100%;
+}
+
+.hero-subtitle {
+    display: block;
+    color: var(--gold-accent);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif; /* Ensure you import this font */
+    color: var(--text-white);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.accent-text {
+    color: var(--gold-accent);
+}
+
+.hero-description {
+    max-width: 600px;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+/* --- CTA Buttons --- */
+.hero-cta-group {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 80px;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 18px 35px;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.btn-primary {
+    background: var(--gold-accent);
+    color: var(--primary-navy);
+}
+
+.btn-secondary {
+    border: 1px solid rgba(255,255,255,0.3);
+    color: var(--text-white);
+}
+
+.btn-primary:hover {
+    background: #fff;
+    transform: translateY(-3px);
+}
+
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: #fff;
+}
+
+/* --- Trust Bar Styling --- */
+.trust-bar {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 40px;
+}
+
+.trust-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.trust-number {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--gold-accent);
+    font-family: sans-serif;
+}
+
+.trust-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #94a3b8;
+    letter-spacing: 2px;
+}
+
+.divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.1);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .hero-section { text-align: center; }
+    .hero-cta-group { flex-direction: column; align-items: stretch; }
+    .trust-bar { 
+        flex-direction: column; 
+        gap: 30px; 
+        text-align: center; 
+    }
+    .divider { display: none; }
+}
    /* --- Global Section Settings --- */
 #secservices {
     --primary: #c5a059; /* Architectural Gold */
@@ -624,142 +776,162 @@
         opacity: 1; /* Always visible on touch devices */
     }
 }
-/* --- Partners & Growth Section Styles --- */
-
-#secpartners {
-    background-color: var(--white);
-    padding: 120px 0;
-    border-top: 1px solid var(--border-color);
+/* --- Base Containers --- */
+.about-modern {
+    padding: 100px 0;
+    background-color: #ffffff;
+    color: #1a1a1a;
 }
 
-.detail-row {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr; /* Weighted slightly more to content */
-    align-items: center;
-    gap: 80px;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* Content & Typography */
-.detail-content h2 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    color: var(--dark);
+.inner-title {
+    font-size: 2.2rem;
+    color: #0a192f;
+    margin-bottom: 40px;
 }
 
-.detail-content h2 span {
-    color: var(--primary);
+.light-font {
     font-weight: 300;
 }
 
-.detail-content p {
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    max-width: 500px;
-}
-
-/* Stats Dashboard Grid */
-.stats-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Clean 3-column grid */
-    gap: 20px;
-    margin-top: 50px;
-}
-
-.stat-box {
-    padding: 30px 20px;
-    background: #fdfdfd;
-    border: 1px solid #f0f0f0;
+/* --- Intro Section --- */
+.about-intro {
     text-align: center;
-    transition: var(--transition);
+    max-width: 800px;
+    margin: 0 auto 80px;
 }
 
-.stat-box:hover {
-    background: var(--dark);
-    border-color: var(--dark);
+.gold-subtitle {
+    color: #c5a059;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.section-title {
+    font-size: 3rem;
+    margin: 20px 0;
+}
+
+.section-title span {
+    color: #c5a059;
+    font-style: italic;
+}
+
+.motive-lead {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+}
+
+/* --- Values Grid (Principles) --- */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 100px;
+}
+
+.value-box {
+    padding: 30px;
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+}
+
+.value-box:hover {
+    border-color: #c5a059;
+    background: #fafafa;
     transform: translateY(-5px);
 }
 
-.stat-box h3 {
-    font-size: 2.2rem;
-    color: var(--primary);
-    margin-bottom: 5px;
-    font-weight: 800;
-    transition: color 0.3s ease;
+.value-box h3 {
+    color: #0a192f;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
 }
 
-.stat-box p {
-    font-size: 0.75rem;
+/* --- Mission/Vision Cards --- */
+.mv-container {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 100px;
+}
+
+.mv-card {
+    flex: 1;
+    background: #0a192f;
+    color: white;
+    padding: 50px;
+    border-radius: 4px;
+}
+
+.mv-icon { font-size: 2.5rem; margin-bottom: 20px; }
+.mv-card h3 { color: #c5a059; margin-bottom: 20px; font-size: 2rem; }
+.mv-caption {
+    display: block;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--text-muted);
-    margin: 0;
-    font-weight: 700;
-    transition: color 0.3s ease;
+    letter-spacing: 1px;
 }
 
-/* Stat Box Hover States */
-.stat-box:hover h3 {
-    color: var(--white);
+/* --- Timeline --- */
+.timeline {
+    border-left: 2px solid #f4f1ea;
+    padding-left: 40px;
+    margin-bottom: 100px;
 }
 
-.stat-box:hover p {
-    color: rgba(255, 255, 255, 0.6);
-}
-
-/* Image with Architectural "Negative" Offset */
-.detail-image {
+.timeline-item {
+    margin-bottom: 40px;
     position: relative;
 }
 
-.detail-image img {
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-    border-radius: 2px;
-    box-shadow: var(--shadow);
-    z-index: 2;
-    position: relative;
-}
-
-/* Mirroring the offset effect from the Evaluation section */
-.detail-image::after {
-    content: "";
+.timeline-item::before {
+    content: '';
     position: absolute;
-    bottom: -20px;
-    right: -20px;
+    left: -49px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    background: #c5a059;
+    border-radius: 50%;
+}
+
+.year { font-weight: 800; color: #c5a059; margin-bottom: 5px; }
+
+/* --- Team Grid --- */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.member { text-align: center; }
+.member-img {
+    background: #f4f4f4;
+    margin-bottom: 20px;
+    padding: 20px;
+    display: inline-block;
     width: 100%;
-    height: 100%;
-    border: 2px solid var(--primary);
-    z-index: 1;
 }
 
-/* Responsive Scaling */
-@media (max-width: 1200px) {
-    .stats-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.member h4 { margin-bottom: 5px; font-size: 1.2rem; color: #0a192f; }
+.member span { color: #c5a059; font-size: 0.9rem; font-weight: 600; }
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .mv-container, .team-grid { flex-direction: column; grid-template-columns: 1fr; }
 }
 
-@media (max-width: 992px) {
-    .detail-row {
-        grid-template-columns: 1fr;
-    }
-    
-    .detail-content {
-        text-align: center;
-        order: 2;
-    }
-    
-    .detail-content p {
-        margin: 0 auto;
-    }
-
-    .detail-image {
-        order: 1;
-        max-width: 600px;
-        margin: 0 auto;
-    }
-}
 /* --- Contact Section Styles --- */
    
        /* --- CONTACT FORM --- */
@@ -787,7 +959,7 @@
 }
 
 .contact-info > p {
-    color: var(--text-muted);
+    color:var(--text-gray);
     margin-bottom: 40px;
     font-size: 1.1rem;
 }
@@ -1235,19 +1407,175 @@ iframe:hover {
         <div class="logo">Apti <span style="color:var(--dark)">reality</span></div>
     </div>
     <div class="nav-links">
-        <a id="services" class="active" onclick="menu_selector(this)">Services</a>
-        <a id="evaluation" onclick="menu_selector(this)">Evaluation</a>
-        <a id="projects" onclick="menu_selector(this)">projects</a>
+        <a id="home" class="active" onclick="menu_selector(this)">home</a>
         <a id="about" onclick="menu_selector(this)">About</a>
+        <a id="services"  onclick="menu_selector(this)">Services</a>
+        <a id="projects" onclick="menu_selector(this)">projects</a>
         <a id="contact" onclick="menu_selector(this)">Contact</a>
         <a id="feedback" onclick="menu_selector(this)">Feedback</a>
     </div>
 </nav>
+<section id="sechome" class=" contanier">
+    <div class="hero " style="background: url('img5.jpg') no-repeat center center/cover;">
+    <div class="hero-overlay"></div>
 
-<div id="secservices">
+    <div class="hero-container">
+        <div class="hero-content">
+            <span class="hero-subtitle">Curated Real Estate Solutions</span>
+            <h1>Simply Secure Real Estate</span></h1>
+            
+            <p class="hero-description">
+                Apti Reality is Bengaluru’s premier land advisory, specializing in high-growth corridors. 
+                From luxury villa plots at the foot of Nandi Hills to premium commercial sites in Ullal, 
+                we bridge the gap between visionary investors and legally bulletproof properties.
+            </p>
+
+            <div class="hero-cta-group">
+                <a href="#secprojects" class="btn-primary" onclick="document.getElementById('projects').click()">Explore Portfolio</a>
+                <a href="#secservices" class="btn-secondary" onclick="document.getElementById('services').click()">Our Philosophy</a>
+            </div>
+        </div>
+
+        <div class="trust-bar">
+            <div class="trust-item">
+                <span class="trust-number">100%</span>
+                <span class="trust-label">Clear Title Guarantee</span>
+            </div>
+            <div class="divider"></div>
+            <div class="trust-item">
+                <span class="trust-number">500+</span>
+                <span class="trust-label">Acres Developed</span>
+            </div>
+            <div class="divider"></div>
+            <div class="trust-item">
+                <span class="trust-number">CUDA/BMRDA</span>
+                <span class="trust-label">Approved Layouts</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="secabout" class="about-modern" hidden>
+    <div class="container">
+        
+        <div class="about-intro">
+            <span class="gold-subtitle">Founded 2025</span>
+            <h2 class="section-title">A New Standard for a <span>New Era</span></h2>
+            <p class="motive-lead">
+                APTI Realty was established to bridge the gap between visionary land ownership and the technical complexities of the modern real estate market. We aren't just brokers; we are your 360° integrated partners in legacy building.
+            </p>
+        </div>
+
+         <div class="team-section">
+            <h2 class="inner-title light-font">The Design Minds</h2>
+            <div class="team-grid">
+                <div class="member">
+                    <div class="member-img">
+                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg>
+                    </div>
+                    <h4>Marcus Apti</h4>
+                    <span>Principal Architect</span>
+                </div>
+                <div class="member">
+                    <div class="member-img">
+                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg>
+                    </div>
+                    <h4>Sarah Chen</h4>
+                    <span>Head of Sustainability</span>
+                </div>
+                <div class="member">
+                    <div class="member-img">
+                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg>
+                    </div>
+                    <h4>Julian Voss</h4>
+                    <span>Director of Interiors</span>
+                </div>
+            </div>
+        </div>
+        <br/><br/>
+
+        <div class="principles-section">
+            <h2 class="inner-title">Our Core Principles</h2>
+            <div class="values-grid">
+                <div class="value-box">
+                    <h3>Integrity</h3>
+                    <p>We honor the materials we use and the landscapes we occupy, ensuring every joint and beam serves a purpose.</p>
+                </div>
+                <div class="value-box">
+                    <h3>Innovation</h3>
+                    <p>Leveraging BIM and computational design to solve complex spatial puzzles with elegant simplicity.</p>
+                </div>
+                <div class="value-box">
+                    <h3>Humanity</h3>
+                    <p>Buildings are for people. We prioritize light, air, and movement to enhance the daily human experience.</p>
+                </div>
+                <div class="value-box">
+                    <h3>Sustainability</h3>
+                    <p>From passive solar design to regenerative materials, we aim to leave a positive footprint on the planet.</p>
+                </div>
+                <div class="value-box">
+                    <h3>Collaboration</h3>
+                    <p>Architecture is a team sport. We foster open communication and respect across all disciplines.</p>
+                </div>
+                <div class="value-box">
+                    <h3>Craftsmanship</h3>
+                    <p>We believe in the beauty of well-executed details, where form and function meet in perfect harmony.</p>
+                </div>
+                <div class="value-box">
+                    <h3>Context</h3>
+                    <p>Every project is a response to its environment, culture, and history. We design with a sense of place.</p>
+                </div>
+                <div class="value-box">
+                    <h3>Resilience</h3>
+                    <p>Our buildings are designed to endure, adapting to changing climates and evolving needs.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mv-container">
+            <div class="mv-card mission">
+                <div class="mv-icon">🎯</div>
+                <h3>Our Mission</h3>
+                <p>To deconstruct the complexities of real estate through an integrated ecosystem of legal transparency, digital innovation, and architectural excellence.</p>
+                <span class="mv-caption">Empowering Every Square Foot with Absolute Certainty.</span>
+            </div>
+            <div class="mv-card vision">
+                <div class="mv-icon">👁️</div>
+                <h3>Our Vision</h3>
+                <p>To be the definitive benchmark for trusted land ownership and sustainable urban development.</p>
+                <span class="mv-caption">Architecting the Future of Trusted Living.</span>
+            </div>
+        </div>
+
+        <div class="growth-section">
+            <h2 class="inner-title light-font">A Decade of Growth</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="year">2025</div>
+                    <div class="event">
+                        <h4>The Foundation</h4>
+                        <p>Apti Architecture is founded in a small Brooklyn loft with a mission to simplify urban living.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">2026</div>
+                    <div class="event">
+                        <h4>Going Green</h4>
+                        <p>We received our first LEED Platinum certification for the 'Green Glass' commercial project in Manhattan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+
+    </div>
+</section>
+
+<div id="secservices" class="container" hidden>
     <section class="hero">
         <div class="hero-content">
-            <h1>Architecture Meets <br>Strategic Real Estate.</h1>
+            <h1>Building Legacies, Not Just Layouts</h1>
             <p>Your end-to-end partner for site evaluation, legal vetting, construction, and high-velocity digital marketing.</p>
             <button><a  onclick="document.getElementById('projects').click()" class="btn" ">View All Plots</a></button>
         </div>
@@ -1298,7 +1626,7 @@ iframe:hover {
                     </ul>
                 </div>
                 <div class="service-card">
-                    <h3>Site Evaluation</h3>
+                    <h3>Evaluation</h3>
                     <p>Comprehensive audits including soil health, groundwater levels, and urban proximity.</p>
                     <ul>
                         <li>• Physical Site Visits</li>
@@ -1333,7 +1661,6 @@ iframe:hover {
             </div>
         </section>
     </div>
-</div>
 
 <section id="secevaluation" class="container" hidden>
     <div class="detail-row">
@@ -1358,7 +1685,7 @@ iframe:hover {
     </div>
 </section>
 
-<section id="secprojects" class="container" hidden="true">
+<section id="secprojects" class="container" hidden>
     <div class="projects-header">
         <h2 class="section-title">Signature <span>Developments</span></h2>
         <p class="section-subtitle">A portfolio of our most ambitious architectural designs and strategic land developments across the region.</p>
@@ -1374,7 +1701,7 @@ iframe:hover {
     <div class="projects-grid">
         <div class="project-card">
             <div class="project-image">
-                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800" alt=" Arvind Lake View">
+                <img src="img1.jpg" alt=" Arvind Lake View">
                 <div class="project-overlay">
                     <div class="project-details">
                         <span class="project-cat">Architecture</span>
@@ -1394,7 +1721,7 @@ iframe:hover {
         </div>
         <div class="project-card">
             <div class="project-image">
-                <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800" alt="Nandi View Enclave">
+                <img src="img2.jpg" alt="Nandi View Enclave">
                 <div class="project-overlay">
                     <div class="project-details">
                         <span class="project-cat">Residential</span>
@@ -1414,7 +1741,7 @@ iframe:hover {
         </div>
         <div class="project-card">
             <div class="project-image">
-                <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&q=80&w=800" alt=" Royal City">
+                <img src="img3.jpg" alt=" Royal City">
                 <div class="project-overlay">
                     <div class="project-details">
                         <span class="project-cat">Commercial</span>
@@ -1435,7 +1762,7 @@ iframe:hover {
         </div>
         <div class="project-card">
             <div class="project-image">
-                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800" alt="RV Harmony Hub">  
+                <img src="img4.jpg" alt="RV Harmony Hub">  
                 <div class="project-overlay">
                     <div class="project-details">
                         <span class="project-cat">Residential</span>
@@ -1454,26 +1781,47 @@ iframe:hover {
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
-
-<section id="secabout" class="container" hidden>
-    <div class="detail-row">
-        <div class="detail-content">
-            <h2>Channel Partners & <span>Growth</span></h2>
-            <p>We bridge the gap between developers and buyers through an elite network of sales partners.</p>
-            <p>Our strategic marketing and sales initiatives have resulted in over 500 properties sold and 15,000+ leads generated, making us a trusted name in the real estate industry.</p>
-            <div style="display: flex; gap: 30px; margin-top: 30px;">
-                <div><h3 style="color:var(--primary)">250+</h3><p>Partners</p></div>
-                <div><h3 style="color:var(--primary)">15k+</h3><p>Leads</p></div>
-                <div><h3 style="color:var(--primary)">500+</h3><p>Properties Sold</p></div>
-                <div><h3 style="color:var(--primary)">100+</h3><p>Happy Clients</p></div>
-                <div><h3 style="color:var(--primary)">10k+</h3><p>Properties Listed</p></div>
+        <div class="project-card">
+            <div class="project-image">
+                <img src="" alt="">  
+                <div class="project-overlay">
+                    <div class="project-details">
+                        <span class="project-cat">Residential</span>
+                        <h3></h3>
+                        <p></p>
+                        <p></p>
+                        <ul class="project-meta">
+                            <li><strong>Location:</strong></li>
+                            <li><strong>Area:</strong></li>
+                            <li><strong>Status:</strong></li>
+                              <li></li>
+                              <li></li>
+                        </ul>
+                        <a href="" class="view-project">View Details →</a>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="detail-image">
-            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=1000" alt="Partners">
+        <div class="project-card">
+            <div class="project-image">
+                <img src="" alt="">  
+                <div class="project-overlay">
+                    <div class="project-details">
+                        <span class="project-cat">Residential</span>
+                        <h3></h3>
+                        <p></p>
+                        <p></p>
+                        <ul class="project-meta">
+                            <li><strong>Location:</strong></li>
+                            <li><strong>Area:</strong></li>
+                            <li><strong>Status:</strong></li>
+                              <li></li>
+                              <li></li>
+                        </ul>
+                        <a href="" class="view-project">View Details →</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -1579,7 +1927,7 @@ iframe:hover {
 <section id="secfeedback" class="container" hidden>
         <div class="feedback-header">
             <h1>Client <span>Experiences</span></h1>
-            <p>Your journey with ArchiVest doesn't end at the sale. We value your honest feedback to refine our architecture and property services.</p>
+            <p>Your journey with <em>Apti Reality</em> doesn't end at the sale. We value your honest feedback to refine our architecture and property services.</p>
         </div>
 
         <div class="testimonial-preview">
@@ -1731,7 +2079,7 @@ iframe:hover {
         </div>
     </div>
     <div class="footer-bottom">
-        &copy; 2026 Apti Reality Real Estate Solutions. Built with Precision.
+        &copy; 2025 Apti Reality Real Estate Solutions. Built with Precision.
     </div>
 </footer>
 
@@ -1743,7 +2091,7 @@ iframe:hover {
         element.classList.add('active');
 
         // Hide All Sections
-        const sections = ['secservices', 'secevaluation', 'secprojects', 'secabout', 'seccontact', 'secfeedback'];
+        const sections = ['sechome', 'secabout','secservices', 'secevaluation', 'secprojects', 'seccontact', 'secfeedback'];
         sections.forEach(id => {
             document.getElementById(id).hidden = true;
         });
