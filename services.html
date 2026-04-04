@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Services</title>
+        <style>
+            /* --- Variables & Core Layout --- */
+:root {
+    --primary: #00bcd4;      /* Cyan */
+    --accent: #ff9800;       /* Orange/Gold */
+    --dark: #0a0a0a;         /* Obsidian */
+    --light-bg: #f8f9fa;
+    --white: #ffffff;
+    --text-main: #1a1a1a;
+    --text-muted: #666666;
+    --glass: rgba(255, 255, 255, 0.95);
+    --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background-color: var(--white);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+ /* --- NAVIGATION --- */
+        .navbar {
+            background: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color:dodgerblue;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            margin-left: 25px;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color:darkgoldenrod;
+            border-bottom: 2px solid black;
+        }
+/* --- Hero Section --- */
+.hero {
+    height: 60vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('img7.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-top: 80px; /* Offset for fixed nav */
+}
+
+.hero-content h1 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3.5rem;
+    font-weight:bold;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    opacity: 0.9;
+}
+
+.btn {
+    background: var(--primary);
+    color: white;
+    padding: 15px 35px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn:hover {
+    background: var(--accent);
+    transform: translateY(-3px);
+}
+
+button { background: transparent; border: none; }
+
+/* --- Services Grid --- */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 60px;
+}
+
+.section-title span {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 100px;
+}
+
+.service-card {
+    background: var(--light-bg);
+    padding: 40px;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    transition: var(--transition);
+}
+
+.service-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    color: var(--dark);
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.service-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--primary);
+}
+
+.service-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.service-card ul {
+    list-style: none;
+}
+
+.service-card ul li {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.service-card:hover {
+    background: var(--white);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    border-color: var(--primary);
+}
+/* --- Footer --- */
+footer {
+    background: #0a0a0a;
+    color: white;
+    padding: 100px 8% 40px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 60px;
+}
+
+footer h4 { color:darkgoldenrod; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
+footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 80px;
+    padding-top: 30px;
+    border-top: 1px solid #222;
+    font-size: 0.75rem;
+    color: #555;
+}
+
+/* --- Responsive Layout --- */
+@media (max-width: 1024px) {
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .values-grid { grid-template-columns: repeat(2, 1fr); }
+    .mv-container { flex-direction: column; }
+}
+
+@media (max-width: 600px) {
+    .team-grid, .values-grid, .footer-grid { grid-template-columns: 1fr; }
+    .about-hero { padding: 60px 0; }
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .nav-links {
+        display: none; /* Consider adding a hamburger menu for mobile */
+    }
+    .footer-grid {
+        text-align: center;
+    }
+}
+        </style>
+       
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="logo-container">
+            <img src="aptilogo1.png" alt="apti reality" width="90px " height="90px" style="border-radius: 50%;">
+            <div class="logo">Apti <span style="color:orange">Reality</span></div>
+         </div>
+          <div class="nav-links">
+            <a href="home1.html" >Home</a>
+             <a href="about1.html">About</a>
+             <a href="services1.html" class="active">Services</a>
+            <a href="projects1.html" >Projects</a>
+             <a href="contact1.html">Contact</a>
+            <a href="feedback1.html">Feedback</a>
+        </div>
+    </nav>
+
+  <div id="secservices" class="container">
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Building Legacies, Not Just Layouts</h1>
+            <p>Your end-to-end partner for site evaluation, legal vetting, construction, and high-velocity digital marketing.</p>
+            <button><a  href="projects1.html" class="btn">View All Plots</a></button>
+        </div>
+    </section>
+
+        <section style="margin-top: 80px;">
+            <h2 class="section-title">Comprehensive <span>Solutions</span></h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Buy and sell of Properties/sites/plots</h3>
+                    <p>Transparent transactions with expert guidance for buyers and sellers.</p>
+                    <ul>
+                        <li>• Verified Listings</li>
+                        <li>• Market Analysis & Pricing</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Loan & Financial Services</h3>
+                    <p>Streamlined processing with 15+ banking partners for your ease.</p>
+                    <ul>
+                        <li>• Instant Eligibility Check</li>
+                        <li>• Low-interest Refinancing</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Legal Vetting</h3>
+                    <p>Complete documentation verification and property registration support.</p>
+                    <ul>
+                        <li>• Encumbrance Certificate Review</li>
+                        <li>• Sale Deed Drafting</li>
+                    </ul>
+                </div>
+                 <div class="service-card">
+                    <h3>Digital Marketing</h3>
+                    <p>AI-driven promotion strategies to maximize property visibility.</p>
+                    <ul>
+                        <li>• Targeted Ad Campaigns</li>
+                        <li>• Virtual Tours & 3D Walkthroughs</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Evaluation</h3>
+                    <p>Comprehensive audits including soil health, groundwater levels, and urban proximity.</p>
+                    <ul>
+                        <li>• Physical Site Visits</li>
+                        <li>• Market Value Analysis</li>
+                        <li>• Zone Verification</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Property Management</h3>
+                    <p>End-to-end management services for hassle-free ownership.</p>
+                    <ul>
+                        <li>• Maintenance Coordination</li>
+                        <li>• Rental Management</li>
+                    </ul>
+                </div>
+                 <div class="service-card">  
+                    <h3>Customer Support</h3>
+                    <p>Dedicated support team available 24/7 for all your queries.</p>
+                    <ul>
+                        <li>• Live Chat Assistance</li>
+                        <li>• Personalized Consultations</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Construction Support</h3>
+                    <p>Full-scale architectural design and engineering for custom villas.</p>
+                    <ul>
+                        <li>• 3D Modeling & Blueprints</li>
+                        <li>• Site Service Management</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+<footer>
+    <div class="footer-grid">
+        <div>
+            <div class="logo" style="color:cyan;">Apti <span style="color:white">Reality</span></div>
+            <p style="margin-top:10px; color:#aaa;">Leading integrated architectural and real estate services in India.</p>
+        </div>
+        <div>
+            <h4>Quick Links</h4>
+            <p>Site Evaluation</p>
+            <p>Legal Support</p>
+            <p>Construction</p>
+        </div>
+        <div>
+            <h4>Connect</h4>
+            <p>Phone: +91-9611758973</p>
+            <h4>Email:</h4>
+            <p>aptireality@gmail.com</p>
+           <h4>Address:</h4>
+            <p>25/1-6, 9th Main Rd, Dasarahalli Main Road, Agrahara, Bengaluru, Karnataka 560079, India</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2025 Apti Reality Real Estate Solutions. Built with Precision.
+    </div>
+</footer>
+</body>
+</html>
+

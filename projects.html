@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Apti Reality</title>
+    <style>
+         :root {
+            --primary: #1a1a1a;
+            --secondary: #fdfdfd;
+            --accent: #c5a059; 
+            --text-muted: #666;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.1);
+        }
+        body{
+            font-family: sans-serif;
+        }
+
+      /* --- NAVIGATION --- */
+        .navbar {
+            background: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color:dodgerblue;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            margin-left: 25px;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color:darkgoldenrod;
+            border-bottom: 2px solid var(--primary);
+        }
+        /* --- PROJECTS SECTION BASE --- */
+section.projects {
+    padding: 100px 0;
+    background-color: #fff;
+}
+
+.projects-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.projects-header h2 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 15px;
+}
+
+.projects-header span {
+    color: var(--primary);
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* --- FILTER NAVIGATION --- */
+.projects-filter {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 50px;
+}
+.filter-btn {
+    padding: 10px 24px;
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    color: #555;
+}
+
+.filter-btn:hover, 
+.filter-btn.active {
+    background:black;
+    color: #fff;
+    border-color: var(--dark);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+/* --- PROJECTS GRID --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    position: relative;
+    height: 500px;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.project-image {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+/* --- INTERACTIVE OVERLAY --- */
+.project-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+         top, 
+        rgba(0, 0, 0, 0.9) 0%, 
+        rgba(0, 0, 0, 0.4) 50%, 
+        transparent 100%
+    );
+    display: flex;
+    align-items: flex-end;
+    padding: 40px;
+    opacity: 0.8; /* Keep visible but subtle for accessibility */
+    transition: all 0.5s ease;
+}
+
+.project-details {
+    transform: translateY(20px);
+    transition: transform 0.5s ease;
+    color: #fff;
+    width: 100%;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+    background: rgba(18, 18, 18, 0.85); /* Darker on hover */
+    backdrop-filter: blur(5px); /* Elegant glass effect */
+}
+
+.project-card:hover .project-details {
+    transform: translateY(0);
+}
+
+.project-card:hover img {
+    transform: scale(1.08);
+}
+
+/* --- CONTENT STYLING --- */
+.project-cat {
+    display: block;
+    color: var(--primary);
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+}
+
+.project-details h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.project-details p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 20px;
+    line-height: 1.5;
+    max-width: 90%;
+}
+
+.project-meta {
+    list-style: none;
+    padding: 15px 0;
+    margin-bottom: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.project-meta li {
+    font-size: 0.8rem;
+    color: #fff;
+}
+
+.project-meta strong {
+    color: var(--primary);
+    display: block;
+    text-transform: uppercase;
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+}
+
+.view-project {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.view-project:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--dark);
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    .project-card {
+        height: 400px;
+    }
+    .project-overlay {
+        opacity: 1; /* Always visible on touch devices */
+    }
+}
+/* --- Base Containers --- */
+.about-modern {
+    padding: 100px 0;
+    background-color: #ffffff;
+    color: #1a1a1a;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 20px;
+}
+
+.inner-title {
+    font-size: 2.2rem;
+    color: #0a192f;
+    margin-bottom: 40px;
+}
+
+.light-font {
+    font-weight: 300;
+}
+
+/* --- Intro Section --- */
+.about-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 80px;
+}
+
+.gold-subtitle {
+    color: #c5a059;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.section-title {
+    font-size: 3rem;
+    margin: 20px 0;
+}
+
+.section-title span {
+    color: #c5a059;
+}
+
+.motive-lead {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+}
+
+/* --- Values Grid (Principles) --- */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 100px;
+}
+
+.value-box {
+    padding: 30px;
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+}
+
+.value-box:hover {
+    border-color: #c5a059;
+    background: #fafafa;
+    transform: translateY(-5px);
+}
+
+.value-box h3 {
+    color: #0a192f;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+/* --- Mission/Vision Cards --- */
+.mv-container {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 100px;
+}
+
+.mv-card {
+    flex: 1;
+    background: #0a192f;
+    color: white;
+    padding: 50px;
+    border-radius: 4px;
+}
+
+.mv-icon { font-size: 2.5rem; margin-bottom: 20px; }
+.mv-card h3 { color: #c5a059; margin-bottom: 20px; font-size: 2rem; }
+.mv-caption {
+    display: block;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Timeline --- */
+.timeline {
+    border-left: 2px solid #f4f1ea;
+    padding-left: 40px;
+    margin-bottom: 100px;
+}
+
+.timeline-item {
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -49px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    background: #c5a059;
+    border-radius: 50%;
+}
+
+.year { font-weight: 800; color: #c5a059; margin-bottom: 5px; }
+
+/* --- Team Grid --- */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.member { text-align: center; }
+.member-img {
+    background: #f4f4f4;
+    margin-bottom: 20px;
+    padding: 20px;
+    display: inline-block;
+    width: 100%;
+}
+
+.member h4 { margin-bottom: 5px; font-size: 1.2rem; color: #0a192f; }
+.member span { color: #c5a059; font-size: 0.9rem; font-weight: 600; }
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .mv-container, .team-grid { flex-direction: column; grid-template-columns: 1fr; }
+}
+
+/* --- Footer --- */
+footer {
+    background: #0a0a0a;
+    color: white;
+    padding: 100px 8% 40px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 60px;
+}
+
+footer h4 { color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
+footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 80px;
+    padding-top: 30px;
+    border-top: 1px solid #222;
+    font-size: 0.75rem;
+    color: #555;
+}
+
+/* --- Responsive Layout --- */
+@media (max-width: 1024px) {
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .values-grid { grid-template-columns: repeat(2, 1fr); }
+    .mv-container { flex-direction: column; }
+}
+
+@media (max-width: 600px) {
+    .team-grid, .values-grid, .footer-grid { grid-template-columns: 1fr; }
+    .about-hero { padding: 60px 0; }
+}
+
+
+    </style>
+</head>
+<body>
+   <nav class="navbar">
+        <div class="logo-container">
+            <img src="aptilogo1.png" alt="apti reality" width="90px " height="90px" style="border-radius: 50%;">
+            <div class="logo">Apti <span style="color:orange">Reality</span></div>
+        </div>
+        <div class="nav-links">
+            <a href="home1.html" >Home</a>
+             <a href="about1.html">About</a>
+             <a href="services1.html">Services</a>
+            <a href="projects1.html"  class="active">Projects</a>
+             <a href="contact1.html">Contact</a>
+            <a href="feedback1.html">Feedback</a>
+        </div>
+    </nav>
+
+
+    <section class="container">
+    <div class="projects-header">
+        <h2 class="section-title">Signature <span>Developments</span></h2>
+        <p class="section-subtitle">A portfolio of our most ambitious architectural designs and strategic land developments across the region.</p>
+    </div>
+
+    <div class="projects-filter">
+        <button class="filter-btn active">All Projects</button>
+        <button class="filter-btn">Architecture</button>
+        <button class="filter-btn">Commercial</button>
+        <button class="filter-btn">Residential</button>
+    </div>
+
+    <div class="projects-grid">
+        <div class="project-card">
+            <div class="project-image">
+                <img src="img1.jpg" alt=" Arvind Lake View">
+                <div class="project-overlay">
+                    <div class="project-details">
+                        <span class="project-cat">Architecture</span>
+                        <h3> Arvind Lake View</h3>
+                        <p>BMRDA RERA Approved E Khata Properties</p>
+                        <ul class="project-meta">
+                            <li><strong>Location:</strong> Bengaluru, KA</li>
+                            <li><strong>Area:</strong> ₹4,599/- per Sqft</li>
+                            <li><strong>Status:</strong>Luxury Amenities</li>
+                              <li> Excellent Connectivity</li>
+                              <li>High Appreciation Potential</li>
+                        </ul>
+                        <a href="pro1.html" class="view-project">View Details →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="project-card">
+            <div class="project-image">
+                <img src="img2.jpg" alt="Nandi View Enclave">
+                <div class="project-overlay">
+                    <div class="project-details">
+                        <span class="project-cat">Residential</span>
+                        <h3> Nandi View Enclave</h3>
+                        <p>CUDA APRROVED SITES @ NANDI HILLS MAIN HIGHWAY</p>
+                        <ul class="project-meta">
+                            <li><strong>Location:</strong> Nandi Hills, KA</li>
+                            <li><strong>Area:</strong> ₹ 3299/- Per Sqft</li>
+                            <li><strong>Status:</strong> 100% Clear Title</li>
+                              <li> Excellent Connectivity</li>
+                              <li>High Appreciation Potential</li>
+                        </ul>
+                        <a href="pro2.html" class="view-project">View Details →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="project-card">
+            <div class="project-image">
+                <img src="img3.jpg" alt=" Royal City">
+                <div class="project-overlay">
+                    <div class="project-details">
+                        <span class="project-cat">Commercial</span>
+                        <h3> Royal City (Ullal)</h3>
+                        <p>BMICAPA Approved Individual 'E' Katha sites</p>
+                        <p>Villa </p>
+                        <ul class="project-meta">
+                            <li><strong>Location:</strong> Ullal, KA</li>
+                            <li><strong>Area:</strong> plots starting from ₹1.06 Crore*</li>
+                            <li><strong>Status:</strong> 100% Clear Title</li>
+                              <li> Free Registration*</li>
+                              <li> Premium Gated Community</li>
+                        </ul>
+                        <a href="pro3.html" class="view-project">View Details →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="project-card">
+            <div class="project-image">
+                <img src="img4.jpg" alt="RV Harmony Hub">  
+                <div class="project-overlay">
+                    <div class="project-details">
+                        <span class="project-cat">Residential</span>
+                        <h3>RV Harmony Hub</h3>
+                        <p>DC Conversion and 9/11 A-Khata</p>
+                        <p>Villa </p>
+                        <ul class="project-meta">
+                            <li><strong>Location:</strong> Ullal, KA</li>
+                            <li><strong>Area:</strong>Site price starts at ₹899 per sq.ft</li>
+                            <li><strong>Status:</strong> 100% Clear Title</li>
+                              <li> Premium Gated Community</li>
+                              <li>30' Wide & Well-Planned Internal Roads</li>
+                        </ul>
+                        <a href="pro4.html" class="view-project">View Details →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="project-card">
+            <div class="project-image">
+                <img src="" alt="">  
+                <div class="project-overlay">
+                    <div class="project-details">
+                        <span class="project-cat">Residential</span>
+                        <h3></h3>
+                        <p></p>
+                        <p></p>
+                        <ul class="project-meta">
+                            <li><strong>Location:</strong></li>
+                            <li><strong>Area:</strong></li>
+                            <li><strong>Status:</strong></li>
+                              <li></li>
+                              <li></li>
+                        </ul>
+                        <a href="" class="view-project">View Details →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="project-card">
+            <div class="project-image">
+                <img src="" alt="">  
+                <div class="project-overlay">
+                    <div class="project-details">
+                        <span class="project-cat">Residential</span>
+                        <h3></h3>
+                        <p></p>
+                        <p></p>
+                        <ul class="project-meta">
+                            <li><strong>Location:</strong></li>
+                            <li><strong>Area:</strong></li>
+                            <li><strong>Status:</strong></li>
+                              <li></li>
+                              <li></li>
+                        </ul>
+                        <a href="" class="view-project">View Details →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+<footer>
+    <div class="footer-grid">
+        <div>
+            <div class="logo" style="color:cyan;">Apti <span style="color:white">Reality</span></div>
+            <p style="margin-top:10px; color:#aaa;">Leading integrated architectural and real estate services in India.</p>
+        </div>
+        <div>
+            <h4>Quick Links</h4>
+            <p>Site Evaluation</p>
+            <p>Legal Support</p>
+            <p>Construction</p>
+        </div>
+        <div>
+            <h4>Connect</h4>
+            <p>Phone: +91-9611758973</p>
+            <h4>Email:</h4>
+            <p>aptireality@gmail.com</p>
+           <h4>Address:</h4>
+            <p>25/1-6, 9th Main Rd, Dasarahalli Main Road, Agrahara, Bengaluru, Karnataka 560079, India</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2025 Apti Reality Real Estate Solutions. Built with Precision.
+    </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons and add to clicked one
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const filterValue = button.textContent.toLowerCase().trim();
+
+            projectCards.forEach(card => {
+                // Get the category text from the specific card
+                const cardCategory = card.querySelector('.project-cat').textContent.toLowerCase().trim();
+
+                if (filterValue === 'all projects') {
+                    card.style.display = 'block';
+                } else if (cardCategory === filterValue) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+});
+</script>
+</body>
+</html>

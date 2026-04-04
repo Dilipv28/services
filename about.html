@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Apti Reality</title>
+    <style>
+        /* --- Variables & Base Setup --- */
+:root {
+    --primary: #00bcd4;      /* Cyan */
+    --accent: #ff9800;       /* Orange/Gold */
+    --dark: #0a0a0a;         /* Obsidian */
+    --light-gray: #f4f7f6;
+    --white: #ffffff;
+    --text-main: #1a1a1a;
+    --text-muted: #666666;
+    --glass: rgba(255, 255, 255, 0.95);
+    --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--text-main);
+    line-height: 1.7;
+    background-color: var(--white);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+/* --- Navigation --- */
+  /* --- NAVIGATION --- */
+        .navbar {
+            background: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color:dodgerblue;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            margin-left: 25px;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color:darkgoldenrod;
+            border-bottom: 2px solid  black;
+        }
+
+/* --- About Hero & Intro --- */
+.about-hero {
+    padding-top: 150px;
+    padding-bottom: 80px;
+}
+
+.gold-subtitle {
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 800;
+    font-size: 0.75rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
+
+.section-title span { color: var(--accent); font-weight: 600; }
+
+.motive-lead {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 800px;
+    border-left: 3px solid var(--primary);
+    padding-left: 25px;
+}
+
+/* --- Team Section --- */
+.team-section { margin-top: 100px; }
+
+.inner-title {
+    font-size: 2rem;
+    margin-bottom: 50px;
+    text-align: center;
+    font-weight: 300;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.member { text-align: center; transition: var(--transition); }
+
+.member-img {
+    background: var(--light-gray);
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.member-img svg { width: 40%; }
+
+.member h4 { font-size: 1.1rem; margin-bottom: 5px; }
+.member span { color: var(--accent); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; }
+
+.member:hover { transform: translateY(-10px); }
+
+/* --- Principles Grid --- */
+.principles-section { padding: 100px 0; }
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.value-box {
+    padding: 30px;
+    background: #fff;
+    border: 1px solid #eee;
+    transition: var(--transition);
+}
+
+.value-box h3 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: var(--primary);
+}
+
+.value-box p { font-size: 0.9rem; color: var(--text-muted); }
+
+.value-box:hover {
+    border-color: var(--primary);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* --- Mission & Vision Cards --- */
+.mv-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 80px;
+}
+
+.mv-card {
+    background: var(--dark);
+    color: white;
+    padding: 50px 40px;
+    border-radius: 4px;
+}
+
+.mv-icon { font-size: 2.5rem; margin-bottom: 20px; }
+
+.mv-card h3 { margin-bottom: 20px; letter-spacing: 2px; }
+
+.mv-caption {
+    display: block;
+    margin-top: 30px;
+    font-size: 0.75rem;
+    color: var(--primary);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.mv-card.vision { background: #1a1a1a; }
+.mv-card.values { background: #252525; }
+
+/* --- Growth Timeline --- */
+.growth-section { padding: 100px 0; }
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline-item {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.year {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #ddd;
+    min-width: 100px;
+}
+
+.event h4 { color: var(--accent); margin-bottom: 10px; }
+
+
+/* --- Footer --- */
+footer {
+    background: #0a0a0a;
+    color: white;
+    padding: 100px 8% 40px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 60px;
+}
+
+footer h4 { color: #c5a059; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
+footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 80px;
+    padding-top: 30px;
+    border-top: 1px solid #222;
+    font-size: 0.75rem;
+    color: #555;
+}
+
+/* --- Responsive Layout --- */
+@media (max-width: 1024px) {
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .values-grid { grid-template-columns: repeat(2, 1fr); }
+    .mv-container { flex-direction: column; }
+}
+
+@media (max-width: 600px) {
+    .team-grid, .values-grid, .footer-grid { grid-template-columns: 1fr; }
+    .about-hero { padding: 60px 0; }
+}
+    </style>
+</head> 
+<body>
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="aptilogo1.png" alt="apti reality" width="90px " height="90px" style="border-radius: 50%;">
+            <div class="logo">Apti <span style="color:orange">Reality</span></div>
+        </div>
+        <div class="nav-links">
+            <a href="home1.html" >Home</a>
+             <a href="about1.html" class="active">About</a>
+             <a href="services1.html">Services</a>
+            <a href="projects1.html">Projects</a>
+             <a href="contact1.html">Contact</a>
+            <a href="feedback1.html">Feedback</a>
+        </div>
+    </nav>
+
+<section class="about-hero">
+    <div class="container">
+        
+        <div class="about-intro">
+            <span class="gold-subtitle">Founded 2025</span>
+            <h2 class="section-title">A New Standard for a <span>New Era</span></h2>
+            <p class="motive-lead">
+               The Vision is your "Where." It defines the future you are building for the industry.</p>
+        </div>
+
+         <div class="team-section">
+            <h2 class="inner-title light-font">The Design Minds</h2>
+            <div class="team-grid">
+                <div class="member">
+                    <div class="member-img">
+                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg>
+                    </div>
+                    <h4>Marcus Apti</h4>
+                    <span>Principal Architect</span>
+                </div>
+                <div class="member">
+                    <div class="member-img">
+                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg>
+                    </div>
+                    <h4>Sarah Chen</h4>
+                    <span>Head of Sustainability</span>
+                </div>
+                <div class="member">
+                    <div class="member-img">
+                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg>
+                    </div>
+                    <h4>Julian Voss</h4>
+                    <span>Director of Interiors</span>
+                </div>
+            </div>
+        </div>
+        <br/><br/>
+
+        <div class="principles-section">
+            <h2 class="inner-title">Our Core Principles</h2>
+            <div class="values-grid">
+                <div class="value-box">
+                    <h3>Integrity</h3>
+                    <p>We honor the materials we use and the landscapes we occupy, ensuring every joint and beam serves a purpose.</p>
+                </div>
+                <div class="value-box">
+                    <h3>Innovation</h3>
+                    <p>Leveraging BIM and computational design to solve complex spatial puzzles with elegant simplicity.</p>
+                </div>
+                <div class="value-box">
+                    <h3>Humanity</h3>
+                    <p>Buildings are for people. We prioritize light, air, and movement to enhance the daily human experience.</p>
+                </div>
+                <div class="value-box">
+                    <h3>Sustainability</h3>
+                    <p>From passive solar design to regenerative materials, we aim to leave a positive footprint on the planet.</p>
+                </div>
+                <div class="value-box">
+                    <h3>Collaboration</h3>
+                    <p>Architecture is a team sport. We foster open communication and respect across all disciplines.</p>
+                </div>
+                <div class="value-box">
+                    <h3>Craftsmanship</h3>
+                    <p>We believe in the beauty of well-executed details, where form and function meet in perfect harmony.</p>
+                </div>
+                <div class="value-box">
+                    <h3>Context</h3>
+                    <p>Every project is a response to its environment, culture, and history. We design with a sense of place.</p>
+                </div>
+                <div class="value-box">
+                    <h3>Resilience</h3>
+                    <p>Our buildings are designed to endure, adapting to changing climates and evolving needs.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mv-container">
+            <div class="mv-card mission">
+                <div class="mv-icon">🎯</div>
+                <h3>Our Mission</h3>
+                <p>To deconstruct the complexities of real estate through an integrated ecosystem of legal transparency, digital innovation, and architectural excellence.</p>
+                <span class="mv-caption">Empowering Every Square Foot with Absolute Certainty.</span>
+            </div>
+            <div class="mv-card vision">
+                <div class="mv-icon">👁️</div>
+                <h3>Our Vision</h3>
+                <p>To be the definitive benchmark for trusted land ownership and sustainable urban development.</p>
+                <span class="mv-caption">Architecting the Future of Trusted Living.</span>
+            </div>
+            <div class="mv-card values">
+                <div class="mv-icon">💎</div>
+                <h3>Our Values</h3>
+                <p>Integrity, Innovation, Humanity, Sustainability, Collaboration, Craftsmanship, Context, Resilience.</p>
+                <span class="mv-caption">The Pillars that Support Every Project We Undertake.</span>
+                </div>
+        </div>
+    
+
+        <div class="growth-section">
+            <h2 class="inner-title light-font">A Decade of Growth</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="year">2026</div>
+                    <div class="event">
+                        <h4>Going Green</h4>
+                        <p>We received our first LEED Platinum certification for the 'Green Glass' commercial project in Manhattan.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">2025</div>
+                    <div class="event">
+                        <h4>The Foundation</h4>
+                        <p>Apti Architecture is founded in a small Brooklyn loft with a mission to simplify urban living.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-grid">
+        <div>
+            <div class="logo" style="color:cyan;">Apti <span style="color:white">Reality</span></div>
+            <p style="margin-top:10px; color:#aaa;">Leading integrated architectural and real estate services in India.</p>
+        </div>
+        <div>
+            <h4>Quick Links</h4>
+            <p>Site Evaluation</p>
+            <p>Legal Support</p>
+            <p>Construction</p>
+        </div>
+        <div>
+            <h4>Connect</h4>
+            <p>Phone: +91-9611758973</p>
+            <h4>Email:</h4>
+            <p>aptireality@gmail.com</p>
+           <h4>Address:</h4>
+            <p>25/1-6, 9th Main Rd, Dasarahalli Main Road, Agrahara, Bengaluru, Karnataka 560079, India</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2025 Apti Reality Real Estate Solutions. Built with Precision.
+    </div>
+</footer>
+
+</main>
+</body>
+</html>

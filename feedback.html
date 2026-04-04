@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback- Apti Reality</title>
+    <style>
+        /* --- Root Variables & Theme --- */
+:root {
+    --primary: #1a1a1a;
+    --accent: #c5a059; /* Architectural Gold */
+    --bg-light: #f4f4f4;
+    --white: #ffffff;
+    --text-main: #333333;
+    --text-muted: #777777;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --border: #e0e0e0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--white);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* --- Layout Containers --- */
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 80px 5%;
+}
+
+
+         /* --- NAVIGATION --- */
+        .navbar {
+            background: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color:dodgerblue;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            margin-left: 25px;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color:darkgoldenrod;
+            border-bottom: 2px solid var(--primary);
+        }
+
+/* --- Feedback Header --- */
+.feedback-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.feedback-header h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.feedback-header h1 span { color: var(--accent); font-style: italic; }
+
+.feedback-header p {
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+/* --- Testimonial Masonry Grid --- */
+.testimonial-preview {
+    column-count: 3;
+    column-gap: 30px;
+    margin-bottom: 100px;
+}
+
+.t-card {
+    break-inside: avoid;
+    background: var(--bg-light);
+    padding: 35px;
+    margin-bottom: 30px;
+    border-radius: 2px;
+    transition: var(--transition);
+    position: relative;
+}
+
+.t-card:hover {
+    transform: translateY(-5px);
+    background: var(--white);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.t-card p {
+    font-style: italic;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    color: var(--text-main);
+}
+
+.t-author {
+    display: block;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+}
+
+.t-service {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-top: 5px;
+}
+
+/* --- Feedback Main Form & Stats --- */
+.feedback-main {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 80px;
+    align-items: start;
+}
+
+.feedback-form {
+    background: #fff;
+    padding: 50px;
+    border: 1px solid var(--border);
+}
+
+.form-field { margin-bottom: 25px; }
+.form-field label {
+    display: block;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--border);
+    background: #fafafa;
+    font-family: inherit;
+    transition: var(--transition);
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: #fff;
+}
+
+/* --- Interactive Rating Buttons --- */
+.rating-box { margin-bottom: 30px; }
+.rating-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 15px; }
+
+.rating-options { display: flex; gap: 10px; }
+.rating-btn {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.rating-btn:hover { border-color: var(--accent); color: var(--accent); }
+.rating-btn.selected { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+.submit-feedback {
+    width: 100%;
+    padding: 20px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.submit-feedback:hover { background: var(--accent); }
+
+/* --- Stats Sidebar --- */
+.feedback-stats {
+    background: var(--primary);
+    color: white;
+    padding: 60px 40px;
+    border-radius: 4px;
+    position: sticky;
+    top: 120px;
+}
+
+.stat-circle {
+    font-size: 4rem;
+    font-weight: 200;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.feedback-stats h3 { text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; font-weight: 300; }
+.feedback-stats p { font-size: 0.85rem; color: #999; margin-bottom: 40px; }
+
+.metric {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #333;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.metric span:last-child { color: var(--accent); font-weight: 800; }
+
+
+/* --- Footer --- */
+footer {
+    background: #0a0a0a;
+    color: white;
+    padding: 100px 8% 40px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 60px;
+}
+
+footer h4 { color: #c5a059; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
+footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 80px;
+    padding-top: 30px;
+    border-top: 1px solid #222;
+    font-size: 0.75rem;
+    color: #555;
+}
+
+/* --- Responsive Layout --- */
+@media (max-width: 1024px) {
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .values-grid { grid-template-columns: repeat(2, 1fr); }
+    .mv-container { flex-direction: column; }
+}
+
+@media (max-width: 600px) {
+    .team-grid, .values-grid, .footer-grid { grid-template-columns: 1fr; }
+    .about-hero { padding: 60px 0; }
+}
+    </style>
+</head>
+<body>
+     <nav class="navbar">
+        <div class="logo-container">
+            <img src="aptilogo1.png" alt="apti reality" width="90px " height="90px" style="border-radius: 50%;">
+            <div class="logo">Apti <span style="color:orange">Reality</span></div>
+        </div>
+        <div class="nav-links">
+            <a href="home1.html" >Home</a>
+             <a href="about1.html">About</a>
+             <a href="services1.html">Services</a>
+            <a href="projects1.html" >Projects</a>
+             <a href="contact1.html">Contact</a>
+            <a href="feedback1.html" class="active">Feedback</a>
+        </div>
+    </nav>
+
+
+    <section class="container">
+        <div class="feedback-header">
+            <h1>Client <span>Experiences</span></h1>
+            <p>Your journey with <em>Apti Reality</em> doesn't end at the sale. We value your honest feedback to refine our architecture and property services.</p>
+        </div>
+
+        <div class="testimonial-preview">
+            <div class="t-card">
+                <p>"The legal vetting process was incredibly thorough. I felt 100% secure purchasing my first commercial plot through them."</p>
+                <span class="t-author">Marcus Sterling</span>
+                <span class="t-service">Commercial Acquisition</span>
+            </div>
+            <div class="t-card">
+                <p>"Their architects translated my vision into a 3D reality that exceeded my budget expectations. Truly professional."</p>
+                <span class="t-author">Elena Rodriguez</span>
+                <span class="t-service">Custom Villa Construction</span>
+            </div>
+            <div class="t-card">
+                <p>"As a Channel Partner, the digital marketing support provided by the promoter team helped me close 3 deals in a month."</p>
+                <span class="t-author">David Chen</span>
+                <span class="t-service">Partner Sales</span>
+            </div>
+            <div class="t-card">
+                <p>"The site evaluation report was detailed and helped me avoid a potential legal issue. Highly recommend their services."</p>
+                <span class="t-author">Priya Singh</span>
+                <span class="t-service">Site Evaluation</span>
+            </div>
+            <div class="t-card">
+                <p>"Their customer support team was responsive and resolved my queries about the construction timeline efficiently."</p>
+                <span class="t-author">Ravi Kumar</span>
+                <span class="t-service">Construction Support</span>
+            </div>
+            <div class="t-card">
+                <p>"I appreciated the transparency and professionalism throughout the loan application process. It was seamless."</p>
+                <span class="t-author">Ananya Mehta</span>
+                <span class="t-service">Loan & Financial Services</span>
+            </div>
+            <div class="t-card">
+                <p>"The digital promotion for my plot listing generated significant interest and helped me sell faster than expected."</p>
+                <span class="t-author">Suresh Patel</span>
+                <span class="t-service">Digital Marketing</span>
+            </div>
+            <div class="t-card">
+                <p>"The property management services have been a lifesaver. They handle everything from maintenance to tenant coordination."</p>
+                <span class="t-author">Meera Joshi</span>
+                <span class="t-service">Property Management</span>
+            </div>
+            <div class="t-card">
+                <p>"I had a minor issue during the site visit, and their 24/7 support team resolved it immediately. Impressive service."</p>
+                <span class="t-author">Arjun Desai</span>
+                <span class="t-service">Site Service Support</span>
+            </div>
+        </div>
+
+        <div class="feedback-main">
+            <div class="feedback-form">
+                <h2 style="margin-bottom: 30px;">Share Your Experience</h2>
+                
+                <form action="#">
+                    <div class="form-field">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Project / Plot ID (Optional)</label>
+                        <input type="text" placeholder="e.g. AV-9921">
+                    </div>
+
+                    <div class="rating-box">
+                        <span class="rating-label">Rate our Architecture & Design</span>
+                        <div class="rating-options">
+                            <div class="rating-btn">1</div>
+                            <div class="rating-btn">2</div>
+                            <div class="rating-btn">3</div>
+                            <div class="rating-btn">4</div>
+                            <div class="rating-btn">5</div>
+                        </div>
+                    </div>
+
+                    <div class="rating-box">
+                        <span class="rating-label">Rate our Legal & Support Services</span>
+                        <div class="rating-options">
+                            <div class="rating-btn">1</div>
+                            <div class="rating-btn">2</div>
+                            <div class="rating-btn">3</div>
+                            <div class="rating-btn">4</div>
+                            <div class="rating-btn">5</div>
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Detailed Review</label>
+                        <textarea rows="6" placeholder="What did we do well? How can we improve?"></textarea>
+                    </div>
+
+                    <div class="form-field" style="display: flex; align-items: center; gap: 10px;">
+                        <input type="checkbox" id="consent" style="width: auto;">
+                        <label for="consent" style="margin-bottom: 0; font-weight: 500;">I allow Apti Reality to feature this review on the website.</label>
+                    </div>
+
+                    <button type="submit" class="submit-feedback">Publish Review</button>
+                </form>
+            </div>
+
+            <div class="feedback-stats">
+                <div class="stat-circle">4.9</div>
+                <h3>Average Satisfaction</h3>
+                <p>Based on over 1,250+ client interactions across construction and land sales in 2025-2026.</p>
+                
+                <div class="metric">
+                    <span>Design Quality</span>
+                    <span style="color: var(--primary);">98%</span>
+                </div>
+                <div class="metric">
+                    <span>Legal Clarity</span>
+                    <span style="color: var(--primary);">95%</span>
+                </div>
+                <div class="metric">
+                    <span>Site Visit Punctuality</span>
+                    <span style="color: var(--primary);">92%</span>
+                </div>
+                <div class="metric">
+                    <span>Digital Promoter ROI</span>
+                    <span style="color: var(--primary);">97%</span>
+                </div>
+
+                <div style="margin-top: 40px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 4px;">
+                    <h4 style="font-size: 0.9rem; margin-bottom: 10px; color: var(--primary);">Urgent Issue?</h4>
+                    <p style="font-size: 0.8rem; margin-bottom: 0;">If you have an immediate concern regarding a site service, please contact our 24/7 Priority Support line.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<footer>
+    <div class="footer-grid">
+        <div>
+            <div class="logo" style="color:cyan;">Apti <span style="color:white">Reality</span></div>
+            <p style="margin-top:10px; color:#aaa;">Leading integrated architectural and real estate services in India.</p>
+        </div>
+        <div>
+            <h4>Quick Links</h4>
+            <p>Site Evaluation</p>
+            <p>Legal Support</p>
+            <p>Construction</p>
+        </div>
+        <div>
+            <h4>Connect</h4>
+            <p>Phone: +91-9611758973</p>
+            <h4>Email:</h4>
+            <p>aptireality@gmail.com</p>
+           <h4>Address:</h4>
+            <p>25/1-6, 9th Main Rd, Dasarahalli Main Road, Agrahara, Bengaluru, Karnataka 560079, India</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2025 Apti Reality Real Estate Solutions. Built with Precision.
+    </div>
+</footer>
+     
+    <script>
+       // 1. Handle Independent Rating Selection
+document.querySelectorAll('.rating-options').forEach(group => {
+    const buttons = group.querySelectorAll('.rating-btn');
+    
+    buttons.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+            // Remove 'selected' class from all buttons in THIS group only
+            buttons.forEach(b => b.classList.remove('selected'));
+            
+            // Add 'selected' class to the clicked button
+            btn.classList.add('selected');
+            
+            // Optional: Store the value in a hidden input if you are sending to a server
+            const ratingValue = btn.textContent;
+            group.setAttribute('data-value', ratingValue);
+            
+            console.log(`Category: ${group.previousElementSibling.textContent} | Rating: ${ratingValue}`);
+        });
+    });
+});
+
+// 2. Handle Form Submission
+document.querySelector('form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Basic Validation: Ensure both ratings are selected
+    const ratings = document.querySelectorAll('.rating-options');
+    let allRated = true;
+
+    ratings.forEach(group => {
+        if (!group.getAttribute('data-value')) {
+            allRated = false;
+            group.style.border = "1px solid #ff4d4d"; // Highlight missing rating
+            setTimeout(() => group.style.border = "none", 2000);
+        }
+    });
+
+    if (!allRated) {
+        alert('Please provide a rating for both categories before submitting.');
+        return;
+    }
+
+    // Success Feedback
+    const submitBtn = this.querySelector('.submit-feedback');
+    submitBtn.textContent = "Submitting...";
+    submitBtn.disabled = true;
+
+    // Simulate an API call
+    setTimeout(() => {
+        alert('Thank you for your valuable feedback! Your review has been submitted for moderation.');
+        
+        // Reset the form and UI
+        this.reset();
+        document.querySelectorAll('.rating-btn').forEach(btn => btn.classList.remove('selected'));
+        submitBtn.textContent = "Publish Review";
+        submitBtn.disabled = false;
+        
+        // Scroll to top of form
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 1500);
+});
+    </script>
+</body>
+</html>
