@@ -28,7 +28,7 @@
             overflow-x: hidden;
         }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+        /* .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; } */
 
       /* --- NAVIGATION --- */
         .navbar {
@@ -192,16 +192,21 @@
     font-family: 'Inter', sans-serif;
 }
 
-.home-services .container {
-    max-width: 1200px;
+ .container {
+    /*  max-width: 1200px;*/
     margin: 0 auto;
     padding: 0 5%;
-    /* Create a grid for the cards */
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    /* Create a grid for the cards 
+    //display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));*/
     gap: 30px;
 }
-
+.containerm {
+    /*  max-width: 1200px;*/
+    margin: 0 auto;
+    padding: 0 5%;
+    display: flex;
+}
 /* --- 2. Header (Spans full width of the grid) --- */
 .section-header {
     grid-column: 1 / -1; 
@@ -226,7 +231,7 @@
 }
 
 /* --- 3. Interactive Service Cards --- */
-.home-service-card {
+/* .home-service-card {
     background: #f9f9f9;
     padding: 50px 40px;
     text-decoration: none;
@@ -235,8 +240,31 @@
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     display: flex;
     flex-direction: column;
+} */
+.home-service-card {
+    
+    max-width: 40%;
+    width:
+    height: 300px;
+    background: #f9f9f9;
+    padding: 29px 15px;
+    text-decoration: none;
+    margin: 10px;
+    color: inherit;
+      /* display: flex;*/
+    border: 1px solid #eee;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: inline-grid; 
+    flex-wrap: nowrap;
+    align-content: space-between;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    }
+.marquee{
+    display: flex;
+    max-height: 400px;
 }
-
 .home-service-card:hover {
     background: #ffffff;
     transform: translateY(-10px);
@@ -364,22 +392,21 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
 
     <section class="carousel-container" id="home">
         <div class="carousel-slide">
-            <img src="img1.jpg" alt="Real Estate">
+            <a href="services.html"><img src="img1.jpg" alt="Real Estate"></a>
             <div class="carousel-caption">
                 <h2>Comprehensive Real Estate Solutions</h2>
                 <p>From land evaluation to architectural design, we provide end-to-end services.</p>
             </div>
         </div>
         <div class="carousel-slide">
-            <img src="img2.jpg" alt="Legal Vetting">
+            <a href="services.html"><img src="img2.jpg" alt="Legal Vetting"></a>
             <div class="carousel-caption">
                 <h2>Legal Vetting & Precision</h2>
                 <p>Securing your legacy through verified land acquisition and compliance.</p>
             </div>
         </div>
         <div class="carousel-slide">
-            <img src="img3.jpg" alt="Modern Architecture">
-            <div class="carousel-caption">
+              <a href="services.html"><img src="img3.jpg" alt="Modern Architecture"></a>
                 <h2>Modern Architecture</h2>
                 <p>Designing spaces that balance raw materiality with functional elegance.</p>
             </div>
@@ -547,7 +574,9 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
     <div class="container">
         <div class="section-header">
             <span class="gold-subtitle">Our Expertise</span>
-        </div>
+        </div> 
+        <div class="containerm">
+        <marquee class="marquee">
             <a href="services.html" class="home-service-card">
                 <div class="card-icon">⚖️</div>
                 <h3>Legal Vetting</h3>
@@ -573,9 +602,33 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
                 <p>Full-scale architectural design and engineering for custom villas.</p>
                 <span class="read-more">Learn More →</span>
             </a>
+            <a href="services.html" class="home-service-card">
+                <div class="card-icon">💼</div>
+                <h3>Buy and sell of Properties/sites/plots</h3>
+                <p>Transparent transactions with expert guidance for buyers and sellers.</p>
+                <span class="read-more">Learn More →</span>
+            </a>
+            <a href="services.html" class="home-service-card">
+                <div class="card-icon">💰</div>
+                <h3>Loan & Financial Services</h3>
+                <p>Streamlined processing with 15+ banking partners for your ease.</p>
+                <span class="read-more">Learn More →</span>
+            </a>
+            <a href="services.html" class="home-service-card">
+                <div class="card-icon">🤝</div>
+                <h3>Property Management</h3>
+                <p>End-to-end management services for hassle-free ownership.</p>
+                <span class="read-more">Learn More →</span>
+            </a>
+            <a href="services.html" class="home-service-card">
+                <div class="card-icon">🤝</div>
+                <h3>Customer Support</h3>
+                <p>Dedicated support team available 24/7 for all your queries.</p>
+                <span class="read-more">Learn More →</span>
+            </a>
+        
+    </marquee>
         </div>
-
-
         <div class="cta-container">
             <a href="services.html" class="btn-outline">Explore All Services</a>
         </div>
