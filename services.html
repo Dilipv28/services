@@ -32,7 +32,6 @@ body {
 }
 
 .container {
-    max-width: 1200px;
     margin: 0 auto;
     padding: 0 5%;
 }
@@ -145,17 +144,20 @@ button { background: transparent; border: none; }
 
 .services-grid {
     display: grid;
+    max-width: 1200px;;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
-    margin-bottom: 100px;
+    margin: 100px auto;
 }
 
 .service-card {
+    height:300px;
+    padding: 30px;
     background: var(--light-bg);
-    padding: 40px;
     border-radius: 4px;
     border: 1px solid #eee;
     transition: var(--transition);
+
 }
 
 .service-card h3 {
@@ -195,6 +197,10 @@ button { background: transparent; border: none; }
     align-items: center;
     gap: 10px;
 }
+.services-grid > section {
+    display: flex;
+    flex-direction: column;
+}
 
 .service-card:hover {
     background: var(--white);
@@ -214,6 +220,7 @@ footer {
     grid-template-columns: 2fr 1fr 1.5fr;
     gap: 60px;
 }
+.footer
 
 footer h4 { color:darkgoldenrod; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
 footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
@@ -251,7 +258,18 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
         text-align: center;
     }
 }
-        </style>
+.active-highlight {
+    border: 2px solid var(--primary);
+    padding: 15px;
+    border-radius: 4px;
+    transition: all 0.6s ease-in-out;
+    transform: translateX(10px); /* Small nudge to show it's active */
+}
+#service-card1, #service-card2, #service-card3, #service-card4, #service-card5, #service-card6, #service-card7, #service-card8{ 
+     padding:20px;
+  }    
+  
+  </style>
        
     </head>
     <body>
@@ -282,6 +300,7 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
         <section style="margin-top: 80px;">
             <h2 class="section-title">Comprehensive <span>Solutions</span></h2>
             <div class="services-grid">
+            <section id="service-card1">
                 <div class="service-card">
                     <h3>Buy and sell of Properties/sites/plots</h3>
                     <p>Transparent transactions with expert guidance for buyers and sellers.</p>
@@ -290,6 +309,9 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
                         <li>• Market Analysis & Pricing</li>
                     </ul>
                 </div>
+            </section>
+            
+            <section id="service-card2">
                 <div class="service-card">
                     <h3>Loan & Financial Services</h3>
                     <p>Streamlined processing with 15+ banking partners for your ease.</p>
@@ -298,6 +320,9 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
                         <li>• Low-interest Refinancing</li>
                     </ul>
                 </div>
+            </section>
+
+            <section id="service-card3">
                 <div class="service-card">
                     <h3>Legal Vetting</h3>
                     <p>Complete documentation verification and property registration support.</p>
@@ -306,6 +331,8 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
                         <li>• Sale Deed Drafting</li>
                     </ul>
                 </div>
+            </section>
+            <section id="service-card4">
                  <div class="service-card">
                     <h3>Digital Marketing</h3>
                     <p>AI-driven promotion strategies to maximize property visibility.</p>
@@ -314,6 +341,9 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
                         <li>• Virtual Tours & 3D Walkthroughs</li>
                     </ul>
                 </div>
+            </section> 
+
+            <section id="service-card5">
                 <div class="service-card">
                     <h3>Evaluation</h3>
                     <p>Comprehensive audits including soil health, groundwater levels, and urban proximity.</p>
@@ -323,6 +353,9 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
                         <li>• Zone Verification</li>
                     </ul>
                 </div>
+            </section>
+
+            <section id="service-card6">
                 <div class="service-card">
                     <h3>Property Management</h3>
                     <p>End-to-end management services for hassle-free ownership.</p>
@@ -331,6 +364,9 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
                         <li>• Rental Management</li>
                     </ul>
                 </div>
+            </section>
+
+            <section id="service-card7">
                  <div class="service-card">  
                     <h3>Customer Support</h3>
                     <p>Dedicated support team available 24/7 for all your queries.</p>
@@ -339,6 +375,9 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
                         <li>• Personalized Consultations</li>
                     </ul>
                 </div>
+            </section>
+
+            <section id="service-card8">
                 <div class="service-card">
                     <h3>Construction Support</h3>
                     <p>Full-scale architectural design and engineering for custom villas.</p>
@@ -347,6 +386,7 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
                         <li>• Site Service Management</li>
                     </ul>
                 </div>
+            </section>
             </div>
         </section>
     </div>
@@ -354,8 +394,18 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
 <footer>
     <div class="footer-grid">
         <div>
-            <div class="logo" style="color:cyan;">Apti <span style="color:white">Reality</span></div>
+            <div class="logo" style="color:dodgerblue;">Apti <span style="color:orange">Reality</span></div>
             <p style="margin-top:10px; color:#aaa;">Leading integrated architectural and real estate services in India.</p>
+             <br/>
+            <h4>Services</h4>
+            <p>Buy and sell of Properties/sites/plots</p>
+            <p>Loan & Financial Services</p> 
+            <p>Legal Vetting</p> 
+            <p>Digital Marketing</p>
+            <p>Evaluation</option>
+            <p>Property Management</p>
+            <p>Customer Support</p>
+            <p>Construction Support</p>
         </div>
         <div>
             <h4>Quick Links</h4>
@@ -376,6 +426,34 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
         &copy; 2025 Apti Reality Real Estate Solutions. Built with Precision.
     </div>
 </footer>
+<script>
+   function highlightSection() {
+        // 1. Remove highlight from any previously highlighted section
+        document.querySelectorAll('.active-highlight').forEach(el => {
+            el.classList.remove('active-highlight');
+        });
+
+        // 2. Get the ID from the URL (e.g., #pricing)
+        const hash = window.location.hash;
+        
+        if (hash) {
+            const target = document.querySelector(hash);
+            if (target) {
+                // 3. Add the highlight class
+                target.classList.add('active-highlight');
+                
+                // 4. Optional: Smoothly scroll to it (in case the browser jump is too abrupt)
+                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+    }
+
+    // Run when the page first loads
+    window.addEventListener('load', highlightSection);
+    
+    // Run if the user clicks a link to a different section while already on this page
+    window.addEventListener('hashchange', highlightSection);
+</script>
 </body>
 </html>
 

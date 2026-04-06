@@ -244,7 +244,7 @@
 .home-service-card {
     
     max-width: 40%;
-    width:
+    width:500px;
     height: 300px;
     background: #f9f9f9;
     padding: 29px 15px;
@@ -270,6 +270,38 @@
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0,0,0,0.08);
     border-color: #00bcd4;
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+}
+
+.home-service-card h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.home-service-card p {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+    flex-grow: 1; /* Ensures buttons align at bottom */
+}
+
+.read-more {
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #c5a059;
+    transition: 0.3s;
+}
+
+.home-service-card:hover .read-more {
+    padding-left: 10px;
+    color: #00bcd4;
 }
 
 .card-icon {
@@ -360,6 +392,7 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
     color: #555;
 }
 
+
 /* --- Responsive Layout --- */
 @media (max-width: 1024px) {
     .team-grid { grid-template-columns: repeat(2, 1fr); }
@@ -371,6 +404,8 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
     .team-grid, .values-grid, .footer-grid { grid-template-columns: 1fr; }
     .about-hero { padding: 60px 0; }
 }
+
+
 </style>
 </head>
 <body>
@@ -392,23 +427,59 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
 
     <section class="carousel-container" id="home">
         <div class="carousel-slide">
-            <a href="services.html"><img src="img1.jpg" alt="Real Estate"></a>
+            <a href="services.html#service-card1"><img src="img1.jpg" alt="Real Estate"></a>
             <div class="carousel-caption">
-                <h2>Comprehensive Real Estate Solutions</h2>
-                <p>From land evaluation to architectural design, we provide end-to-end services.</p>
+                <h2>Buy and sell of Properties/sites/plots</h2>
+                <p>Transparent transactions with expert guidance for buyers and sellers.</p>
             </div>
         </div>
         <div class="carousel-slide">
-            <a href="services.html"><img src="img2.jpg" alt="Legal Vetting"></a>
+            <a href="services.html#service-card2"><img src="img2.jpg" alt="Legal Vetting"></a>
             <div class="carousel-caption">
-                <h2>Legal Vetting & Precision</h2>
-                <p>Securing your legacy through verified land acquisition and compliance.</p>
+                <h2>Loan & Financial Services</h2>
+                <p>Streamlined processing with 15+ banking partners for your ease.</p>
             </div>
         </div>
         <div class="carousel-slide">
-              <a href="services.html"><img src="img3.jpg" alt="Modern Architecture"></a>
-                <h2>Modern Architecture</h2>
-                <p>Designing spaces that balance raw materiality with functional elegance.</p>
+              <a href="services.html#service-card3"><img src="img3.jpg" alt="Modern Architecture"></a>
+              <div class="carousel-caption">
+                <h2>Legal Vetting</h2>
+                <p>Complete documentation verification and property registration support.</p>
+            </div>
+        </div>
+        <div class="carousel-slide">
+            <a href="services.html#service-card4"><img src="img7.jpg" alt="Digital Marketing"></a>
+            <div class="carousel-caption">
+                <h2>Digital Marketing</h2>
+                <p>AI-driven promotion strategies to maximize property visibility. </p>
+            </div>
+        </div>
+        <div class="carousel-slide">
+            <a href="services.html#service-card5"><img src="img1.jpg" alt="Evaluation"></a>
+            <div class="carousel-caption">
+                <h2>Evaluation</h2>
+                <p>Comprehensive audits including soil health, groundwater levels, and urban proximity.</p>
+            </div>
+        </div>
+        <div class="carousel-slide">
+            <a href="services.html#service-card6"><img src="img2.jpg" alt="Property Management"></a>
+            <div class="carousel-caption">
+                <h2>Property Management</h2>
+                <p>End-to-end management services for hassle-free ownership.</p>
+            </div>
+        </div>
+        <div class="carousel-slide">
+              <a href="services.html#service-card7"><img src="img3.jpg" alt="Customer Support"></a>
+              <div class="carousel-caption">
+                <h2>Customer Support</h2>
+                <p>Dedicated support team available 24/7 for all your queries</p>
+            </div>
+        </div>
+        <div class="carousel-slide">
+            <a href="services.html#service-card8"><img src="img7.jpg" alt="Construction"></a>
+            <div class="carousel-caption">
+                <h2>Construction Services</h2>
+                <p>Full-scale archetectural design and engineering for custom villas.</p>
             </div>
         </div>
     </section>
@@ -593,7 +664,7 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
             <a href="services.html" class="home-service-card">
                 <div class="card-icon">🏠</div>
                 <h3>Evaluation</h3>
-                <p>Comprehensive audits including soil health, groundwater levels, and urban proximity.</p>
+                <p>Comprehensive audits including soil health, groundwater levels,<br/> and urban proximity.</p>
                 <span class="read-more">Learn More →</span>
             </a>
             <a href="services.html" class="home-service-card">
@@ -644,8 +715,18 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
  <footer>
     <div class="footer-grid">
         <div>
-            <div class="logo" style="color:cyan;">Apti <span style="color:white">Reality</span></div>
+            <div class="logo" style="color:dodgerblue;">Apti <span style="color:orange">Reality</span></div>
             <p style="margin-top:10px; color:#aaa;">Leading integrated architectural and real estate services in India.</p>
+             <br/>
+            <h4>Services</h4>
+            <p>Buy and sell of Properties/sites/plots</p>
+            <p>Loan & Financial Services</p> 
+            <p>Legal Vetting</p> 
+            <p>Digital Marketing</p>
+            <p>Evaluation</option>
+            <p>Property Management</p>
+            <p>Customer Support</p>
+            <p>Construction Support</p>
         </div>
         <div>
             <h4>Quick Links</h4>
