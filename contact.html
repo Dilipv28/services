@@ -34,7 +34,7 @@ body {
             box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 1001;
         }
 
         .logo-container {
@@ -66,6 +66,74 @@ body {
             color:darkgoldenrod;
             border-bottom: 2px solid black;
         }
+        .menu-toggle {
+    display: none; /* Hide button on desktop */
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+}
+
+/* --- Mobile/Tablet Media Query (768px and below) --- */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Show the button */
+    }
+
+    .nav-links {
+        display: none; /* Hide the menu by default */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 90px;
+        left: 0;
+        background:white;
+        padding: 20px;
+        box-shadow:0 10px 10px rgba(0,0,0,0.1);
+    }
+
+    /* This class will be added via JavaScript when clicked */
+    .nav-links.active {
+        display: flex;
+        animation: fadeIn 0.3s ease-in;
+    }
+    .nav-links a {
+        margin: 10px 0; /* Space out links vertically on mobile */
+        width: 100%;
+    }
+    .contact-wrapper {
+        flex-direction: column; /* Stacks Info and Form */
+        margin-top: 20px;
+    }
+
+    .contact-info, 
+    .contact-form-container {
+        padding: 30px 20px; /* Reduces excessive side padding */
+    }
+
+    .info-item {
+        flex-direction: column; /* Stacks icon above text for more space */
+        gap: 10px;
+    }
+
+    /* Force the iframe to respect the container width */
+    iframe {
+        width: 100% !important;
+        height: 250px; /* Shorter map for mobile */
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+        
 /* --- Contact Section Layout --- */
 .container {
     max-width: 1200px;
@@ -87,8 +155,8 @@ body {
 }
 
 .contact-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
+    display:flex;
+    flex-direction:column;
     gap: 60px;
     margin-top: 40px;
     background: var(--white);
@@ -99,7 +167,7 @@ body {
 
 /* --- Left Side: Info Box --- */
 .contact-info {
-    background: var(--dark);
+    background:#555;
     color: var(--white);
     padding: 60px;
 }
@@ -136,12 +204,7 @@ body {
 
 iframe {
     border-radius: 4px;
-    filter: grayscale(1) invert(0.9); /* Modern architectural map look */
     transition: var(--transition);
-}
-
-iframe:hover {
-    filter: grayscale(0) invert(0);
 }
 
 /* --- Social Icons --- */
@@ -180,7 +243,6 @@ iframe:hover {
 
 .form-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
 
@@ -269,20 +331,22 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
     </style>
 </head>
    <nav class="navbar">
-        <div class="logo-container">
-            <img src="aptilogo1.png" alt="apti reality" width="90px " height="90px" style="border-radius: 50%;">
-            <div class="logo">Apti <span style="color:orange">Reality</span></div>
-        </div>
-        <div class="nav-links">
-            <a href="home.html" >Home</a>
-             <a href="about.html">About</a>
-             <a href="services.html">Services</a>
-            <a href="projects.html" >Projects</a>
-             <a href="contact.html" class="active">Contact</a>
-            <a href="feedback.html">Feedback</a>
-        </div>
-    </nav>
+    <div class="logo-container">
+        <img src="aptilogo1.png" alt="apti reality" width="90px" height="90px" style="border-radius: 50%;">
+        <div class="logo">Apti <span style="color:orange">Reality</span></div>
+    </div>
+    
+    <button class="menu-toggle" aria-label="Open Menu">☰</button>
 
+    <div class="nav-links">
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html" >Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html"class="active">Contact</a>
+        <a href="feedback.html">Feedback</a>
+    </div>
+</nav>
 
 <section class="container">
         <div class="container">
@@ -302,7 +366,7 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
                             <h4>Our Office</h4>
                             <p>25/1-6, 9th Main Rd, Dasarahalli Main Road, Agrahara, Bengaluru, Karnataka 560079, India</p>
                             <br>
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.851686516089!2d77.54039971114143!3d12.981336387282132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xad7616edc27f7a97%3A0x882fb7fe9838cb9a!2sApti%20Business%20Solutions!5e0!3m2!1sen!2sin!4v1775467415757!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.851686516089!2d77.54039971114143!3d12.981336387282132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xad7616edc27f7a97%3A0x882fb7fe9838cb9a!2sApti%20Business%20Solutions!5e0!3m2!1sen!2sin!4v1775467415757!5m2!1sen!2sin" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </iframe>
                         </div>
                     </div>
@@ -318,7 +382,7 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
                         <div class="icon">✉️</div>
                         <div>
                             <h4>Email</h4>
-                            <p>aptireality@gmail.com</p>
+                            <p>info@aptireality.in</p>
                         </div>
                     </div>
 
@@ -405,7 +469,7 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
             <h4>Connect</h4>
             <p>Phone: +91-9611758973</p>
             <h4>Email:</h4>
-            <p>aptireality@gmail.com</p>
+            <p>info@aptireality.in</p>
            <h4>Address:</h4>
             <p>25/1-6, 9th Main Rd, Dasarahalli Main Road, Agrahara, Bengaluru, Karnataka 560079, India</p>
         </div>
@@ -420,7 +484,17 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
         return true;
         window.location.href = "home.html";
     }
-    
+    document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if(menuBtn) {
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuBtn.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+    }
+});
 
 </script>
 </body>

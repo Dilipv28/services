@@ -29,8 +29,7 @@
         }
 
         /* .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; } */
-
-      /* --- NAVIGATION --- */
+/* --- NAVIGATION --- */
         .navbar {
             background: var(--white);
             display: flex;
@@ -73,6 +72,50 @@
             border-bottom: 2px solid  black;
         }
 
+.menu-toggle {
+    display: none; /* Hide button on desktop */
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+}
+
+/* --- Mobile/Tablet Media Query (768px and below) --- */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Show the button */
+    }
+
+    .nav-links {
+        display: none; /* Hide the menu by default */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 90px;
+        left: 0;
+        background:white;
+        padding: 20px;
+        box-shadow:0 10px 10px rgba(0,0,0,0.1);
+    }
+
+    /* This class will be added via JavaScript when clicked */
+    .nav-links.active {
+        display: flex;
+        animation: fadeIn 0.3s ease-in;
+    }
+    .nav-links a {
+        margin: 10px 0; /* Space out links vertically on mobile */
+        width: 100%;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
         /* --- CAROUSEL --- */
         .carousel-container { height: 100vh; position: relative; background: var(--dark); overflow: hidden; }
 
@@ -91,7 +134,7 @@
             color: white; max-width: 700px;
         }
 
-        .carousel-caption h2 { font-size: 3.5rem; font-weight: 300; margin-bottom: 20px; line-height: 1.1; }
+        .carousel-caption h2 { font-size: 3rem; font-weight: 300; margin-bottom: 20px; line-height: 1.1; }
 
         /* --- HERO INTRO --- */
         .hero-intro { padding: 120px 0; background: var(--white); }
@@ -120,14 +163,14 @@
 
         .section-title { font-size: 2.5rem; font-weight: 300; margin-bottom: 50px; text-align: center; }
 
-        .bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+        .bento-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 25px; }
 
         .exp-card { background: white; padding: 50px 35px; border: 1px solid #eee; transition: var(--transition); text-align: center;}
 
         .exp-card:hover { background: var(--dark); color: white; transform: translateY(-10px); }
 
         /* --- EXPERIENCE STATS --- */
-        .experience { display: flex; justify-content: space-around; padding: 80px 8%; background: var(--dark); color: white; text-align: center; }
+        .experience { display: flex;flex-direction: column; justify-content: space-around; padding: 80px 8%; background: var(--dark); color: white; text-align: center; }
 
         .stat-item h3 { font-size: 2.8rem; color: var(--primary); font-weight: 200; }
 
@@ -142,7 +185,7 @@
 
         .project-card { cursor: pointer; }
 
-        .img-container { height: 400px; overflow: hidden; margin-bottom: 15px; position: relative; }
+        .img-container { height:100%; overflow: hidden; margin-bottom: 15px; position: relative; }
 
         .project-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s ease; }
 
@@ -173,7 +216,7 @@
         /* --- MOTIVES --- */
         .motives-section { padding: 100px 0; background: #fff; }
 
-        .motives-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .motives-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 30px; }
 
         .motive-card { padding: 40px; border: 1px solid #eee; transition: var(--transition); text-align: center; }
 
@@ -409,15 +452,15 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
 </style>
 </head>
 <body>
-
-    <nav class="navbar">
+ <nav class="navbar">
         <div class="logo-container">
-            <img src="aptilogo1.png" alt="apti reality" width="90px" height="90px" style="border-radius: 50%;">
-            <div class="logo">Apti <span style="color:var(--accent)">Reality</span></div>
+            <img src="aptilogo1.png" alt="apti reality" width="90px " height="90px" style="border-radius: 50%;">
+            <div class="logo">Apti <span style="color:orange">Reality</span></div>
         </div>
+        <button class="menu-toggle" aria-label="Open Menu"> ☰</button>
         <div class="nav-links">
             <a href="home.html" class="active">Home</a>
-            <a href="about.html">About</a>
+            <a href="about.html" >About</a>
             <a href="services.html">Services</a>
             <a href="projects.html">Projects</a>
             <a href="contact.html">Contact</a>
@@ -738,7 +781,7 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
             <h4>Connect</h4>
             <p>Phone: +91-9611758973</p>
             <h4>Email:</h4>
-            <p>aptireality@gmail.com</p>
+            <p>info@aptireality.in</p>
            <h4>Address:</h4>
             <p>25/1-6, 9th Main Rd, Dasarahalli Main Road, Agrahara, Bengaluru, Karnataka 560079, India</p>
         </div>
@@ -759,6 +802,21 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
             setTimeout(showSlides, 5000);
         }
         showSlides();
-    </script>
+   const menuBtn = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+menuBtn.addEventListener('click', () => {
+    // Toggles the visibility
+    navLinks.classList.toggle('active');
+    
+    // Optional: Change icon from ☰ to ✕
+    if (navLinks.classList.contains('active')) {
+        menuBtn.innerHTML = '✕';
+    } else {
+        menuBtn.innerHTML = '☰';
+    }
+});
+
+</script>
 </body>
 </html>

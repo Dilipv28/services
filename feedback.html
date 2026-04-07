@@ -32,7 +32,7 @@ body {
 }
 
 
-         /* --- NAVIGATION --- */
+  /* --- NAVIGATION --- */
         .navbar {
             background: var(--white);
             display: flex;
@@ -72,8 +72,55 @@ body {
 
         .nav-links a:hover, .nav-links a.active {
             color:darkgoldenrod;
-            border-bottom: 2px solid var(--primary);
+            border-bottom: 2px solid  black;
         }
+
+.menu-toggle {
+    display: none; /* Hide button on desktop */
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+}
+
+/* --- Mobile/Tablet Media Query (768px and below) --- */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Show the button */
+    }
+
+    .nav-links {
+        display: none; /* Hide the menu by default */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 90px;
+        left: 0;
+        background:white;
+        padding: 20px;
+        box-shadow:0 10px 10px rgba(0,0,0,0.1);
+    }
+
+    /* This class will be added via JavaScript when clicked */
+    .nav-links.active {
+        display: flex;
+        animation: fadeIn 0.3s ease-in;
+    }
+    .nav-links a {
+        margin: 10px 0; /* Space out links vertically on mobile */
+        width: 100%;
+    }
+     .testimonial-preview {
+        column-count: 1; /* 1 column on mobile */
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 
 /* --- Feedback Header --- */
 .feedback-header {
@@ -99,9 +146,24 @@ body {
 
 /* --- Testimonial Masonry Grid --- */
 .testimonial-preview {
-    column-count: 3;
+    column-count: 3; /* 3 columns on desktop */
     column-gap: 30px;
-    margin-bottom: 100px;
+}
+
+@media (max-width: 1100px) {
+    .testimonial-preview {
+        column-count: 2; /* 2 columns on tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonial-preview {
+        column-count: 1; /* 1 column on mobile */
+    }
+    
+    .container {
+        padding: 40px 5%; /* Reduce top/bottom padding on mobile */
+    }
 }
 
 .t-card {
@@ -146,16 +208,32 @@ body {
 
 /* --- Feedback Main Form & Stats --- */
 .feedback-main {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    display:flex;
+    flex-direction: column;
     gap: 80px;
     align-items: start;
 }
 
 .feedback-form {
     background: #fff;
-    padding: 50px;
+    padding: 50px 40px;
     border: 1px solid var(--border);
+}
+/* Update this in your CSS */
+@media (max-width: 992px) {
+    .feedback-main {
+        flex-direction: column; /* Stack form and stats vertically */
+        gap: 40px;
+    }
+
+    .feedback-stats {
+        position: static; /* Remove sticky position so it follows the form */
+        width: 100%;
+    }
+
+    .feedback-form {
+        padding: 30px 40px; /* Reduce padding for small screens */
+    }
 }
 
 .form-field { margin-bottom: 25px; }
@@ -187,7 +265,7 @@ input:focus, textarea:focus {
 .rating-box { margin-bottom: 30px; }
 .rating-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 15px; }
 
-.rating-options { display: flex; gap: 10px; }
+.rating-options { display: flex; gap: 10px;flex-wrap: wrap; /* Prevent buttons from cutting off */ }
 .rating-btn {
     width: 45px;
     height: 45px;
@@ -198,7 +276,11 @@ input:focus, textarea:focus {
     cursor: pointer;
     font-weight: 600;
     transition: var(--transition);
+    flex: 1; /* Buttons will grow to fill space equally */
+    min-width: 45px;
 }
+
+
 
 .rating-btn:hover { border-color: var(--accent); color: var(--accent); }
 .rating-btn.selected { background: var(--primary); color: #fff; border-color: var(--primary); }
@@ -222,7 +304,7 @@ input:focus, textarea:focus {
 .feedback-stats {
     background: var(--primary);
     color: white;
-    padding: 60px 40px;
+    padding: 60px 10px;
     border-radius: 4px;
     position: sticky;
     top: 120px;
@@ -287,24 +369,49 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
     .team-grid, .values-grid, .footer-grid { grid-template-columns: 1fr; }
     .about-hero { padding: 60px 0; }
 }
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 5%;
+    }
+
+    .logo-container img {
+        width: 50px !important; /* Shrink logo on mobile */
+        height: 50px !important;
+    }
+
+    .logo {
+        font-size: 1.1rem; /* Smaller text */
+    }
+
+    .nav-links {
+        top: 70px; /* Adjust based on new navbar height */
+        z-index: 1001;
+    }
+    
+    .feedback-header h1 {
+        font-size: 2.2rem; /* Ensure title fits on one line */
+    }
+}
     </style>
 </head>
 <body>
-     <nav class="navbar">
+<nav class="navbar">
         <div class="logo-container">
             <img src="aptilogo1.png" alt="apti reality" width="90px " height="90px" style="border-radius: 50%;">
             <div class="logo">Apti <span style="color:orange">Reality</span></div>
         </div>
+        <button class="menu-toggle" aria-label="Open Menu">
+        ☰
+       </button>
         <div class="nav-links">
             <a href="home.html" >Home</a>
-             <a href="about.html">About</a>
-             <a href="services.html">Services</a>
-            <a href="projects.html" >Projects</a>
-             <a href="contact.html">Contact</a>
+            <a href="about.html" >About</a>
+            <a href="services.html">Services</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
             <a href="feedback.html" class="active">Feedback</a>
         </div>
     </nav>
-
 
     <section class="container">
         <div class="feedback-header">
@@ -434,7 +541,7 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
                 </div>
 
                 <div style="margin-top: 40px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 4px;">
-                    <h4 style="font-size: 0.9rem; margin-bottom: 10px; color: var(--primary);">Urgent Issue?</h4>
+                    <h4 style="font-size: 0.9rem; margin-bottom: 10px; color:white;">Urgent Issue?</h4>
                     <p style="font-size: 0.8rem; margin-bottom: 0;">If you have an immediate concern regarding a site service, please contact our 24/7 Priority Support line.</p>
                 </div>
             </div>
@@ -467,7 +574,7 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
             <h4>Connect</h4>
             <p>Phone: +91-9611758973</p>
             <h4>Email:</h4>
-            <p>aptireality@gmail.com</p>
+            <p>info@aptireality.in</p>
            <h4>Address:</h4>
             <p>25/1-6, 9th Main Rd, Dasarahalli Main Road, Agrahara, Bengaluru, Karnataka 560079, India</p>
         </div>
@@ -539,6 +646,21 @@ document.querySelector('form').addEventListener('submit', function(e) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 1500);
 });
+const menuBtn = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+menuBtn.addEventListener('click', () => {
+    // Toggles the visibility
+    navLinks.classList.toggle('active');
+    
+    // Optional: Change icon from ☰ to ✕
+    if (navLinks.classList.contains('active')) {
+        menuBtn.innerHTML = '✕';
+    } else {
+        menuBtn.innerHTML = '☰';
+    }
+});
+
     </script>
 </body>
 </html>

@@ -33,8 +33,7 @@ body {
     padding: 0 5%;
 }
 
-/* --- Navigation --- */
-  /* --- NAVIGATION --- */
+/* --- NAVIGATION --- */
         .navbar {
             background: var(--white);
             display: flex;
@@ -76,6 +75,49 @@ body {
             color:darkgoldenrod;
             border-bottom: 2px solid  black;
         }
+
+.menu-toggle {
+    display: none; /* Hide button on desktop */
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+}
+
+/* --- Mobile/Tablet Media Query (768px and below) --- */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Show the button */
+    }
+
+    .nav-links {
+        display: none; /* Hide the menu by default */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 90px;
+        left: 0;
+        background:white;
+        padding: 20px;
+        box-shadow:0 10px 10px rgba(0,0,0,0.1);
+    }
+
+    /* This class will be added via JavaScript when clicked */
+    .nav-links.active {
+        display: flex;
+        animation: fadeIn 0.3s ease-in;
+    }
+    .nav-links a {
+        margin: 10px 0; /* Space out links vertically on mobile */
+        width: 100%;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
 /* --- About Hero & Intro --- */
 .about-hero {
@@ -179,7 +221,7 @@ body {
 /* --- Mission & Vision Cards --- */
 .mv-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     gap: 30px;
     margin-top: 80px;
 }
@@ -278,12 +320,15 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
             <img src="aptilogo1.png" alt="apti reality" width="90px " height="90px" style="border-radius: 50%;">
             <div class="logo">Apti <span style="color:orange">Reality</span></div>
         </div>
+        <button class="menu-toggle" aria-label="Open Menu">
+        ☰
+       </button>
         <div class="nav-links">
             <a href="home.html" >Home</a>
-             <a href="about.html" class="active">About</a>
-             <a href="services.html">Services</a>
+            <a href="about.html" class="active">About</a>
+            <a href="services.html">Services</a>
             <a href="projects.html">Projects</a>
-             <a href="contact.html">Contact</a>
+            <a href="contact.html">Contact</a>
             <a href="feedback.html">Feedback</a>
         </div>
     </nav>
@@ -449,7 +494,7 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
             <h4>Connect</h4>
             <p>Phone: +91-9611758973</p>
             <h4>Email:</h4>
-            <p>aptireality@gmail.com</p>
+            <p>info@aptireality.in</p>
            <h4>Address:</h4>
             <p>25/1-6, 9th Main Rd, Dasarahalli Main Road, Agrahara, Bengaluru, Karnataka 560079, India</p>
         </div>
@@ -460,5 +505,22 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
 </footer>
 
 </main>
+<script>
+    const menuBtn = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+menuBtn.addEventListener('click', () => {
+    // Toggles the visibility
+    navLinks.classList.toggle('active');
+    
+    // Optional: Change icon from ☰ to ✕
+    if (navLinks.classList.contains('active')) {
+        menuBtn.innerHTML = '✕';
+    } else {
+        menuBtn.innerHTML = '☰';
+    }
+});
+
+</script>
 </body>
 </html>

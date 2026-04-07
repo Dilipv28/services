@@ -28,10 +28,11 @@ body {
     font-family: 'Inter', -apple-system, sans-serif;
     background-color: var(--white);
     color: var(--text-main);
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 .container {
+        max-width: 1200px;
     margin: 0 auto;
     padding: 0 5%;
 }
@@ -78,6 +79,60 @@ body {
             color:darkgoldenrod;
             border-bottom: 2px solid black;
         }
+    .menu-toggle {
+    display: none; /* Hide button on desktop */
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+}  
+/* --- Mobile/Tablet Media Query (768px and below) --- */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Show the button */
+    }
+
+    .nav-links {
+        display: none; /* Hide the menu by default */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 90px;
+        left: 0;
+        background:white;
+        padding: 20px;
+        box-shadow:0 10px 10px rgba(0,0,0,0.1);
+    }
+
+    /* This class will be added via JavaScript when clicked */
+    .nav-links.active {
+        display: flex;
+        animation: fadeIn 0.3s ease-in;
+    }
+    .nav-links a {
+        margin: 10px 0; /* Space out links vertically on mobile */
+        width: 100%;
+    }
+
+    .navbar {
+        height: auto;
+    }
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .nav-links {
+    
+        flex-wrap: wrap;       
+        justify-content: center;
+        margin-top: 10px;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 /* --- Hero Section --- */
 .hero {
     height: 60vh;
@@ -95,7 +150,7 @@ body {
 
 .hero-content h1 {
     font-family: 'Courier New', Courier, monospace;
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight:bold;
     margin-bottom: 20px;
     letter-spacing: -1px;
@@ -127,12 +182,12 @@ body {
     transform: translateY(-3px);
 }
 
-button { background: transparent; border: none; }
+/* button { background: transparent; border: none; } */
 
 /* --- Services Grid --- */
 .section-title {
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 300;
     margin-bottom: 60px;
 }
@@ -246,17 +301,8 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
     .about-hero { padding: 60px 0; }
 }
 
-/* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 2.2rem;
-    }
-    .nav-links {
-        display: none; /* Consider adding a hamburger menu for mobile */
-    }
-    .footer-grid {
-        text-align: center;
-    }
+   
 }
 .active-highlight {
     border: 2px solid var(--primary);
@@ -273,21 +319,21 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
        
     </head>
     <body>
-        <nav class="navbar">
-            <div class="logo-container">
+ <nav class="navbar">
+        <div class="logo-container">
             <img src="aptilogo1.png" alt="apti reality" width="90px " height="90px" style="border-radius: 50%;">
             <div class="logo">Apti <span style="color:orange">Reality</span></div>
-         </div>
-          <div class="nav-links">
+        </div>
+        <button class="menu-toggle" aria-label="Open Menu">☰</button>
+        <div class="nav-links">
             <a href="home.html" >Home</a>
-             <a href="about.html">About</a>
-             <a href="services.html" class="active">Services</a>
-            <a href="projects.html" >Projects</a>
-             <a href="contact.html">Contact</a>
+            <a href="about.html" >About</a>
+            <a href="services.html" class="active">Services</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
             <a href="feedback.html">Feedback</a>
         </div>
     </nav>
-
   <div id="secservices" class="container">
     <section class="hero">
         <div class="hero-content">
@@ -417,7 +463,7 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
             <h4>Connect</h4>
             <p>Phone: +91-9611758973</p>
             <h4>Email:</h4>
-            <p>aptireality@gmail.com</p>
+            <p>info@aptireality.in</p>
            <h4>Address:</h4>
             <p>25/1-6, 9th Main Rd, Dasarahalli Main Road, Agrahara, Bengaluru, Karnataka 560079, India</p>
         </div>
@@ -427,7 +473,12 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
     </div>
 </footer>
 <script>
-   function highlightSection() {
+      // Run when the page first loads
+    window.addEventListener('load', highlightSection);
+    
+    // Run if the user clicks a link to a different section while already on this page
+    window.addEventListener('hashchange', highlightSection);
+      function highlightSection() {
         // 1. Remove highlight from any previously highlighted section
         document.querySelectorAll('.active-highlight').forEach(el => {
             el.classList.remove('active-highlight');
@@ -447,12 +498,20 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
             }
         }
     }
+        const menuBtn = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
 
-    // Run when the page first loads
-    window.addEventListener('load', highlightSection);
+menuBtn.addEventListener('click', () => {
+    // Toggles the visibility
+    navLinks.classList.toggle('active');
     
-    // Run if the user clicks a link to a different section while already on this page
-    window.addEventListener('hashchange', highlightSection);
+    // Optional: Change icon from ☰ to ✕
+    if (navLinks.classList.contains('active')) {
+        menuBtn.innerHTML = '✕';
+    } else {
+        menuBtn.innerHTML = '☰';
+    }
+});
 </script>
 </body>
 </html>
