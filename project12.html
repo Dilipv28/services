@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoVista Complex | Sustainable Mixed-Use HSR Layout</title>
+    <style>
+        :root {
+            --eco-green: #2D6A4F;
+            --emerald-light: #D8F3DC;
+            --vista-blue: #1B4332;
+            --glass-white: rgba(255, 255, 255, 0.95);
+            --text-dark: #081C15;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            background-color: #F9FBFA;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Planning Phase Badge */
+        .planning-indicator {
+            background-color: var(--eco-green);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+        }
+
+        header {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, var(--emerald-light) 0%, #B7E4C7 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            color: var(--vista-blue);
+            font-weight: 800;
+            letter-spacing: -2px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--eco-green);
+            max-width: 600px;
+            margin: 15px auto 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: -60px auto 60px;
+            padding: 0 20px;
+        }
+
+        .main-card {
+            background: var(--glass-white);
+            border-radius: 12px;
+            padding: 60px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* Metric Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+            border-bottom: 1px solid #E0E0E0;
+            padding-bottom: 40px;
+        }
+
+        .metric-item label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--eco-green);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .metric-item span {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--vista-blue);
+        }
+
+        /* Content Layout */
+        .content-split {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+        }
+
+        .description h2 {
+            font-size: 2rem;
+            margin-top: 0;
+            color: var(--vista-blue);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            background: #f1f8f4;
+            padding: 20px;
+            border-radius: 8px;
+            border-top: 3px solid var(--eco-green);
+        }
+
+        .feature-item h4 {
+            margin: 0 0 10px 0;
+            color: var(--eco-green);
+        }
+
+        /* Call to Action */
+        .cta-footer {
+            margin-top: 50px;
+            text-align: center;
+            padding: 40px;
+            background: var(--vista-blue);
+            color: white;
+            border-radius: 8px;
+        }
+
+        .btn-details {
+            display: inline-block;
+            background: white;
+            color: var(--vista-blue);
+            padding: 15px 40px;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 4px;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .btn-details:hover {
+            background: var(--emerald-light);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 850px) {
+            .content-split { grid-template-columns: 1fr; }
+            .main-card { padding: 30px; }
+            header h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="planning-indicator">Status: Advanced Planning & Environmental Clearance Phase</div>
+
+    <header>
+        <h1>EcoVista Complex</h1>
+        <p>A Symbiotic Integration of Retail and Residential Living</p>
+    </header>
+
+    <div class="container">
+        <div class="main-card">
+            
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <label>Location Index</label>
+                    <span>Sector 2, HSR Layout</span>
+                </div>
+                <div class="metric-item">
+                    <label>Total Development Area</label>
+                    <span>50,000 Sq.Ft</span>
+                </div>
+                <div class="metric-item">
+                    <label>Infrastructure Goal</label>
+                    <span>Net-Zero Emissions</span>
+                </div>
+                <div class="metric-item">
+                    <label>Sustainability Rating</label>
+                    <span>GRIHA 5-Star Target</span>
+                </div>
+            </div>
+
+            <div class="content-split">
+                <div class="description">
+                    <h2>Modernism Meets Metaphorical Nature</h2>
+                    <p>
+                        <strong>EcoVista Complex</strong> is a 50,000 Sq.Ft mixed-use intervention designed to introduce a high-performance "green lung" into the heart of <strong>HSR Layout</strong>. The architectural strategy utilizes vertical forests and integrated photovoltaic skins to blur the lines between structure and landscape.
+                    </p>
+                    <p>
+                        The development is strategically zoned to balance the commercial energy of the ground-tier retail concourse with the high-seclusion residential suites on the upper levels. This results in a self-sustaining micro-community that prioritizes human wellness and architectural transparency.
+                    </p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h4>Retail Tier</h4>
+                        <p style="font-size: 0.85rem;">Luxury boutique frontages with semi-open pedestrian plazas.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Green Core</h4>
+                        <p style="font-size: 0.85rem;">Central light-well with vertical air-purification gardens.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Residential</h4>
+                        <p style="font-size: 0.85rem;">Smart-integrated units with panoramic park views.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Renewables</h4>
+                        <p style="font-size: 0.85rem;">Hybrid solar-wind facades providing 30% of common area power.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-footer">
+                <h3>Architectural Inquiry</h3>
+                <p>Register to receive the full environmental impact report and detailed floor schematics.</p>
+                <a href="#" class="btn-details">View Details →</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        ECOVISTA COMPLEX | HSR LAYOUT DEVELOPMENT BOARD &copy; 2026
+        <p>Projected for Site Commencement: Q1 2027</p>
+    </footer>
+
+</body>
+</html>

@@ -30,7 +30,8 @@ body {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 5%;
+            padding-left: 5%;
+            padding-right: 5%;
             box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
@@ -63,7 +64,7 @@ body {
         }
 
         .nav-links a:hover, .nav-links a.active {
-            color:darkgoldenrod;
+            color:dodgerblue;
             border-bottom: 2px solid black;
         }
         .menu-toggle {
@@ -138,11 +139,11 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 60px 5%;
+    padding: 10px 5%;
 }
 
 .section-title {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 300;
     text-align: center;
     text-transform: uppercase;
@@ -150,14 +151,15 @@ body {
 }
 
 .section-title span {
-    color: var(--gold);
+    color:orange;
 
 }
+/* Update these specific classes in your <style> block */
 
 .contact-wrapper {
-    display:flex;
-    flex-direction:column;
-    gap: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Creates side-by-side grid */
+    gap: 0; /* Keeps the boxes flush for a professional look */
     margin-top: 40px;
     background: var(--white);
     box-shadow: 0 30px 60px rgba(0,0,0,0.05);
@@ -165,17 +167,36 @@ body {
     overflow: hidden;
 }
 
+/* Ensure the form row actually stays side-by-side on desktop */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Mobile Responsiveness - Stacking back to single column */
+@media (max-width: 992px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr; /* Stacks on tablets/phones */
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr; /* Stacks form fields on mobile */
+    }
+    
+  
+}
 /* --- Left Side: Info Box --- */
 .contact-info {
     background:#555;
     color: var(--white);
-    padding: 60px;
+    padding: 50px;
 }
 
 .contact-info h3 {
     font-size: 1.8rem;
     margin-bottom: 20px;
-    color: var(--primary);
+    color: dodgerblue;
 }
 
 .info-item {
@@ -306,7 +327,7 @@ footer {
     gap: 60px;
 }
 
-footer h4 { color: #c5a059; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
+footer h4 { color:orange; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
 footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
 
 .footer-bottom {
@@ -436,7 +457,7 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
                             <textarea rows="5" placeholder="Tell us about your requirements..."></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-full">Submit Inquiry</button>
+                        <button type="submit" class="btn btn-full">Submit Enquiry</button>
                     </form>
                 </div>
             </div>

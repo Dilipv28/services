@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovation Park | Whitefield Commercial Hub</title>
+    <style>
+        :root {
+            --blueprint-blue: #003366;
+            --tech-silver: #E1E8ED;
+            --active-cyan: #00A3E0;
+            --charcoal: #333333;
+            --success-green: #28A745;
+        }
+
+        body {
+            font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+            margin: 0;
+            background-color: #F4F7F9;
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+
+        /* Top Navigation/Status */
+        .status-header {
+            background-color: var(--success-green);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--blueprint-blue) 0%, #001f3f 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: -40px auto 60px;
+            padding: 0 20px;
+        }
+
+        /* Main Statistics Card */
+        .specs-card {
+            background: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 50px;
+        }
+
+        .spec-item {
+            text-align: center;
+        }
+
+        .spec-item label {
+            display: block;
+            color: var(--active-cyan);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .spec-item span {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--blueprint-blue);
+        }
+
+        /* Content Section */
+        .info-section {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 60px;
+            background: white;
+            padding: 60px;
+            border-radius: 8px;
+        }
+
+        .info-section h2 {
+            font-size: 2rem;
+            color: var(--blueprint-blue);
+            margin-top: 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature-box {
+            background: var(--tech-silver);
+            padding: 20px;
+            border-radius: 4px;
+            border-left: 5px solid var(--active-cyan);
+        }
+
+        .feature-box h4 {
+            margin: 0 0 10px 0;
+            font-size: 1rem;
+        }
+
+        .feature-box p {
+            font-size: 0.85rem;
+            margin: 0;
+            color: #555;
+        }
+
+        /* Lease Availability Section */
+        .leasing-alert {
+            margin-top: 40px;
+            background: #EBF5FB;
+            padding: 30px;
+            border: 1px dashed var(--active-cyan);
+            text-align: center;
+        }
+
+        .btn-blueprint {
+            display: inline-block;
+            background: var(--blueprint-blue);
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .btn-blueprint:hover {
+            background: var(--active-cyan);
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 850px) {
+            .specs-card, .info-section { flex-direction: column; grid-template-columns: 1fr; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .spec-item { margin-bottom: 25px; }
+            header h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="status-header">Fully Operational Since Q4 2023</div>
+
+    <header>
+        <h1>Innovation Park</h1>
+        <p style="font-weight: 300; font-size: 1.2rem; opacity: 0.9;">The Global Standard for Whitefield Tech Spaces</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="specs-card">
+            <div class="spec-item">
+                <label>Regional Location</label>
+                <span>Whitefield IT Belt</span>
+            </div>
+            <div class="spec-item">
+                <label>Operational Area</label>
+                <span>70,000 Sq.Ft</span>
+            </div>
+            <div class="spec-item">
+                <label>Infrastructure</label>
+                <span>LEED Gold Certified</span>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <div>
+                <h2>Agile Workspace Engineering</h2>
+                <p>
+                    <strong>Innovation Park</strong> is a 70,000 Sq.Ft commercial benchmark designed to support the rapid scaling of modern tech organizations. Completed in 2023, the development prioritizes <strong>Structural Fluidity</strong>—allowing tenants to reconfigure floor plates based on evolving team sizes and collaboration needs.
+                </p>
+                <p>
+                    Located in the high-density Whitefield corridor, the project serves as a "Plug-and-Play" ecosystem. From hyper-fast 10Gbps networking to dedicated hardware prototyping zones, the building is architecturally optimized for 24/7 technical performance.
+                </p>
+
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <h4>Collaborative Zones</h4>
+                        <p>Open-air breakrooms and tiered seating pods designed for agile scrums.</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>Smart Operations</h4>
+                        <p>Integrated Building Management System (BMS) for real-time energy tracking.</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>Adaptive Suites</h4>
+                        <p>Column-free spans allowing for total interior customization.</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>Vertical Mobility</h4>
+                        <p>Destination-controlled elevators reducing transit wait times by 40%.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="leasing-alert">
+                <h3>Occupancy Details</h3>
+                <p>Innovation Park is currently at 92% occupancy. Limited Grade-A office suites are available for immediate possession.</p>
+                <a href="#" class="btn-blueprint">Download Operational Specs →</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        INNOVATION PARK | A WHITEFIELD COMMERCIAL DEVELOPMENT GROUP PROJECT
+        <p>&copy; 2026 Institutional Assets Management.</p>
+    </footer>
+
+</body>
+</html>

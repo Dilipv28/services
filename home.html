@@ -35,7 +35,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 5%;
+            padding-left: 5%;
+            padding-right: 5%;
             box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
@@ -68,7 +69,7 @@
         }
 
         .nav-links a:hover, .nav-links a.active {
-            color:darkgoldenrod;
+            color:dodgerblue;
             border-bottom: 2px solid  black;
         }
 
@@ -163,16 +164,91 @@
 
         .section-title { font-size: 2.5rem; font-weight: 300; margin-bottom: 50px; text-align: center; }
 
-        .bento-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 25px; }
+        .bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+        /* --- UPDATED DESIGN PHILOSOPHY (Bento Grid) --- */
+
+
+/* --- UPDATED MOTIVES GRID --- */
+.motives-grid { 
+    display: grid; 
+    /* Desktop: 3 columns */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px; 
+}
+
+/* --- MOBILE & TABLET RESPONSIVENESS --- */
+@media (max-width: 992px) {
+    /* Tablet View: 2 columns */
+    .bento-grid, .motives-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .experience {
+        flex-direction: row; /* Keep stats side-by-side on tablets */
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobile View: 1 column */
+    .bento-grid, .motives-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        padding: 0 10px;
+    }
+
+    .experience {
+        flex-direction: column; /* Stack stats on small phones */
+        gap: 40px;
+    }
+
+    /* Adjust padding for mobile breathing room */
+    .expertise-container, .motives-section, .process {
+        padding: 60px 0;
+    }
+    
+    .exp-card, .motive-card {
+        padding: 30px 20px;
+    }
+}
 
         .exp-card { background: white; padding: 50px 35px; border: 1px solid #eee; transition: var(--transition); text-align: center;}
 
         .exp-card:hover { background: var(--dark); color: white; transform: translateY(-10px); }
 
         /* --- EXPERIENCE STATS --- */
-        .experience { display: flex;flex-direction: column; justify-content: space-around; padding: 80px 8%; background: var(--dark); color: white; text-align: center; }
+       /* --- Base Styles (Mobile First approach is safer) --- */
+.experience { 
+    display: flex;
+    flex-direction: column; /* Stack by default for small screens */
+    align-items: center;
+    gap: 40px; 
+    padding: 60px 8%; 
+    background: #666666;
+    color: white; 
+    text-align: center; 
+}
 
-        .stat-item h3 { font-size: 2.8rem; color: var(--primary); font-weight: 200; }
+.stat-item {
+    width: 100%; /* Ensure it takes full width when stacked */
+}
+
+/* --- Tablet and Desktop Adjustments --- */
+@media (min-width: 768px) {
+    .experience {
+        flex-direction: row; /* Side-by-side on larger screens */
+        justify-content: space-around;
+        padding: 80px 8%;
+    }
+    .stat-item {
+        width: auto;
+    }
+}
+
+        .stat-item h3 { font-size: 2.8rem; color:dodgerblue; font-weight: 200; }
 
         .stat-item p { font-size: 0.7rem; letter-spacing: 2px; margin-top: 10px; text-transform: uppercase;}
 
@@ -204,19 +280,10 @@
 
         .number { font-size: 2.5rem; color: var(--accent); opacity: 0.6; display: block; margin-bottom: 10px; font-weight: 200; }
 
-        /* --- ABOUT OVERVIEW --- */
-        .about-overview { padding: 100px 0; }
-
-        .split-layout { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 80px; align-items: center; }
-
-        .about-image-card img { width: 100%; border-radius: 4px; box-shadow: 25px 25px 0px -5px var(--accent); }
-
-        .stats-bar { display: flex; gap: 40px; margin-top: 35px; border-top: 1px solid #eee; padding-top: 25px; }
-
         /* --- MOTIVES --- */
         .motives-section { padding: 100px 0; background: #fff; }
 
-        .motives-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 30px; }
+        .motives-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
 
         .motive-card { padding: 40px; border: 1px solid #eee; transition: var(--transition); text-align: center; }
 
@@ -259,7 +326,7 @@
 
 .gold-subtitle {
     display: block;
-    color: #c5a059; /* Architectural Gold */
+    color:#ff9800; /* Architectural Gold */
     text-transform: uppercase;
     letter-spacing: 3px;
     font-weight: 800;
@@ -284,42 +351,49 @@
     display: flex;
     flex-direction: column;
 } */
-.home-service-card {
-    
-    max-width: 40%;
-    width:500px;
-    height: 300px;
-    background: #f9f9f9;
-    padding: 29px 15px;
-    text-decoration: none;
-    margin: 10px;
-    color: inherit;
-      /* display: flex;*/
-    border: 1px solid #eee;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  display: inline-grid; 
-    flex-wrap: nowrap;
-    align-content: space-between;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-start;
-    }
+
 .marquee{
     display: flex;
     max-height: 400px;
+    padding: 20px 0;
 }
-.home-service-card:hover {
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+}
+.card-icon svg {
+    width: 80px;
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+.home-service-card {
+    display: inline-block;
+    width: 300px;
+    height:310px;
     background: #ffffff;
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-    border-color: #00bcd4;
+    border: 1px solid #eee;
+    padding: 30px;
+    margin-right: 20px;
+    text-align: left;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    vertical-align: top;
+    white-space: normal; /* Keeps text wrapping inside the card */
 }
 
-.card-icon {
-    font-size: 2.5rem;
-    margin-bottom: 25px;
+.home-service-card:hover {
+    border-color: dodgerblue;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transform: translateY(-5px);
 }
 
+.home-service-card:hover .card-icon svg {
+    transform: scale(1.1);
+}
 .home-service-card h3 {
     font-size: 1.4rem;
     font-weight: 700;
@@ -328,7 +402,7 @@
 
 .home-service-card p {
     color: #666;
-    font-size: 0.95rem;
+    font-size:14px;
     margin-bottom: 30px;
     flex-grow: 1; /* Ensures buttons align at bottom */
 }
@@ -338,39 +412,7 @@
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #c5a059;
-    transition: 0.3s;
-}
-
-.home-service-card:hover .read-more {
-    padding-left: 10px;
-    color: #00bcd4;
-}
-
-.card-icon {
-    font-size: 2.5rem;
-    margin-bottom: 25px;
-}
-
-.home-service-card h3 {
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-}
-
-.home-service-card p {
-    color: #666;
-    font-size: 0.95rem;
-    margin-bottom: 30px;
-    flex-grow: 1; /* Ensures buttons align at bottom */
-}
-
-.read-more {
-    font-size: 0.8rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #c5a059;
+    color: #ff9800;
     transition: 0.3s;
 }
 
@@ -410,6 +452,8 @@
     .home-service-card { padding: 30px; }
 }
 
+
+
 /* --- Footer --- */
 footer {
     background: #0a0a0a;
@@ -423,7 +467,7 @@ footer {
     gap: 60px;
 }
 
-footer h4 { color: #c5a059; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
+footer h4 { color:#ff9800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
 footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
 
 .footer-bottom {
@@ -446,6 +490,25 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
 @media (max-width: 600px) {
     .team-grid, .values-grid, .footer-grid { grid-template-columns: 1fr; }
     .about-hero { padding: 60px 0; }
+}
+@media (max-width: 768px) {
+    /* Force the grid to a single column */
+    .motives-grid {
+        display: grid !important; 
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+
+    /* Ensure the section has height and visibility */
+    .motives-section {
+        padding: 60px 5%;
+        display: block;
+    }
+
+    .motive-card {
+        margin-bottom: 20px;
+        width: 100%;
+    }
 }
 
 
@@ -470,14 +533,14 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
 
     <section class="carousel-container" id="home">
         <div class="carousel-slide">
-            <a href="services.html#service-card1"><img src="img1.jpg" alt="Real Estate"></a>
+            <a href="services.html#service-card1"><img src="img6.jpg" alt="Real Estate"></a>
             <div class="carousel-caption">
                 <h2>Buy and sell of Properties/sites/plots</h2>
                 <p>Transparent transactions with expert guidance for buyers and sellers.</p>
             </div>
         </div>
         <div class="carousel-slide">
-            <a href="services.html#service-card2"><img src="img2.jpg" alt="Legal Vetting"></a>
+            <a href="services.html#service-card2"><img src="c2.jpg" alt="Legal Vetting"></a>
             <div class="carousel-caption">
                 <h2>Loan & Financial Services</h2>
                 <p>Streamlined processing with 15+ banking partners for your ease.</p>
@@ -491,28 +554,28 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
             </div>
         </div>
         <div class="carousel-slide">
-            <a href="services.html#service-card4"><img src="img7.jpg" alt="Digital Marketing"></a>
+            <a href="services.html#service-card4"><img src="c4.jpg" alt="Digital Marketing"></a>
             <div class="carousel-caption">
                 <h2>Digital Marketing</h2>
                 <p>AI-driven promotion strategies to maximize property visibility. </p>
             </div>
         </div>
         <div class="carousel-slide">
-            <a href="services.html#service-card5"><img src="img1.jpg" alt="Evaluation"></a>
+            <a href="services.html#service-card5"><img src="c5.jpg" alt="Evaluation"></a>
             <div class="carousel-caption">
                 <h2>Evaluation</h2>
                 <p>Comprehensive audits including soil health, groundwater levels, and urban proximity.</p>
             </div>
         </div>
         <div class="carousel-slide">
-            <a href="services.html#service-card6"><img src="img2.jpg" alt="Property Management"></a>
+            <a href="services.html#service-card6"><img src="c6.jpg" alt="Property Management"></a>
             <div class="carousel-caption">
                 <h2>Property Management</h2>
                 <p>End-to-end management services for hassle-free ownership.</p>
             </div>
         </div>
         <div class="carousel-slide">
-              <a href="services.html#service-card7"><img src="img3.jpg" alt="Customer Support"></a>
+              <a href="services.html#service-card7"><img src="c7.jpg" alt="Customer Support"></a>
               <div class="carousel-caption">
                 <h2>Customer Support</h2>
                 <p>Dedicated support team available 24/7 for all your queries</p>
@@ -540,6 +603,42 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
             </div>
         </div>
     </section>
+    
+    <section class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Selected Works</h2>
+                <p><a href="projects.html" style="color: var(--text-muted); text-decoration: none;">View All Projects &rarr;</a></p>
+            </div>
+            <div class="grid">
+                <div class="project-card">
+                    <div class="img-container"><img src="img1.jpg" alt="Villa"></div>
+                    <div class="project-info">
+                        <span>Residential | Bengaluru</span>
+                    </div>
+                </div>
+                  <div class="project-card">
+                    <div class="img-container"><img src="img4.jpg" alt="Villa"></div>
+                    <div class="project-info">
+                        <span>Residential | Bengaluru</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="img-container"><img src="img6.jpg" alt="Villa"></div>
+                    <div class="project-info">
+                        <span>Residential | Bengaluru</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="img-container"><img src="img5.jpg" alt="Museum"></div>
+                    <div class="project-info">
+                        <span>Arhitecture | Bengaluru</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <section class="expertise-container">
         <div class="container">
@@ -579,41 +678,7 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
         </div>
     </section>
 
-    <section class="projects">
-        <div class="container">
-            <div class="section-header">
-                <h2>Selected Works</h2>
-                <p><a href="projects.html" style="color: var(--text-muted); text-decoration: none;">View All Projects &rarr;</a></p>
-            </div>
-            <div class="grid">
-                <div class="project-card">
-                    <div class="img-container"><img src="img1.jpg" alt="Villa"></div>
-                    <div class="project-info">
-                        <span>Residential | Bengaluru</span>
-                    </div>
-                </div>
-                  <div class="project-card">
-                    <div class="img-container"><img src="img4.jpg" alt="Villa"></div>
-                    <div class="project-info">
-                        <span>Residential | Bengaluru</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="img-container"><img src="img6.jpg" alt="Villa"></div>
-                    <div class="project-info">
-                        <span>Residential | Bengaluru</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="img-container"><img src="img5.jpg" alt="Museum"></div>
-                    <div class="project-info">
-                        <span>Arhitecture | Bengaluru</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+  
     <section class="process">
         <div class="container">
             <h2 class="section-title">The Ecosystem Path</h2>
@@ -637,112 +702,125 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
         </div>
     </section>
 
-    <section class="about-overview">
-        <div class="container split-layout">
-            <div class="about-text">
-                <span class="tagline" style="color:var(--accent); font-weight:700; letter-spacing:2px; font-size:0.8rem;">ABOUT US</span>
-                <h2 class="section-title" style="text-align: left; margin-top:10px;">Defining the Future of Bengaluru's <span>Real Estate</span></h2>
-                <p>We established ourselves as the city's premier land advisory, specializing in high-growth corridors.</p>
-                <div class="stats-bar">
-                    <div class="stat-item">
-                        <h4 style="font-size: 1.5rem; color:var(--dark);">100%</h4>
-                        <p style="font-size: 0.7rem;">Legal Approval</p>
-                    </div>
-                    <div class="stat-item">
-                        <h4 style="font-size: 1.5rem; color:var(--dark);">500+</h4>
-                        <p style="font-size: 0.7rem;">Happy Clients</p>
-                    </div>
-                </div>
-            </div>
-            <div class="about-image-card">
-                <img src="img7.jpg" alt="Bengaluru Skyline">
-            </div>
-        </div>
-    </section>
+    
 
  
-    <section class="motives-section">
-        <div class="container">
-            <h2 class="section-title">Our Core <span>Motives</span></h2>
-            <div class="motives-grid">
-                <div class="motive-card">
-                    <span class="motive-icon">🛡️</span>
-                    <h3>Transparency</h3>
-                    <p>Every property undergoes a 30-point legal check before acquisition.</p>
+<section class="motives-section">
+    <div class="container">
+        <h2 class="section-title">Our Core <span>Motives</span></h2>
+        <div class="motives-grid">
+            
+            <div class="motive-card">
+                <div class="motive-icon-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="dodgerblue" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
                 </div>
-                <div class="motive-card">
-                    <span class="motive-icon">📈</span>
-                    <h3>Appreciation</h3>
-                    <p>Focusing exclusively on high-growth metro and industrial corridors.</p>
-                </div>
-                <div class="motive-card">
-                    <span class="motive-icon">🤝</span>
-                    <h3>Partnership</h3>
-                    <p>We stay with you from bank loans to architectural blueprints.</p>
-                </div>
+                <h3>Transparency</h3>
+                <p>Every property undergoes a 30-point legal check before acquisition.</p>
             </div>
+
+            <div class="motive-card">
+                <div class="motive-icon-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                </div>
+                <h3>Appreciation</h3>
+                <p>Focusing exclusively on high-growth metro and industrial corridors.</p>
+            </div>
+
+            <div class="motive-card">
+                <div class="motive-icon-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="dodgerblue" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h3>Partnership</h3>
+                <p>We stay with you from bank loans to architectural blueprints.</p>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
 <section class="home-services">
     <div class="container">
         <div class="section-header">
             <span class="gold-subtitle">Our Expertise</span>
-        </div> 
-        <div class="containerm">
-        <marquee class="marquee">
-            <a href="services.html" class="home-service-card">
-                <div class="card-icon">⚖️</div>
-                <h3>Legal Vetting</h3>
-                <p>Bulletproof documentation and EC review for secure ownership.</p>
-                <span class="read-more">Learn More →</span>
-            </a>
-
-            <a href="services.html" class="home-service-card">
-                <div class="card-icon">📈</div>
-                <h3>Digital Marketing</h3>
-                <p>AI-driven visibility for high-growth property corridors.</p>
-                <span class="read-more">Learn More →</span>
-            </a>
-            <a href="services.html" class="home-service-card">
-                <div class="card-icon">🏠</div>
-                <h3>Evaluation</h3>
-                <p>Comprehensive audits including soil health, groundwater levels,<br/> and urban proximity.</p>
-                <span class="read-more">Learn More →</span>
-            </a>
-            <a href="services.html" class="home-service-card">
-                <div class="card-icon">🏗️</div>
-                <h3>Construction</h3>
-                <p>Full-scale architectural design and engineering for custom villas.</p>
-                <span class="read-more">Learn More →</span>
-            </a>
-            <a href="services.html" class="home-service-card">
-                <div class="card-icon">💼</div>
-                <h3>Buy and sell of Properties/sites/plots</h3>
-                <p>Transparent transactions with expert guidance for buyers and sellers.</p>
-                <span class="read-more">Learn More →</span>
-            </a>
-            <a href="services.html" class="home-service-card">
-                <div class="card-icon">💰</div>
-                <h3>Loan & Financial Services</h3>
-                <p>Streamlined processing with 15+ banking partners for your ease.</p>
-                <span class="read-more">Learn More →</span>
-            </a>
-            <a href="services.html" class="home-service-card">
-                <div class="card-icon">🤝</div>
-                <h3>Property Management</h3>
-                <p>End-to-end management services for hassle-free ownership.</p>
-                <span class="read-more">Learn More →</span>
-            </a>
-            <a href="services.html" class="home-service-card">
-                <div class="card-icon">🤝</div>
-                <h3>Customer Support</h3>
-                <p>Dedicated support team available 24/7 for all your queries.</p>
-                <span class="read-more">Learn More →</span>
-            </a>
-        
-    </marquee>
         </div>
+        <div class="containerm">
+            <marquee class="marquee" onmouseover="this.stop();" onmouseout="this.start();">
+        
+        <a href="services.html" class="home-service-card">
+            <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="dodgerblue" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <h3>Legal Vetting</h3>
+            <p>Bulletproof documentation and EC review for secure ownership.</p>
+            <span class="read-more">Learn More →</span>
+        </a>
+
+        <a href="services.html" class="home-service-card">
+            <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
+            </div>
+            <h3>Digital Marketing</h3>
+            <p>AI-driven visibility for high-growth property corridors.</p>
+            <span class="read-more">Learn More →</span>
+        </a>
+
+        <a href="services.html" class="home-service-card">
+            <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="dodgerblue" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8a3 3 0 0 1 3 3"/></svg>
+            </div>
+            <h3>Evaluation</h3>
+            <p>Comprehensive audits including soil health and urban proximity.</p>
+            <span class="read-more">Learn More →</span>
+        </a>
+
+        <a href="services.html" class="home-service-card">
+            <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="m16 10 4 4"/><path d="m12 14 4-4 4 4"/><path d="M16 14v6"/><path d="M8 4v16"/><path d="M3 4h10"/></svg>
+            </div>
+            <h3>Construction</h3>
+            <p>Full-scale architectural design and engineering for custom villas.</p>
+            <span class="read-more">Learn More →</span>
+        </a>
+
+        <a href="services.html" class="home-service-card">
+            <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="dodgerblue" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/></svg>
+            </div>
+            <h3>Buy & Sell Plots</h3>
+            <p>Transparent transactions with expert guidance for buyers and sellers.</p>
+            <span class="read-more">Learn More →</span>
+        </a>
+
+        <a href="services.html" class="home-service-card">
+            <div class="card-icon">
+               <svg viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12" /><path d="M6 8h12" /><path d="m6 13 8.5 8" /><path d="M6 13h3" /><path d="M9 13c6.667 0 6.667-10 0-10" />
+        </svg>
+            </div>
+            <h3>Loan Services</h3>
+            <p>Streamlined processing with 15+ banking partners for your ease.</p>
+            <span class="read-more">Learn More →</span>
+        </a>
+
+        <a href="services.html" class="home-service-card">
+            <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="dodgerblue" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <h3>Property Management</h3>
+            <p>End-to-end management services for hassle-free ownership.</p>
+            <span class="read-more">Learn More →</span>
+        </a>
+
+        <a href="services.html" class="home-service-card">
+            <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <h3>24/7 Support</h3>
+            <p>Dedicated support team available 24/7 for all your queries.</p>
+            <span class="read-more">Learn More →</span>
+        </a>
+
+    </marquee>
+</div>
         <div class="cta-container">
             <a href="services.html" class="btn-outline">Explore All Services</a>
         </div>
@@ -791,7 +869,7 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
     </div>
 </footer>
 
-    <script>
+<script>
         let slideIndex = 0;
         const showSlides = () => {
             let slides = document.getElementsByClassName("carousel-slide");

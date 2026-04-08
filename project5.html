@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tranquil Heights | Hillside Luxury Villas</title>
+    <style>
+        :root {
+            --hillside-blue: #2C3E50;
+            --mist-white: #F4F7F6;
+            --panorama-gray: #7F8C8D;
+            --accent-gold: #C5A059;
+            --eco-green: #27AE60;
+        }
+
+        body {
+            font-family: 'optima', 'Didot', 'serif';
+            margin: 0;
+            background-color: var(--mist-white);
+            color: var(--hillside-blue);
+            line-height: 1.6;
+        }
+
+        /* Pre-Sale Floating Badge */
+        .pre-sale-banner {
+            background: var(--accent-gold);
+            color: white;
+            text-align: center;
+            padding: 12px 0;
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header {
+            padding: 100px 20px 60px;
+            text-align: center;
+            background: linear-gradient(rgba(244, 247, 246, 0.8), rgba(244, 247, 246, 0.8)), 
+                        url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            font-weight: 300;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 60px;
+            margin-top: 40px;
+        }
+
+        .sidebar-specs {
+            border-right: 1px solid #D1D1D1;
+            padding-right: 40px;
+        }
+
+        .spec-row {
+            margin-bottom: 30px;
+        }
+
+        .spec-row label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--panorama-gray);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .spec-row span {
+            font-size: 1.4rem;
+            font-weight: 500;
+        }
+
+        .vision-text h2 {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-top: 0;
+        }
+
+        .eco-tag {
+            display: inline-block;
+            color: var(--eco-green);
+            border: 1px solid var(--eco-green);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+        }
+
+        /* Amenity Icons Style */
+        .amenity-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .amenity-card {
+            background: white;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #eee;
+            transition: 0.3s;
+        }
+
+        .amenity-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-5px);
+        }
+
+        footer {
+            margin-top: 100px;
+            background: var(--hillside-blue);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .cta-box {
+            margin-top: 40px;
+            padding: 30px;
+            background: white;
+            border: 1px solid var(--accent-gold);
+            text-align: center;
+        }
+
+        .btn-interest {
+            background: var(--hillside-blue);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 800px) {
+            .main-grid { grid-template-columns: 1fr; }
+            .sidebar-specs { border-right: none; padding-right: 0; border-bottom: 1px solid #D1D1D1; }
+            h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pre-sale-banner">Exclusive Pre-Sale Opportunity — Limited Inventory</div>
+
+    <header>
+        <h1>Tranquil Heights</h1>
+        <p>Elevated Living on Kanakapura Road</p>
+    </header>
+
+    <div class="container">
+        <div class="main-grid">
+            
+            <div class="sidebar-specs">
+                <div class="spec-row">
+                    <label>Location</label>
+                    <span>Kanakapura Road Corridor</span>
+                </div>
+                <div class="spec-row">
+                    <label>Project Scale</label>
+                    <span>25 Signature Villas</span>
+                </div>
+                <div class="spec-row">
+                    <label>Elevation</label>
+                    <span>950m Above Sea Level</span>
+                </div>
+                <div class="spec-row">
+                    <label>Design Style</label>
+                    <span>Eco-Modernist</span>
+                </div>
+            </div>
+
+            <div class="vision-text">
+                <span class="eco-tag">100% Sustainable Design</span>
+                <h2>City Lights. Mountain Silence.</h2>
+                <p>
+                    <strong>Tranquil Heights</strong> is a master-planned hillside enclave designed for those who seek the duality of urban proximity and peak serenity. Spread across a naturally contoured landscape, each of the 25 villas is tiered to ensure unobstructed, 180-degree panoramic views of the city skyline.
+                </p>
+                <p>
+                    The architecture utilizes "Earth-Sheltered" principles, where the structures work with the hillside rather than against it. This reduces the carbon footprint and provides natural thermal insulation, keeping interiors cool throughout the year.
+                </p>
+
+                <div class="amenity-grid">
+                    <div class="amenity-card">
+                        <strong>Viewing Deck</strong>
+                        <p style="font-size: 0.8rem;">Private glass-walled balconies</p>
+                    </div>
+                    <div class="amenity-card">
+                        <strong>Bio-Pool</strong>
+                        <p style="font-size: 0.8rem;">Chemical-free natural filtration</p>
+                    </div>
+                    <div class="amenity-card">
+                        <strong>Zen Trail</strong>
+                        <p style="font-size: 0.8rem;">Private access to hillside trekking</p>
+                    </div>
+                </div>
+
+                <div class="cta-box">
+                    <h3>Register for Private Site Visit</h3>
+                    <p>As a Pre-Sale project, early investors benefit from preferential plot selection and customized interior finishes.</p>
+                    <a href="#" class="btn-interest">ENQUIRE NOW →</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>Tranquil Heights Development Group</strong></p>
+        <p>Sales Gallery: Kanakapura Road, South Bengaluru</p>
+        <p style="font-size: 0.7rem; opacity: 0.6; margin-top: 20px;">*Artist impressions are for illustrative purposes only. Actual views may vary based on villa elevation.</p>
+    </footer>
+
+</body>
+</html>

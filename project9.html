@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmony Hills | Nature-Inspired Living</title>
+    <style>
+        :root {
+            --sage-green: #7B8A75;
+            --soft-sand: #F5F2ED;
+            --earth-text: #4A443F;
+            --clay-accent: #B08D74;
+            --white-glass: rgba(255, 255, 255, 0.9);
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--soft-sand);
+            color: var(--earth-text);
+            line-height: 1.8;
+        }
+
+        /* Pre-Sale Status Bar */
+        .status-header {
+            background-color: var(--clay-accent);
+            color: white;
+            text-align: center;
+            padding: 12px 0;
+            font-family: 'Helvetica', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 600;
+        }
+
+        header {
+            padding: 100px 20px;
+            background: linear-gradient(rgba(245, 242, 237, 0.7), rgba(245, 242, 237, 0.7)), 
+                        url('https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&q=80&w=1200');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            color: var(--sage-green);
+            font-weight: 400;
+            letter-spacing: -1px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: -40px auto 60px;
+            background: var(--white-glass);
+            padding: 60px;
+            border-radius: 2px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+            text-align: center;
+            border-bottom: 1px solid #E0DCD5;
+            padding-bottom: 40px;
+        }
+
+        .summary-item label {
+            display: block;
+            font-family: 'Helvetica', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--clay-accent);
+            margin-bottom: 10px;
+        }
+
+        .summary-item span {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .narrative {
+            columns: 2;
+            column-gap: 50px;
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        .garden-features {
+            margin-top: 50px;
+            background: #E9E6E1;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .feature-item {
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .feature-item::before {
+            content: "◈";
+            position: absolute;
+            left: 0;
+            color: var(--sage-green);
+        }
+
+        .cta-box {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .btn-reserve {
+            display: inline-block;
+            background: var(--sage-green);
+            color: white;
+            padding: 18px 45px;
+            text-decoration: none;
+            font-family: 'Helvetica', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .btn-reserve:hover {
+            background: var(--earth-text);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            .summary-grid { grid-template-columns: 1fr; }
+            .narrative { columns: 1; }
+            .garden-features { grid-template-columns: 1fr; }
+            .container { padding: 30px; margin-top: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="status-header">Limited Opportunity: Pre-Sale Registrations Open</div>
+
+    <header>
+        <h1>Harmony Hills</h1>
+        <p style="font-style: italic; color: var(--earth-text);">Where Architecture Breathes</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="summary-grid">
+            <div class="summary-item">
+                <label>Sanctuary Location</label>
+                <span>Bannerghatta Road</span>
+            </div>
+            <div class="summary-item">
+                <label>Exclusive Units</label>
+                <span>30 Managed Villas</span>
+            </div>
+            <div class="summary-item">
+                <label>Architectural Style</label>
+                <span>Biophilic Modernism</span>
+            </div>
+        </div>
+
+        <div class="narrative">
+            <p>
+                <strong>Harmony Hills</strong> is an intentional residential enclave designed to restore the connection between the modern dweller and the natural world. Positioned within the lush surroundings of the <strong>Bannerghatta Road</strong> corridor, the project features 30 bespoke villas that utilize "Light-Touch" architectural techniques to preserve the existing topography.
+            </p>
+            <p>
+                The community is anchored by a series of interconnected communal gardens, designed by leading landscape architects to serve as functional outdoor living rooms. By prioritizing shared green spaces over high-density construction, Harmony Hills offers a rare low-density lifestyle in one of South Bengaluru's most sought-after belts.
+            </p>
+        </div>
+
+        <div class="garden-features">
+            <div class="feature-item">
+                <strong>Edible Forest Trails</strong>
+                <p style="font-size: 0.9rem; margin-top: 5px;">Communal orchards and herb gardens for resident use.</p>
+            </div>
+            <div class="feature-item">
+                <strong>Natural Ventilation</strong>
+                <p style="font-size: 0.9rem; margin-top: 5px;">Villas designed to capture the valley breeze, reducing AC dependency.</p>
+            </div>
+            <div class="feature-item">
+                <strong>Zen Water Features</strong>
+                <p style="font-size: 0.9rem; margin-top: 5px;">Recycled water systems powering aesthetic koi ponds and brooks.</p>
+            </div>
+            <div class="feature-item">
+                <strong>Social Courtyards</strong>
+                <p style="font-size: 0.9rem; margin-top: 5px;">Centralized gathering spots for community interaction.</p>
+            </div>
+        </div>
+
+        <div class="cta-box">
+            <h3>Secure Your Piece of Serenity</h3>
+            <p style="font-size: 0.9rem; color: #777;">Priority allotment is currently available for early registrants. Experience the masterplan at our experience center.</p>
+            <a href="#" class="btn-reserve">REGISTER INTEREST →</a>
+        </div>
+
+    </div>
+
+    <footer>
+        HARMONY HILLS DEVELOPMENTS &copy; 2026 | BANNERGHATTA SOUTH PROJECTS
+    </footer>
+
+</body>
+</html>

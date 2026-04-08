@@ -28,7 +28,7 @@ body {
 .container {
     max-width: 1300px;
     margin: 0 auto;
-    padding: 80px 5%;
+    padding: 20px 5%;
 }
 
 
@@ -38,7 +38,8 @@ body {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 5%;
+            padding-left: 5%;
+            padding-right: 5%;
             box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
@@ -71,7 +72,7 @@ body {
         }
 
         .nav-links a:hover, .nav-links a.active {
-            color:darkgoldenrod;
+            color:dodgerblue;
             border-bottom: 2px solid  black;
         }
 
@@ -135,7 +136,7 @@ body {
     letter-spacing: -1px;
 }
 
-.feedback-header h1 span { color: var(--accent); font-style: italic; }
+.feedback-header h1 span { color: orange; font-style: italic; }
 
 .feedback-header p {
     max-width: 600px;
@@ -200,39 +201,56 @@ body {
 .t-service {
     display: block;
     font-size: 0.7rem;
-    color: var(--accent);
+    color: orange;
     text-transform: uppercase;
     font-weight: 800;
     margin-top: 5px;
 }
 
-/* --- Feedback Main Form & Stats --- */
+/* --- Optimized Layout for Feedback Section --- */
 .feedback-main {
-    display:flex;
-    flex-direction: column;
-    gap: 80px;
-    align-items: start;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    margin-top: 40px;
 }
 
 .feedback-form {
+    flex: 1.8; 
     background: #fff;
     padding: 50px 40px;
     border: 1px solid var(--border);
 }
-/* Update this in your CSS */
+
+.feedback-stats {
+    flex: 1;
+    background: var(--primary);
+    color: white;
+    padding: 50px 30px;
+    border-radius: 4px;
+    position: sticky;
+    top: 120px;
+    width: 100%;
+}
+
+/* Mobile & Tablet view */
 @media (max-width: 992px) {
     .feedback-main {
-        flex-direction: column; /* Stack form and stats vertically */
+        flex-direction: column;
         gap: 40px;
     }
-
-    .feedback-stats {
-        position: static; /* Remove sticky position so it follows the form */
+    
+    .feedback-form, .feedback-stats {
+        flex: none;
         width: 100%;
+        box-sizing: border-box; /* Ensures padding doesn't break width */
     }
-
-    .feedback-form {
-        padding: 30px 40px; /* Reduce padding for small screens */
+    
+    .feedback-stats {
+        position: static;
+        padding: 40px 20px;
     }
 }
 
@@ -282,7 +300,7 @@ input:focus, textarea:focus {
 
 
 
-.rating-btn:hover { border-color: var(--accent); color: var(--accent); }
+.rating-btn:hover { border-color:orange;  color: orange; }
 .rating-btn.selected { background: var(--primary); color: #fff; border-color: var(--primary); }
 
 .submit-feedback {
@@ -313,7 +331,7 @@ input:focus, textarea:focus {
 .stat-circle {
     font-size: 4rem;
     font-weight: 200;
-    color: var(--accent);
+    color: orange;
     line-height: 1;
     margin-bottom: 10px;
 }
@@ -347,7 +365,7 @@ footer {
     gap: 60px;
 }
 
-footer h4 { color: #c5a059; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
+footer h4 { color:orange; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
 footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
 
 .footer-bottom {

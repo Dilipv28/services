@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Hub Tower | Electronic City Phase I</title>
+    <style>
+        :root {
+            --tech-black: #0A0A0B;
+            --tech-gray: #1A1A1C;
+            --neon-blue: #00F0FF;
+            --data-green: #39FF14;
+            --border-glow: rgba(0, 240, 255, 0.2);
+            --text-dim: #A0A0A5;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+            margin: 0;
+            background-color: var(--tech-black);
+            color: #FFFFFF;
+            line-height: 1.6;
+        }
+
+        /* Status Header */
+        .completed-badge {
+            background: var(--data-green);
+            color: black;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        header {
+            padding: 80px 20px;
+            background: radial-gradient(circle at top right, #112233, var(--tech-black));
+            border-bottom: 1px solid var(--tech-gray);
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            background: linear-gradient(to right, #FFF, var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Industrial Grid */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .spec-card {
+            background: var(--tech-gray);
+            border: 1px solid #333;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .spec-card::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 2px; height: 100%;
+            background: var(--neon-blue);
+        }
+
+        .spec-label {
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .spec-value {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        /* Innovation Lab Section */
+        .feature-box {
+            border: 1px solid var(--border-glow);
+            padding: 40px;
+            background: rgba(0, 240, 255, 0.03);
+            border-radius: 4px;
+        }
+
+        .feature-box h2 {
+            color: var(--neon-blue);
+            margin-top: 0;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .amenity-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .tag {
+            border: 1px solid #444;
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .tag:hover {
+            border-color: var(--neon-blue);
+            color: white;
+            background: rgba(0, 240, 255, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px;
+            border-top: 1px solid var(--tech-gray);
+            color: var(--text-dim);
+            font-size: 0.8rem;
+        }
+
+        .blueprint-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 15px 40px;
+            background: transparent;
+            color: var(--neon-blue);
+            border: 1px solid var(--neon-blue);
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .blueprint-btn:hover {
+            background: var(--neon-blue);
+            color: black;
+            box-shadow: 0 0 20px var(--border-glow);
+        }
+
+        @media (max-width: 768px) {
+            .tech-grid { grid-template-columns: 1fr; }
+            header h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="completed-badge">✓ Operations Commenced: 2024</div>
+
+    <header>
+        <h1>Tech Hub Tower</h1>
+        <p style="color: var(--text-dim); letter-spacing: 1px;">The Architecture of Innovation</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="tech-grid">
+            <div class="spec-card">
+                <span class="spec-label">Location Index</span>
+                <span class="spec-value">Electronic City, Phase I</span>
+            </div>
+            <div class="spec-card">
+                <span class="spec-label">Built-up Area</span>
+                <span class="spec-value">60,000 Sq.Ft</span>
+            </div>
+        </div>
+
+        <div class="feature-box">
+            <h2>The Ecosystem</h2>
+            <p>
+                Completed in late 2024, **Tech Hub Tower** stands as the premier destination for high-growth startups and established tech giants. The architectural mission was to create a "frictionless" workspace—utilizing high-performance glass facades and open-core engineering to allow maximum floorplate flexibility.
+            </p>
+            <p>
+                From the 10,000 sq.ft co-working mezzanine to the specialized hardware innovation labs on the upper floors, every square inch is optimized for 24/7 technical operations.
+            </p>
+
+            <div class="amenity-tags">
+                <span class="tag">High-Speed Fiber Backbone</span>
+                <span class="tag">Makerspace Hardware Labs</span>
+                <span class="tag">BOD Filtering Air Systems</span>
+                <span class="tag">24/7 Secure Server Room</span>
+                <span class="tag">Podcast & Media Studios</span>
+                <span class="tag">Rooftop Networking Lounge</span>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="#" class="blueprint-btn">Download Floor Plates →</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>TECH HUB TOWER | PROPERTY OF ELECTRONIC CITY DEVELOPMENTS INC.</p>
+        <p>Architectural Lead: Urban Visionary Studio (2021-2024)</p>
+    </footer>
+
+</body>
+</html>
