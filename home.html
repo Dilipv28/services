@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apti Reality | Bengaluru's Premier Land Advisory</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
+ <style>
         /* --- GLOBAL VARIABLES & RESET --- */
         :root {
             --primary: #00bcd4;      /* Cyan */
@@ -69,7 +69,7 @@
         }
 
         .nav-links a:hover, .nav-links a.active {
-            color:dodgerblue;
+            color:#1e90ff;
             border-bottom: 2px solid  black;
         }
 
@@ -155,12 +155,11 @@
             display: inline-block; transition: var(--transition);
         }
 
-        .btn-primary { background: var(--dark); color: white; }
-        .btn-secondary { border: 1px solid #ddd; color: var(--dark); margin-left: 15px; }
-        .btn-primary:hover { background: var(--accent); transform: translateY(-3px); }
+        .btn-primary {  border: 2px solid #1e90ff;background: transparent;color:#1e90ff;}
+        .btn-primary:hover { background:#1e90ff; color: white; transform: translateY(-3px); }
 
         /* --- BENTO GRID: DESIGN PHILOSOPHY --- */
-        .expertise-container { background: var(--light-gray); padding: 100px 0; }
+        .expertise-container { background: var(--light-gray); padding: 70px 0; }
 
         .section-title { font-size: 2.5rem; font-weight: 300; margin-bottom: 50px; text-align: center; }
 
@@ -174,6 +173,7 @@
     /* Desktop: 3 columns */
     grid-template-columns: repeat(3, 1fr); 
     gap: 30px; 
+    
 }
 
 /* --- MOBILE & TABLET RESPONSIVENESS --- */
@@ -213,11 +213,146 @@
     .exp-card, .motive-card {
         padding: 30px 20px;
     }
+    .home-service-card { padding: 30px; }
 }
 
-        .exp-card { background: white; padding: 50px 35px; border: 1px solid #eee; transition: var(--transition); text-align: center;}
 
-        .exp-card:hover { background: var(--dark); color: white; transform: translateY(-10px); }
+        /* --- FLOATING ENQUIRY SYSTEM --- */
+        .floating-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+        }
+
+        /* Form Popup Card */
+        .enquiry-form-card {
+            width: 320px;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+            padding: 25px;
+            display: none; /* Hidden by default */
+            transform-origin: bottom right;
+            animation: popup 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+           
+        }
+
+        @keyframes popup {
+            from { opacity: 0; transform: scale(0.8) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .enquiry-form-card.active { display: block; }
+
+        .enquiry-form-card h4 {
+            margin: 0 0 5px 0;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+        }
+
+        .enquiry-form-card p {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; color: dodgerblue; }
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            box-sizing: border-box;
+        }
+        .form-group input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.1); }
+
+       
+        .submit-btn {
+            width: 100%;
+            background:#1e90ff;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 900;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .submit-btn:hover { background: #1670cc; transform: translateY(-2px); }
+
+        /* The main FAB button */
+        .floating-button {
+            background: #1e90ff;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .floating-button:hover {
+            background: orange;
+            transform: scale(1.05);
+        }
+
+        .floating-button.active {
+            background:orange; /* Red to indicate "Close" */
+        }
+
+
+        .icon-text { font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
+
+        /* Quick contact elements */
+        .element-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-end;
+            margin-bottom: 10px;
+        }
+
+        .float-element {
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .float-element.email { background: #25D366; } /* WhatsApp Green */
+        .float-element:hover { transform: translateX(-5px); opacity: 0.9; }
+
+        /* Success Message Overlay */
+        #success-msg {
+            display: none;
+            text-align: center;
+            padding: 20px 0;
+        }
+        #success-msg svg { color: var(--success); margin-bottom: 10px; }
+
+        .exp-card { background:white; color:#1e90ff; padding: 50px 35px; border: 1px solid black; transition: var(--transition); text-align: center;}
+
+        .exp-card:hover { border-color:#1e90ff;  transform: translateY(-10px); }
 
         /* --- EXPERIENCE STATS --- */
        /* --- Base Styles (Mobile First approach is safer) --- */
@@ -227,8 +362,8 @@
     align-items: center;
     gap: 40px; 
     padding: 60px 8%; 
-    background: #666666;
-    color: white; 
+    background: white;
+    color:  #1a1a1a;
     text-align: center; 
 }
 
@@ -253,15 +388,15 @@
         .stat-item p { font-size: 0.7rem; letter-spacing: 2px; margin-top: 10px; text-transform: uppercase;}
 
         /* --- PROJECTS GRID --- */
-        .projects { padding: 100px 0; }
+        .projects { padding: 30px 0; }
 
         .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; }
 
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
 
         .project-card { cursor: pointer; }
 
-        .img-container { height:100%; overflow: hidden; margin-bottom: 15px; position: relative; }
+        .img-container { height:100%; overflow: hidden;  position: relative; }
 
         .project-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s ease; }
 
@@ -272,7 +407,7 @@
         .project-info span { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; }
 
         /* --- PROCESS STEPS --- */
-        .process { padding: 100px 0; background: var(--light-gray); }
+        .process { padding: 80px 0; background: var(--light-gray); }
 
         .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 50px; }
 
@@ -281,7 +416,7 @@
         .number { font-size: 2.5rem; color: var(--accent); opacity: 0.6; display: block; margin-bottom: 10px; font-weight: 200; }
 
         /* --- MOTIVES --- */
-        .motives-section { padding: 100px 0; background: #fff; }
+        .motives-section { padding: 30px 0; background: #fff; }
 
         .motives-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
 
@@ -292,173 +427,180 @@
         .motive-icon { font-size: 2.5rem; margin-bottom: 20px; display: block; }
 
         /* --- CTA BANNER --- */
-        .cta-banner { background:grey; color: white; padding: 100px 5%; text-align: center; }
+        .cta-banner { background:grey; color: white; padding: 80px 5%; text-align: center; }
 
         .cta-banner h2 { font-size: 2.5rem; font-weight: 300; margin-bottom: 30px; }
 /* --- 1. Section Container --- */
-.home-services {
-    padding: 100px 0;
-    background-color: #ffffff;
-    font-family: 'Inter', sans-serif;
-}
+    /* --- 1. Section Container --- */
+            .home-services {
+                padding: 60px 0;
+                background-color: #ffffff;
+                font-family: 'Inter', sans-serif;
+                overflow: hidden; /* Prevent horizontal scrollbars */
+            }
 
- .container {
-    /*  max-width: 1200px;*/
-    margin: 0 auto;
-    padding: 0 5%;
-    /* Create a grid for the cards 
-    //display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));*/
-    gap: 30px;
-}
-.containerm {
-    /*  max-width: 1200px;*/
-    margin: 0 auto;
-    padding: 0 5%;
-    display: flex;
-}
-/* --- 2. Header (Spans full width of the grid) --- */
-.section-header {
-    grid-column: 1 / -1; 
-    text-align: center;
-    margin-bottom: 60px;
-}
+            .container {
+                margin: 0 auto;
+                padding: 0 5%;
+               
+            }
 
-.gold-subtitle {
-    display: block;
-    color:#ff9800; /* Architectural Gold */
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-weight: 800;
-    font-size: 0.75rem;
-    margin-bottom: 12px;
-}
-.section-header p {
-    color: #666;
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.8;
-}
+            .containerm {
+                margin: 0 auto;
+                padding: 0 5%;
+                display: flex;
+                overflow: hidden;
+                position: relative;
+            }
 
-/* --- 3. Interactive Service Cards --- */
-/* .home-service-card {
-    background: #f9f9f9;
-    padding: 50px 40px;
-    text-decoration: none;
-    color: inherit;
-    border: 1px solid #eee;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    display: flex;
-    flex-direction: column;
-} */
+            /* --- 2. Header --- */
+            .section-header {
+                text-align: center;
+                margin-bottom: 60px;
+            }
 
-.marquee{
-    display: flex;
-    max-height: 400px;
-    padding: 20px 0;
-}
+            .gold-subtitle {
+                display: block;
+                color: #ff9800; /* Architectural Gold */
+                text-transform: uppercase;
+                letter-spacing: 3px;
+                font-weight: 800;
+                font-size: 1rem;
+                margin-bottom: 12px;
+            }
 
-.card-icon {
-    font-size: 2.5rem;
-    margin-bottom: 25px;
-}
-.card-icon svg {
-    width: 80px;
-    height: 40px;
-    transition: transform 0.3s ease;
-}
+            .section-header p {
+                color: #666;
+                max-width: 600px;
+                margin: 0 auto;
+                line-height: 1.8;
+            }
 
-.home-service-card {
-    display: inline-block;
-    width: 300px;
-    height:310px;
-    background: #ffffff;
-    border: 1px solid #eee;
-    padding: 30px;
-    margin-right: 20px;
-    text-align: left;
-    text-decoration: none;
-    color: inherit;
-    border-radius: 15px;
-    transition: all 0.3s ease;
-    vertical-align: top;
-    white-space: normal; /* Keeps text wrapping inside the card */
-}
+            /* --- 3. Marquee Track (The "track" that moves) --- */
+            .marquee {
+                display: flex;
+                width: max-content; 
+                animation: scroll-infinite 50s  linear infinite;
+            }
 
-.home-service-card:hover {
-    border-color: dodgerblue;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    transform: translateY(-5px);
-}
+            /* The actual animation logic for Right to Left */
+            @keyframes scroll-infinite {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(-50%);
+                }
+            }
 
-.home-service-card:hover .card-icon svg {
-    transform: scale(1.1);
-}
-.home-service-card h3 {
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-}
+            /* Pause on Hover */
+            .containerm:hover .marquee {
+                animation-play-state: paused;
+            }
 
-.home-service-card p {
-    color: #666;
-    font-size:14px;
-    margin-bottom: 30px;
-    flex-grow: 1; /* Ensures buttons align at bottom */
-}
+            /* --- 4. Interactive Service Cards --- */
+            .home-service-card {
+                flex: 0 0 300px; /* Fixed width for each card */
+                width: 300px;
+                height: 310px;
+                background: #ffffff;
+                border: 1px solid #eee;
+                padding: 30px;
+                margin-right: 20px;
+                text-align: left;
+                text-decoration: none;
+                color: inherit;
+                border-radius: 15px;
+                transition: all 0.3s ease;
+                white-space: normal; /* Keeps text wrapping inside the card */
+                display: flex;
+                flex-direction: column;
+            }
 
-.read-more {
-    font-size: 0.8rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #ff9800;
-    transition: 0.3s;
-}
+            .home-service-card:hover {
+                border-color: dodgerblue;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+                transform: translateY(-5px);
+            }
 
-.home-service-card:hover .read-more {
-    padding-left: 10px;
-    color: #00bcd4;
-}
+            .card-icon {
+                font-size: 2.5rem;
+                margin-bottom: 25px;
+            }
 
-/* --- 4. Bottom CTA Button --- */
-.cta-container {
-    grid-column: 1 / -1;
-    text-align: center;
-    margin-top: 50px;
-}
+            .card-icon svg {
+                width: 80px;
+                height: 40px;
+                transition: transform 0.3s ease;
+            }
 
-.btn-outline {
-    display: inline-block;
-    padding: 18px 45px;
-    border: 2px solid #1a1a1a;
-    color: #1a1a1a;
-    text-decoration: none;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.85rem;
-    transition: 0.3s;
-}
+            .home-service-card:hover .card-icon svg {
+                transform: scale(1.1);
+            }
 
-.btn-outline:hover {
-    background: #1a1a1a;
-    color: #fff;
-}
+            .home-service-card h3 {
+                font-size: 1.4rem;
+                font-weight: 700;
+                margin-bottom: 15px;
+            }
 
-/* --- 5. Mobile Adjustments --- */
-@media (max-width: 768px) {
-    .section-title { font-size: 2.2rem; }
-    .home-service-card { padding: 30px; }
-}
+            .home-service-card p {
+                color: #666;
+                font-size: 14px;
+                margin-bottom: 30px;
+                flex-grow: 1; /* Ensures buttons align at bottom */
+            }
+
+            .read-more {
+                font-size: 0.8rem;
+                font-weight: 800;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: #ff9800;
+                transition: 0.3s;
+            }
+
+            .home-service-card:hover .read-more {
+                padding-left: 10px;
+                color: #1e90ff;
+            }
+
+            /* --- 5. Bottom CTA Button --- */
+            .cta-container {
+                text-align: center;
+                margin-top: 50px;
+            }
+
+            .btn-outline {
+                display: inline-block;
+                padding: 18px 45px;
+                border: 2px solid #1e90ff;
+                background: transparent;
+                color: #1e90ff;
+                text-decoration: none;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                font-size: 0.85rem;
+                transition: 0.3s;
+                border-radius: 4px;
+            }
+
+            .btn-outline:hover {
+                background: #1e90ff;
+                color: #fff;
+            }
 
 
 
 /* --- Footer --- */
 footer {
-    background: #0a0a0a;
-    color: white;
-    padding: 100px 8% 40px;
+    background:white;
+    color:black;
+    font-weight: 600;
+     font-size: 1rem;
+    padding: 40px 2% ;
+    box-shadow: inset 1px 20px 20px 0px rgba(0, 0, 0, 0.1);
 }
 
 .footer-grid {
@@ -468,15 +610,16 @@ footer {
 }
 
 footer h4 { color:#ff9800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
-footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
+footer p { color:rgb(12, 3, 3); margin-bottom: 10px; font-size: 0.85rem; }
 
-.footer-bottom {
-    text-align: center;
-    margin-top: 80px;
-    padding-top: 30px;
-    border-top: 1px solid #222;
-    font-size: 0.75rem;
-    color: #555;
+footer a{
+    color:black;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+footer a:hover {
+    color: #ff9800;
 }
 
 
@@ -510,9 +653,7 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
         width: 100%;
     }
 }
-
-
-</style>
+ </style>
 </head>
 <body>
  <nav class="navbar">
@@ -527,44 +668,44 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
             <a href="services.html">Services</a>
             <a href="projects.html">Projects</a>
             <a href="contact.html">Contact</a>
-            <a href="feedback.html">Feedback</a>
+            <a href="newsroom.html">Newsroom</a>
         </div>
     </nav>
 
     <section class="carousel-container" id="home">
         <div class="carousel-slide">
-            <a href="services.html#service-card1"><img src="img6.jpg" alt="Real Estate"></a>
+            <a href="services.html#service-card1"><img src="c1.jpg" alt="Real Estate"></a>
             <div class="carousel-caption">
-                <h2>Buy and sell of Properties/sites/plots</h2>
+                <h2>Buy/Sell</h2>
                 <p>Transparent transactions with expert guidance for buyers and sellers.</p>
             </div>
         </div>
         <div class="carousel-slide">
-            <a href="services.html#service-card2"><img src="c2.jpg" alt="Legal Vetting"></a>
+            <a href="services.html#service-card2"><img src="c2.jpg" alt="Construction"></a>
+            <div class="carousel-caption">
+                <h2>Construction Services</h2>
+                <p>Full-scale architectural design and engineering for custom villas.</p>
+            </div>
+        </div>
+        <div class="carousel-slide">
+            <a href="services.html#service-card3"><img src="c3.jpg" alt="Architecture"></a>
+            <div class="carousel-caption">
+                <h2>Architecture</h2>
+                <p>Innovative designs that blend seamlessly with the environment.</p>
+            </div>
+        </div>
+        <div class="carousel-slide">
+            <a href="services.html#service-card4"><img src="c4.jpg" alt="Loan & Financial Services"></a>
             <div class="carousel-caption">
                 <h2>Loan & Financial Services</h2>
                 <p>Streamlined processing with 15+ banking partners for your ease.</p>
             </div>
         </div>
         <div class="carousel-slide">
-              <a href="services.html#service-card3"><img src="img3.jpg" alt="Modern Architecture"></a>
+              <a href="services.html#service-card5"><img src="c5.jpg" alt="Legal Vetting"></a>
               <div class="carousel-caption">
                 <h2>Legal Vetting</h2>
                 <p>Complete documentation verification and property registration support.</p>
-            </div>
-        </div>
-        <div class="carousel-slide">
-            <a href="services.html#service-card4"><img src="c4.jpg" alt="Digital Marketing"></a>
-            <div class="carousel-caption">
-                <h2>Digital Marketing</h2>
-                <p>AI-driven promotion strategies to maximize property visibility. </p>
-            </div>
-        </div>
-        <div class="carousel-slide">
-            <a href="services.html#service-card5"><img src="c5.jpg" alt="Evaluation"></a>
-            <div class="carousel-caption">
-                <h2>Evaluation</h2>
-                <p>Comprehensive audits including soil health, groundwater levels, and urban proximity.</p>
             </div>
         </div>
         <div class="carousel-slide">
@@ -574,7 +715,7 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
                 <p>End-to-end management services for hassle-free ownership.</p>
             </div>
         </div>
-        <div class="carousel-slide">
+         <div class="carousel-slide">
               <a href="services.html#service-card7"><img src="c7.jpg" alt="Customer Support"></a>
               <div class="carousel-caption">
                 <h2>Customer Support</h2>
@@ -582,13 +723,21 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
             </div>
         </div>
         <div class="carousel-slide">
-            <a href="services.html#service-card8"><img src="img7.jpg" alt="Construction"></a>
+            <a href="services.html#service-card8"><img src="c8.jpg" alt="Digital Marketing"></a>
             <div class="carousel-caption">
-                <h2>Construction Services</h2>
-                <p>Full-scale archetectural design and engineering for custom villas.</p>
+                <h2>Digital Marketing</h2>
+                <p>AI-driven promotion strategies to maximize property visibility. </p>
+            </div>
+        </div>
+        <div class="carousel-slide">
+            <a href="services.html#service-card9"><img src="c9.jpg" alt="Evaluation"></a>
+            <div class="carousel-caption">
+                <h2>Evaluation</h2>
+                <p>Comprehensive audits including soil health, groundwater levels, and urban proximity.</p>
             </div>
         </div>
     </section>
+
 
     <section class="hero-intro">
         <div class="container">
@@ -599,7 +748,6 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
             </p>
             <div class="hero-cta-group">
                 <a href="projects.html" class="btn-primary">Explore Portfolio</a>
-                <a href="services.html" class="btn-secondary">Our Philosophy</a>
             </div>
         </div>
     </section>
@@ -618,21 +766,21 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
                     </div>
                 </div>
                   <div class="project-card">
-                    <div class="img-container"><img src="img4.jpg" alt="Villa"></div>
+                    <div class="img-container"><img src="img2.jpg" alt="Villa"></div>
                     <div class="project-info">
                         <span>Residential | Bengaluru</span>
                     </div>
                 </div>
                 <div class="project-card">
-                    <div class="img-container"><img src="img6.jpg" alt="Villa"></div>
+                    <div class="img-container"><img src="img3.jpg" alt="Villa"></div>
                     <div class="project-info">
                         <span>Residential | Bengaluru</span>
                     </div>
                 </div>
                 <div class="project-card">
-                    <div class="img-container"><img src="img5.jpg" alt="Museum"></div>
+                    <div class="img-container"><img src="img4.jpg" alt="Architecture"></div>
                     <div class="project-info">
-                        <span>Arhitecture | Bengaluru</span>
+                        <span>Architecture | Bengaluru</span>
                     </div>
                 </div>
             </div>
@@ -702,7 +850,55 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
         </div>
     </section>
 
+<!-- FLOATING ENQUIRY SYSTEM -->
+<div class="floating-container">
     
+    <!-- The Form Popup -->
+    <div class="enquiry-form-card" id="enquiryForm">
+        <div id="form-content">
+            <h4>Enquire Now</h4>
+            <p>Fill in your details and our property experts will contact you shortly.</p>
+            
+            <form id="leadForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="e.g. Rahul Sharma" required id="userName">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" placeholder="e.g. +91 96117 58973" required id="userPhone">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="e.g. name@example.com" required id="userEmail">
+                </div>
+                <button type="submit" class="submit-btn">Send Enquiry</button>
+            </form>
+        </div>
+
+        <!-- Success View -->
+        <div id="success-msg">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            <h4 style="color: var(--success);">Thank You!</h4>
+            <p>Our team will reach out to you within 24 hours.</p>
+        </div>
+    </div>
+
+    <!-- Quick Links (Visible when form is closed) -->
+    <div class="element-container" id="quickLinks">
+        <a href="https://wa.me/+919611758973" target="_blank" class="float-element email">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592"/></svg>
+            <span>WhatsApp Us</span>
+        </a>
+    </div>
+
+    <!-- The Toggle Button -->
+    <div class="floating-button" id="fabBtn" onclick="toggleEnquiryForm()">
+        <span class="icon-text" id="fabText">Enquire Now</span>
+        <svg id="fabIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    </div>
+</div>
+
 
  
 <section class="motives-section">
@@ -738,134 +934,133 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
     </div>
 </section>
 
+
 <section class="home-services">
     <div class="container">
         <div class="section-header">
             <span class="gold-subtitle">Our Expertise</span>
         </div>
+
         <div class="containerm">
-            <marquee class="marquee" onmouseover="this.stop();" onmouseout="this.start();">
-        
-        <a href="services.html" class="home-service-card">
-            <div class="card-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="dodgerblue" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
-            </div>
-            <h3>Legal Vetting</h3>
-            <p>Bulletproof documentation and EC review for secure ownership.</p>
-            <span class="read-more">Learn More →</span>
-        </a>
+            <div class="marquee">
+                <!-- SET 1 (Original 9 Cards) -->
+                <a href="services1.html" class="home-service-card">
+                    <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="dodgerblue" stroke-width="1.5"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/></svg></div>
+                    <h3>Buy/Sell</h3><p>Transparent transactions with expert guidance.</p><span class="read-more">Learn More →</span>
+                </a>
+                <a href="services2.html" class="home-service-card">
+                    <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="1.5"><path d="M2 20h20"/><path d="m16 10 4 4"/><path d="m12 14 4-4 4 4"/><path d="M16 14v6"/><path d="M8 4v16"/><path d="M3 4h10"/></svg></div>
+                    <h3>Construction</h3><p>Full-scale architectural design and engineering.</p><span class="read-more">Learn More →</span>
+                </a>
+                <a href="services3.html" class="home-service-card">
+                    <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="dodgerblue" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+                    <h3>Architecture</h3><p>Innovative designs that blend with the environment.</p><span class="read-more">Learn More →</span>
+                </a>
+                <a href="services4.html" class="home-service-card">
+                    <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="1.5"><path d="M6 3h12" /><path d="M6 8h12" /><path d="m6 13 8.5 8" /><path d="M6 13h3" /><path d="M9 13c6.667 0 6.667-10 0-10" /></svg></div>
+                    <h3>Loan Services</h3><p>Streamlined processing with  banking partners.</p><span class="read-more">Learn More →</span>
+                </a>
+                <a href="services5.html" class="home-service-card">
+                    <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="dodgerblue" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg></div>
+                    <h3>Legal Vetting</h3><p>Bulletproof documentation and EC review.</p><span class="read-more">Learn More →</span>
+                </a>
+                <a href="services6.html" class="home-service-card">
+                    <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+                    <h3>Property Management</h3><p>End-to-end management for hassle-free ownership.</p><span class="read-more">Learn More →</span>
+                </a>
+                <a href="services7.html" class="home-service-card">
+                    <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="dodgerblue" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                    <h3>Customer Support</h3><p>Dedicated support team available.</p><span class="read-more">Learn More →</span>
+                </a>
+                <a href="services8.html" class="home-service-card">
+                    <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="1.5"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg></div>
+                    <h3>Digital Marketing</h3><p>AI-driven visibility for high-growth corridors.</p><span class="read-more">Learn More →</span>
+                </a>
+                <a href="services9.html" class="home-service-card">
+                    <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="dodgerblue" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+                    <h3>Evaluation</h3><p>Comprehensive audits including soil health.</p><span class="read-more">Learn More →</span>
+                </a>
 
-        <a href="services.html" class="home-service-card">
-            <div class="card-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
+                <!-- SET 2 (Duplicate for Seamless Loop) -->
+                <a href="services1.html" class="home-service-card">
+                    <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="1.5"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/></svg></div>
+                    <h3>Buy/Sell</h3><p>Transparent transactions with expert guidance.</p><span class="read-more">Learn More →</span>
+                </a>
+                <a href="services2.html" class="home-service-card">
+                    <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="dodgerblue" stroke-width="1.5"><path d="M2 20h20"/><path d="m16 10 4 4"/><path d="m12 14 4-4 4 4"/><path d="M16 14v6"/><path d="M8 4v16"/><path d="M3 4h10"/></svg></div>
+                    <h3>Construction</h3><p>Full-scale architectural design and engineering.</p><span class="read-more">Learn More →</span>
+                </a>
+                <a href="services3.html" class="home-service-card">
+                    <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+                    <h3>Architecture</h3><p>Innovative designs that blend with the environment.</p><span class="read-more">Learn More →</span>
+                </a>
+                <a href="services4.html" class="home-service-card">
+                    <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="dodgerblue" stroke-width="1.5"><path d="M6 3h12" /><path d="M6 8h12" /><path d="m6 13 8.5 8" /><path d="M6 13h3" /><path d="M9 13c6.667 0 6.667-10 0-10" /></svg></div>
+                    <h3>Loan Services</h3><p>Streamlined processing with  banking partners.</p><span class="read-more">Learn More →</span>
+                </a>
+                <a href="services5.html" class="home-service-card">
+                    <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg></div>
+                    <h3>Legal Vetting</h3><p>Bulletproof documentation and EC review.</p><span class="read-more">Learn More →</span>
+                </a>
+                <a href="services6.html" class="home-service-card">
+                    <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="dodgerblue" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+                    <h3>Property Management</h3><p>End-to-end management for hassle-free ownership.</p><span class="read-more">Learn More →</span>
+                </a>
+                <a href="services7.html" class="home-service-card">
+                    <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                    <h3>Customer Support</h3><p>Dedicated support team available.</p><span class="read-more">Learn More →</span>
+                </a>
+                <a href="services8.html" class="home-service-card">
+                    <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="dodgerblue" stroke-width="1.5"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg></div>
+                    <h3>Digital Marketing</h3><p>AI-driven visibility for high-growth corridors.</p><span class="read-more">Learn More →</span>
+                </a>
+                <a href="services9.html" class="home-service-card">
+                    <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+                    <h3>Evaluation</h3><p>Comprehensive audits including soil health.</p><span class="read-more">Learn More →</span>
+                </a>
             </div>
-            <h3>Digital Marketing</h3>
-            <p>AI-driven visibility for high-growth property corridors.</p>
-            <span class="read-more">Learn More →</span>
-        </a>
+        </div>
 
-        <a href="services.html" class="home-service-card">
-            <div class="card-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="dodgerblue" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8a3 3 0 0 1 3 3"/></svg>
-            </div>
-            <h3>Evaluation</h3>
-            <p>Comprehensive audits including soil health and urban proximity.</p>
-            <span class="read-more">Learn More →</span>
-        </a>
-
-        <a href="services.html" class="home-service-card">
-            <div class="card-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="m16 10 4 4"/><path d="m12 14 4-4 4 4"/><path d="M16 14v6"/><path d="M8 4v16"/><path d="M3 4h10"/></svg>
-            </div>
-            <h3>Construction</h3>
-            <p>Full-scale architectural design and engineering for custom villas.</p>
-            <span class="read-more">Learn More →</span>
-        </a>
-
-        <a href="services.html" class="home-service-card">
-            <div class="card-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="dodgerblue" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/></svg>
-            </div>
-            <h3>Buy & Sell Plots</h3>
-            <p>Transparent transactions with expert guidance for buyers and sellers.</p>
-            <span class="read-more">Learn More →</span>
-        </a>
-
-        <a href="services.html" class="home-service-card">
-            <div class="card-icon">
-               <svg viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12" /><path d="M6 8h12" /><path d="m6 13 8.5 8" /><path d="M6 13h3" /><path d="M9 13c6.667 0 6.667-10 0-10" />
-        </svg>
-            </div>
-            <h3>Loan Services</h3>
-            <p>Streamlined processing with 15+ banking partners for your ease.</p>
-            <span class="read-more">Learn More →</span>
-        </a>
-
-        <a href="services.html" class="home-service-card">
-            <div class="card-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="dodgerblue" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            </div>
-            <h3>Property Management</h3>
-            <p>End-to-end management services for hassle-free ownership.</p>
-            <span class="read-more">Learn More →</span>
-        </a>
-
-        <a href="services.html" class="home-service-card">
-            <div class="card-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            </div>
-            <h3>24/7 Support</h3>
-            <p>Dedicated support team available 24/7 for all your queries.</p>
-            <span class="read-more">Learn More →</span>
-        </a>
-
-    </marquee>
-</div>
         <div class="cta-container">
             <a href="services.html" class="btn-outline">Explore All Services</a>
         </div>
     </div>
 </section>
+
   
 
 <section class="cta-banner">
         <h2>Ready to Secure Your Piece of Bengaluru?</h2>
-        <a href="contact.html" class="btn-primary" style="background:var(--primary)">Book a Site Visit</a>
+        <a href="contact.html" class="btn-primary" style="background-color: #1e90ff;color:white;">Book a Site Visit</a>
     </section>
 
  <footer>
     <div class="footer-grid">
         <div>
             <div class="logo" style="color:dodgerblue;">Apti <span style="color:orange">Reality</span></div>
-            <p style="margin-top:10px; color:#aaa;">Leading integrated architectural and real estate services in India.</p>
-             <br/>
+            <p style="margin-top:10px; ">Leading integrated architectural and real estate services in India.</p>
+             <p>&copy; 2026 Apti Reality. Built with Precision.</p>
+        </div>
+        <div>
             <h4>Services</h4>
-            <p>Buy and sell of Properties/sites/plots</p>
-            <p>Loan & Financial Services</p> 
-            <p>Legal Vetting</p> 
-            <p>Digital Marketing</p>
-            <p>Evaluation</option>
-            <p>Property Management</p>
-            <p>Customer Support</p>
-            <p>Construction Support</p>
+           <p><a href="services1.html">Buy/Sell</a></p>
+            <p><a href="services2.html">Construction Support</a></p>
+            <p><a href="services3.html">Architecture</a></p>
+            <p><a href="services4.html">Loan & Financial Services</a></p> 
+            <p><a href="services5.html">Legal Vetting</a></p> 
+            <p><a href="services6.html">Property Management</a></p>
+            <p><a href="services7.html">Customer Support</a></p>
+            <p><a href="services8.html">Digital Marketing</a></p>
+            <p><a href="services9.html">Evaluation</a></p>
         </div>
         <div>
-            <h4>Quick Links</h4>
-            <p>Site Evaluation</p>
-            <p>Legal Support</p>
-            <p>Construction</p>
-        </div>
-        <div>
-            <h4>Connect</h4>
+            <h4>Contact</h4>
             <p>Phone: +91-9611758973</p>
             <h4>Email:</h4>
             <p>info@aptireality.in</p>
            <h4>Address:</h4>
-            <p>25/1-6, 9th Main Rd, Dasarahalli Main Road, Agrahara, Bengaluru, Karnataka 560079, India</p>
+            <p>25/1-6, 9th Main Rd, Dasarahalli Main Road, Agrahara,<br/> Bengaluru, Karnataka 560079, India</p>
         </div>
-    </div>
-    <div class="footer-bottom">
-        &copy; 2025 Apti Reality Real Estate Solutions. Built with Precision.
     </div>
 </footer>
 
@@ -894,7 +1089,67 @@ menuBtn.addEventListener('click', () => {
         menuBtn.innerHTML = '☰';
     }
 });
+window.onscroll = function() {
+    let btn = document.querySelector('.floating-container');
+    btn.style.display = "flex"; 
+};
 
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('.floating-container').style.display = "flex";
+});
+ const formCard = document.getElementById('enquiryForm');
+    const fabBtn = document.getElementById('fabBtn');
+    const fabText = document.getElementById('fabText');
+    const quickLinks = document.getElementById('quickLinks');
+    const formContent = document.getElementById('form-content');
+    const successMsg = document.getElementById('success-msg');
+
+    function toggleEnquiryForm() {
+        const isActive = formCard.classList.contains('active');
+        
+        if (isActive) {
+            // Closing
+            formCard.classList.remove('active');
+            fabBtn.classList.remove('active');
+            fabText.innerText = "Enquire Now";
+            quickLinks.style.display = 'flex';
+        } else {
+            // Opening
+            formCard.classList.add('active');
+            fabBtn.classList.add('active');
+            fabText.innerText = "Close";
+            quickLinks.style.display = 'none';
+        }
+    }
+
+    function handleFormSubmit(e) {
+        e.preventDefault();
+        
+        // Collect Data
+        const formData = {
+            name: document.getElementById('userName').value,
+            phone: document.getElementById('userPhone').value,
+            email: document.getElementById('userEmail').value
+        };
+
+        console.log("Lead Captured:", formData);
+
+        // UI Transition
+        formContent.style.display = 'none';
+        successMsg.style.display = 'block';
+
+        // Automatically close after 3 seconds
+        setTimeout(() => {
+            toggleEnquiryForm();
+            // Reset for next time
+            setTimeout(() => {
+                formContent.style.display = 'block';
+                successMsg.style.display = 'none';
+                document.getElementById('leadForm').reset();
+            }, 500);
+        }, 3000);
+    }
+    
 </script>
 </body>
 </html>

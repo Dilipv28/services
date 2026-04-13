@@ -4,115 +4,403 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apti Realty | Property Management Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            line-height: 1.6;
-            color: #444;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        header {
-            text-align: center;
-            padding: 60px 20px;
-            background: #2c3e50; /* Charcoal Professional */
-            color: #d4af37; /* Gold Accent */
-            border-radius: 12px;
-            margin-bottom: 30px;
-            border-bottom: 5px solid #d4af37;
-        }
-        .container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-        }
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-            position: relative;
-            overflow: hidden;
-        }
-        .full-width { grid-column: 1 / -1; }
-        h1{
-            color:aliceblue;
-        }
-        h2, h3 { color: #2c3e50; margin-top: 0; }
-        header h1 { margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
-        
-        .status-badge {
-            position: absolute;
-            top: 0;
-            right: 0;
-            background: #d4af37;
-            color: #fff;
-            padding: 5px 15px;
-            font-size: 0.75em;
-            font-weight: bold;
-            border-bottom-left-radius: 12px;
+        :root {
+            --primary: #1E90FF;      /* DodgerBlue */
+            --accent: #FF8C00;       /* Action Orange */
+            --success: #32CD32;      /* Growth Green */
+            --black: #000000;
+            --white: #ffffff;
+            --gray: #f4f4f4;         /* Brand gray for shadows */
+            --transition: all 0.3s ease;
         }
 
-        .service-list {
-            list-style: none;
-            padding: 0;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--white);
+            color: var(--black);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+        /* --- NAVIGATION --- */
+        .navbar {
+            background: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 5%;
+            padding-right: 5%;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color:dodgerblue;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            margin-left: 25px;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color:dodgerblue;
+            border-bottom: 2px solid black;
+        }
+    .menu-toggle {
+    display: none; /* Hide button on desktop */
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+}  
+/* --- Mobile/Tablet Media Query (768px and below) --- */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Show the button */
+    }
+
+    .nav-links {
+        display: none; /* Hide the menu by default */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 90px;
+        left: 0;
+        background:white;
+        padding: 20px;
+        box-shadow:0 10px 10px rgba(0,0,0,0.1);
+    }
+
+    /* This class will be added via JavaScript when clicked */
+    .nav-links.active {
+        display: flex;
+        animation: fadeIn 0.3s ease-in;
+    }
+    .nav-links a {
+        margin: 10px 0; /* Space out links vertically on mobile */
+        width: 100%;
+    }
+
+    .navbar {
+        height: auto;
+    }
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .nav-links {
+    
+        flex-wrap: wrap;       
+        justify-content: center;
+        margin-top: 10px;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+        /* --- HEADER (Brand Synced) --- */
+        header {
+             background-color: var(--white);
+            color: var(--black);
+            padding: 40px 5%;
+            text-align: center;
+            border-bottom: 12px solid var(--primary);
+        }
+
+        header h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            line-height: 1;
+        }
+
+        header p {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 1rem;
             margin-top: 15px;
         }
-        .service-list li {
-            padding: 8px 0;
-            border-bottom: 1px solid #eee;
-            color: #555;
+
+        /* --- CONTAINER & GRID --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 5%;
         }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .full-width { grid-column: 1 / -1; }
+
+        /* --- CARD SYSTEM (The Signature Look) --- */
+        .card {
+            padding: 50px;
+            border: 1px solid var(--black);
+            background: var(--white);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            box-shadow: 15px 15px 0px var(--gray);
+            transform: translate(-5px, -5px);
+        }
+
+        .label {
+            display: block;
+            font-weight: 900;
+            color: var(--primary);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent);
+            padding-left: 12px;
+        }
+
+        h2, h3 {
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            line-height: 1.1;
+        }
+
+        .accent-text { color: var(--primary); font-weight: 600; }
+
+        /* --- SERVICE LISTS (Synced bullets) --- */
+        .service-list {
+            list-style: none;
+            margin-top: 25px;
+        }
+
+        .service-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--gray);
+            display: flex;
+            align-items: flex-start;
+            font-size: 0.95rem;
+        }
+
+        .service-list li::before {
+            content: "";
+            width: 12px;
+            height: 12px;
+            background: var(--success);
+            margin-right: 15px;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+
         .service-list li strong {
-            color: #2c3e50;
+            color: var(--black);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        /* --- STRATEGY BOX (Highlight Block) --- */
+        .strategy-box {
+            background:whitesmoke;
+            color:black;
+            padding: 60px;
+            margin-top: 40px;
+        }
+
+        .strategy-box h3 { color: var(--primary); }
+
+        /* --- FOOTER --- */
+      /* --- Footer --- */
+footer {
+    background:white;
+    color:black;
+    font-weight: 600;
+     font-size: 1rem;
+    padding: 40px 2% ;
+    box-shadow: inset 1px 20px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 60px;
+}
+
+footer h4 { color:#ff9800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
+footer p { color:rgb(12, 3, 3); margin-bottom: 10px; font-size: 0.85rem; }
+footer a{
+    color:black;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+footer a:hover {
+    color: #ff9800;
+}
+@media (max-width: 600px) {
+     .footer-grid { grid-template-columns: 1fr; }
+}
+
+        @media (max-width: 850px) {
+            .main-grid { grid-template-columns: 1fr; }
+            header h1 { font-size: 2.8rem; }
+            .card { padding: 30px; }
         }
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="aptilogo1.png" alt="apti reality" width="90px " height="90px" style="border-radius: 50%;">
+            <div class="logo">Apti <span style="color:orange">Reality</span></div>
+        </div>
+        <button class="menu-toggle" aria-label="Open Menu">☰</button>
+        <div class="nav-links">
+            <a href="home.html" >Home</a>
+            <a href="about.html" >About</a>
+            <a href="services.html" class="active">Services</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
+            <a href="newsroom.html">Newsroom</a>
+        </div>
+    </nav>
 
     <header>
         <h1>Property Management</h1>
-        <p style="color: #fff; opacity: 0.9;">Preserving Value, Maximizing Returns, Ensuring Peace of Mind</p>
+        <p>Apti Realty Services</p>
     </header>
 
     <div class="container">
-        <section class="card full-width">
-            <div class="status-badge">Premium Care</div>
-            <h2>Your Property, Our Responsibility</h2>
-            <p>Ownership should be rewarding, not exhausting. <strong>Apti Realty</strong> provides a complete ecosystem for property owners, acting as your single point of contact for every operational need. We treat your asset with the same precision and care as if it were our own.</p>
-        </section>
+        <div class="main-grid">
+            
+            <section class="card full-width">
+                <span class="label">Premium Care</span>
+                <h2>Your Property,<br>Our <span class="accent-text">Responsibility.</span></h2>
+                <p style="font-size: 1.2rem; max-width: 850px;">Ownership should be rewarding, not exhausting. <strong>Apti Realty</strong> provides a complete ecosystem for property owners, treating your asset with the same precision as if it were our own.</p>
+            </section>
 
-        <section class="card">
-            <h3>Maintenance Coordination</h3>
-            <p>Protect the structural integrity and aesthetic appeal of your property with our proactive upkeep schedules.</p>
-            <ul class="service-list">
-                <li><strong>Regular Inspections:</strong> Quarterly physical audits.</li>
-                <li><strong>Vendor Management:</strong> Trusted plumbers, electricians, and landscapers.</li>
-                <li><strong>Emergency Repairs:</strong> 24/7 coordination for critical issues.</li>
-            </ul>
-        </section>
+            <section class="card">
+                <span class="label" style="border-left-color: var(--accent);">Operational</span>
+                <h3>Maintenance Coordination</h3>
+                <p>Protect structural integrity and aesthetic appeal with proactive upkeep schedules.</p>
+                <ul class="service-list">
+                    <li>
+                        <div><strong>Regular Inspections</strong> Quarterly physical audits and detailed reporting.</div>
+                    </li>
+                    <li>
+                        <div><strong>Vendor Management</strong> Vetted plumbers, electricians, and landscapers.</div>
+                    </li>
+                    <li>
+                        <div><strong>Emergency Repairs</strong> coordination for mission-critical issues.</div>
+                    </li>
+                </ul>
+            </section>
 
-        <section class="card">
-            <h3>Rental Management</h3>
-            <p>Transform your property into a high-yielding asset with our end-to-end tenant and financial management.</p>
-            <ul class="service-list">
-                <li><strong>Tenant Sourcing:</strong> Rigorous background & credit checks.</li>
-                <li><strong>Rent Collection:</strong> Automated, timely digital transfers.</li>
-                <li><strong>Lease Compliance:</strong> Legal renewals and exit inspections.</li>
-            </ul>
-        </section>
+            <section class="card">
+                <span class="label" style="border-left-color: var(--success);">Yield</span>
+                <h3>Rental Management</h3>
+                <p>Transform your property into a high-yielding asset with end-to-end financial management.</p>
+                <ul class="service-list">
+                    <li>
+                        <div><strong>Tenant Sourcing</strong> Rigorous background & credit verification.</div>
+                    </li>
+                    <li>
+                        <div><strong>Rent Collection</strong> Automated, timely digital transfers and tracking.</div>
+                    </li>
+                    <li>
+                        <div><strong>Lease Compliance</strong> Legal renewals and exit inspection audits.</div>
+                    </li>
+                </ul>
+            </section>
 
-        <section class="card full-width">
-            <h3>Asset Appreciation Strategy</h3>
-            <p>Beyond daily tasks, we provide annual reports on your property’s <strong>Market Positioning</strong>. We suggest strategic upgrades or renovations that can increase your rental yield and long-term valuation, ensuring your portfolio grows year over year.</p>
-        </section>
+            <div class="full-width strategy-box">
+                <h3>Asset Appreciation Strategy</h3>
+                <p style="max-width: 800px; font-size: 1.1rem; opacity: 0.9;">
+                    Beyond daily tasks, we provide annual reports on your property's <span style="color: var(--accent);">Market Positioning</span>. We suggest strategic upgrades or renovations that increase your rental yield and maximize long-term valuation.
+                </p>
+            </div>
+
+        </div>
     </div>
+
+       
+ <footer>
+    <div class="footer-grid">
+        <div>
+            <div class="logo" style="color:dodgerblue;">Apti <span style="color:orange">Reality</span></div>
+            <p style="margin-top:10px; ">Leading integrated architectural and real estate services in India.</p>
+             <p>&copy; 2026 Apti Reality. Built with Precision.</p>
+        </div>
+        <div>
+            <h4>Services</h4>
+           <p><a href="services1.html">Buy/Sell</a></p>
+            <p><a href="services2.html">Construction Support</a></p>
+            <p><a href="services3.html">Architecture</a></p>
+            <p><a href="services4.html">Loan & Financial Services</a></p> 
+            <p><a href="services5.html">Legal Vetting</a></p> 
+            <p><a href="services6.html">Property Management</a></p>
+            <p><a href="services7.html">Customer Support</a></p>
+            <p><a href="services8.html">Digital Marketing</a></p>
+            <p><a href="services9.html">Evaluation</a></p>
+        </div>
+        <div>
+            <h4>Contact</h4>
+            <p>Phone: +91-9611758973</p>
+            <h4>Email:</h4>
+            <p>info@aptireality.in</p>
+           <h4>Address:</h4>
+            <p>25/1-6, 9th Main Rd, Dasarahalli Main Road, Agrahara,<br/> Bengaluru, Karnataka 560079, India</p>
+        </div>
+    </div>
+</footer>
+<script>
+            const menuBtn = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+menuBtn.addEventListener('click', () => {
+    // Toggles the visibility
+    navLinks.classList.toggle('active');
     
-    <footer style="text-align: center; margin-top: 30px; color: #999; font-size: 0.8em;">
-        &copy; 2026 Apti Realty Asset Management Division.
-    </footer>
+    // Optional: Change icon from ☰ to ✕
+    if (navLinks.classList.contains('active')) {
+        menuBtn.innerHTML = '✕';
+    } else {
+        menuBtn.innerHTML = '☰';
+    }
+});
+</script>
 
 </body>
 </html>

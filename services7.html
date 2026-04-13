@@ -4,132 +4,382 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apti Realty | 24/7 Customer Support</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #1E90FF;      /* DodgerBlue */
+            --accent: #FF8C00;       /* Live Orange */
+            --success: #32CD32;      /* Support Green */
+            --black: #000000;
+            --white: #ffffff;
+            --gray: #f4f4f4;         /* Unified shadow gray */
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f8fbff;
+            font-family: 'Outfit', sans-serif;
+            background:var(--white);
+            color: var(--black);
+            line-height: 1.8;
+            overflow-x: hidden;
         }
-        header {
-            text-align: center;
-            padding: 50px 20px;
-            background: #0056b3; /* Trust Blue */
-            color: white;
-            border-radius: 12px;
-            margin-bottom: 30px;
-        }
-        .container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-        }
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,86,179,0.05);
-            text-align: center;
-            border: 1px solid #e1e8f0;
-        }
-        .full-width { grid-column: 1 / -1; }
-        
-        h1, h2, h3 { color: #0056b3; margin-top: 0; }
-        header h1 { color: #ffffff; }
-        
-        .support-icon {
-            font-size: 40px;
-            margin-bottom: 15px;
-            display: block;
+        /* --- NAVIGATION --- */
+        .navbar {
+            background: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 5%;
+            padding-right: 5%;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .availability-tag {
-            display: inline-block;
-            background: #e1f5fe;
-            color: #01579b;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            font-weight: bold;
-            margin-bottom: 15px;
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .btn-contact {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
-            background: #0056b3;
-            color: white;
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color:dodgerblue;
+        }
+
+        .nav-links a {
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .btn-contact:hover {
-            background: #003d7a;
+            color: var(--dark);
+            font-weight: 600;
+            margin-left: 25px;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            text-transform: uppercase;
+            cursor: pointer;
         }
 
-        .features-list {
-            text-align: left;
-            display: inline-block;
+        .nav-links a:hover, .nav-links a.active {
+            color:dodgerblue;
+            border-bottom: 2px solid black;
+        }
+    .menu-toggle {
+    display: none; /* Hide button on desktop */
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+}  
+/* --- Mobile/Tablet Media Query (768px and below) --- */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Show the button */
+    }
+
+    .nav-links {
+        display: none; /* Hide the menu by default */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 90px;
+        left: 0;
+        background:white;
+        padding: 20px;
+        box-shadow:0 10px 10px rgba(0,0,0,0.1);
+    }
+
+    /* This class will be added via JavaScript when clicked */
+    .nav-links.active {
+        display: flex;
+        animation: fadeIn 0.3s ease-in;
+    }
+    .nav-links a {
+        margin: 10px 0; /* Space out links vertically on mobile */
+        width: 100%;
+    }
+
+    .navbar {
+        height: auto;
+    }
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .nav-links {
+    
+        flex-wrap: wrap;       
+        justify-content: center;
+        margin-top: 10px;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+        /* --- HEADER (Synced with Sell/Sale) --- */
+        header {
+           background:var(--white);
+            color: var(--black);
+            padding: 40px 5%;
+            text-align: center;
+            border-bottom: 12px solid var(--primary);
+        }
+
+        header h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            line-height: 1;
+        }
+
+        header p {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 1rem;
+            margin-top: 15px;
+        }
+
+        /* --- CONTAINER & GRID --- */
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 80px 5%;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .full-width { grid-column: 1 / -1; }
+
+        /* --- CARD SYSTEM (The Signature Look) --- */
+        .card {
+            padding: 50px;
+            border: 1px solid var(--black);
+            background: var(--white);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            box-shadow: 15px 15px 0px var(--gray);
+            transform: translate(-5px, -5px);
+        }
+
+        .label {
+            display: block;
+            font-weight: 900;
+            color: var(--primary);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--success);
+            padding-left: 12px;
+        }
+
+        h2, h3 {
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            line-height: 1.1;
+        }
+
+        .accent-text { color: var(--primary); font-weight: 600; }
+
+       
+
+        /* --- HIGHLIGHT BOX (Network Section) --- */
+        .network-box {
+           background:whitesmoke;
+            color:black;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .network-item strong {
+            display: block;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .network-item p { font-size: 0.9rem; opacity: 0.8; }
+
+        /* --- FOOTER --- */
+  /* --- Footer --- */
+footer {
+    background:white;
+    color:black;
+    font-weight: 600;
+     font-size: 1rem;
+    padding: 40px 2% ;
+    box-shadow: inset 1px 20px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 60px;
+}
+
+footer h4 { color:#ff9800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
+footer p { color:rgb(12, 3, 3); margin-bottom: 10px; font-size: 0.85rem; }
+
+footer a{
+    color:black;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+footer a:hover {
+    color: #ff9800;
+}
+@media (max-width: 600px) {
+   .footer-grid { grid-template-columns: 1fr; }
+}
+        @media (max-width: 850px) {
+            .main-grid { grid-template-columns: 1fr; }
+            header h1 { font-size: 2.8rem; }
+            .card { padding: 30px; }
+            .network-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="aptilogo1.png" alt="apti reality" width="90px " height="90px" style="border-radius: 50%;">
+            <div class="logo">Apti <span style="color:orange">Reality</span></div>
+        </div>
+        <button class="menu-toggle" aria-label="Open Menu">☰</button>
+        <div class="nav-links">
+            <a href="home.html" >Home</a>
+            <a href="about.html" >About</a>
+            <a href="services.html" class="active">Services</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
+            <a href="newsroom.html">Newsroom</a>
+        </div>
+    </nav>
 
     <header>
         <h1>Customer Support</h1>
-        <p>Expert Assistance Whenever You Need It</p>
+        <p>Apti Realty Services</p>
     </header>
 
     <div class="container">
-        <section class="card full-width">
-            <div class="availability-tag">● 24/7 Live Monitoring</div>
-            <h2>Always Within Reach</h2>
-            <p>At <strong>Apti Realty</strong>, your peace of mind is our priority. Whether you have a question about a listed plot at midnight or need a detailed financial consultation on a Sunday, our dedicated support ecosystem is designed to provide instant answers and expert resolutions.</p>
-        </section>
+        <div class="main-grid">
+            
+            <section class="card full-width">
+                <span class="label">Customer Satisfaction</span>
+                <h2>Always Within <span class="accent-text">Reach.</span></h2>
+                <p style="font-size: 1.2rem; max-width: 850px;">At <strong>Apti Realty</strong>, your peace of mind is our priority. Whether you have a question at midnight or need a financial consultation on a Sunday, our dedicated support ecosystem is designed for instant resolution.</p>
+            </section>
 
-        <section class="card">
-            <span class="support-icon">💬</span>
-            <h3>Live Chat Assistance</h3>
-            <p>Connect with our real estate specialists in real-time. Our chat interface allows you to share documents, location pins, and property links instantly for rapid troubleshooting.</p>
-            <a href="#" class="btn-contact">Start Chat</a>
-        </section>
+            <section class="card">
+                <span class="label">Instant Response</span>
+                <h3>Live Chat</h3>
+                <p>Connect with real estate specialists in real-time. Share documents, location pins, and links instantly for rapid troubleshooting.</p>
+            </section>
 
-        <section class="card">
-            <span class="support-icon">📅</span>
-            <h3>Personalized Consultations</h3>
-            <p>Schedule a 1-on-1 session with our senior advisors. We dive deep into your specific portfolio needs, offering tailored strategies for acquisition and management.</p>
-            <a href="#" class="btn-contact">Book a Session</a>
-        </section>
+            <section class="card">
+                <span class="label">Expert Guidance</span>
+                <h3>Consultations</h3>
+                <p>Schedule a 1-on-1 session with senior advisors to dive deep into your specific portfolio needs and tailored strategies.</p>
+            </section>
 
-        <section class="card full-width">
-            <h3>Global Support Network</h3>
-            <p>We provide a multi-channel approach to ensure you never face a delay in your property journey:</p>
-            <div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 20px;">
-                <div style="flex: 1; min-width: 200px;">
-                    <strong>Multilingual Support</strong>
-                    <p>Communicate comfortably in your preferred language.</p>
-                </div>
-                <div style="flex: 1; min-width: 200px;">
-                    <strong>Dedicated Account Managers</strong>
-                    <p>A single point of contact for high-volume investors.</p>
-                </div>
-                <div style="flex: 1; min-width: 200px;">
-                    <strong>Help Desk Portal</strong>
-                    <p>Access a library of guides, FAQs, and legal templates 24/7.</p>
+            <div class="full-width network-box">
+                <h3 style="color:black;">Global Support Network</h3>
+                <p style="opacity: 0.9; margin-bottom: 20px;">A multi-channel approach to ensure your property journey never faces a delay.</p>
+                
+                <div class="network-grid">
+                    <div class="network-item">
+                        <strong>Multilingual</strong>
+                        <p>Communicate comfortably in your preferred language with our global team.</p>
+                    </div>
+                    <div class="network-item">
+                        <strong>Dedicated Managers</strong>
+                        <p>A single point of contact focused specifically on your high-volume portfolio.</p>
+                    </div>
+                    <div class="network-item">
+                        <strong>Help Desk</strong>
+                        <p>Access a complete library of guides, FAQs, and legal templates 24/7.</p>
+                    </div>
                 </div>
             </div>
-        </section>
+
+        </div>
     </div>
 
-    <footer style="text-align: center; margin-top: 40px; color: #777; font-size: 0.9em;">
-        <p>&copy; 2026 Apti Realty Care. Your journey, our commitment.</p>
-    </footer>
+    
+ <footer>
+    <div class="footer-grid">
+        <div>
+            <div class="logo" style="color:dodgerblue;">Apti <span style="color:orange">Reality</span></div>
+            <p style="margin-top:10px; ">Leading integrated architectural and real estate services in India.</p>
+             <p>&copy; 2026 Apti Reality. Built with Precision.</p>
+        </div>
+        <div>
+            <h4>Services</h4>
+           <p><a href="services1.html">Buy/Sell</a></p>
+            <p><a href="services2.html">Construction Support</a></p>
+            <p><a href="services3.html">Architecture</a></p>
+            <p><a href="services4.html">Loan & Financial Services</a></p> 
+            <p><a href="services5.html">Legal Vetting</a></p> 
+            <p><a href="services6.html">Property Management</a></p>
+            <p><a href="services7.html">Customer Support</a></p>
+            <p><a href="services8.html">Digital Marketing</a></p>
+            <p><a href="services9.html">Evaluation</a></p>
+        </div>
+        <div>
+            <h4>Contact</h4>
+            <p>Phone: +91-9611758973</p>
+            <h4>Email:</h4>
+            <p>info@aptireality.in</p>
+           <h4>Address:</h4>
+            <p>25/1-6, 9th Main Rd, Dasarahalli Main Road, Agrahara,<br/> Bengaluru, Karnataka 560079, India</p>
+        </div>
+    </div>
+</footer>
+<script>
+            const menuBtn = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
 
+menuBtn.addEventListener('click', () => {
+    // Toggles the visibility
+    navLinks.classList.toggle('active');
+    
+    // Optional: Change icon from ☰ to ✕
+    if (navLinks.classList.contains('active')) {
+        menuBtn.innerHTML = '✕';
+    } else {
+        menuBtn.innerHTML = '☰';
+    }
+});
+</script>
 </body>
 </html>

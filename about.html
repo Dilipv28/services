@@ -28,7 +28,6 @@ body {
 }
 
 .container {
-    max-width: 1200px;
     margin: 0 auto;
     padding: 0 5%;
 }
@@ -73,7 +72,7 @@ body {
         }
 
         .nav-links a:hover, .nav-links a.active {
-            color:dodgerblue;
+            color:#1e90ff;
             border-bottom: 2px solid  black;
         }
 
@@ -113,6 +112,7 @@ body {
         margin: 10px 0; /* Space out links vertically on mobile */
         width: 100%;
     }
+    
 }
 
 @keyframes fadeIn {
@@ -123,7 +123,7 @@ body {
 /* --- About Hero & Intro --- */
 .about-hero {
     padding-top: 30px;
-    padding-bottom: 80px;
+    padding-bottom: 40px;
 }
 
 .gold-subtitle {
@@ -154,48 +154,254 @@ body {
 }
 
 /* --- Team Section --- */
-.team-section { margin-top: 100px; }
+/* --- Team Section Container --- */
+.team-section {
+    padding: 80px 5%;
+    background-color: #ffffff;
+}
 
 .inner-title {
-    font-size: 2rem;
-    margin-bottom: 50px;
+    font-size: 2.5rem;
     text-align: center;
+    margin-bottom: 60px;
     font-weight: 300;
+    letter-spacing: -1px;
 }
 
+/* --- The Grid --- */
+/* --- Team Section Container --- */
+.team-section {
+    padding: 20px 5%;
+    background-color: #ffffff;
+}
+
+.inner-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 60px;
+    font-weight: 300;
+    letter-spacing: -1px;
+}
+
+/* --- The Grid --- */
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    /* Two columns on desktop for a balanced horizontal look */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.member { text-align: center; transition: var(--transition);box-sizing: border-box; border: 2px solid grey; padding: 40px;}
+/* --- Individual Member Card --- */
+.member {
+    display: flex;
+    align-items: flex-start; /* Aligns items to the top */
+    padding: 30px;
+    background: #fff;
+    border: 1px solid #eef0f2;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+}
+.role {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #ff9800; /* Orange */
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: block;
+    margin-bottom: 15px;
+}
 
+/* Decorative accent line */
+.member::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 0; height: 3px;
+    background: #1e90ff; /* Dodger Blue */
+    transition: width 0.3s ease;
+}
+
+.member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+    border-color: #1e90ff;
+}
+
+.member:hover::before {
+    width: 100%;
+}
+
+/* --- Card Icon/Image --- */
 .member-img {
-    background: var(--light-gray);
-    aspect-ratio: 1/1;
+    width: 100px;
+    height: 100px;
+    background: #f8f9fa;
+    color: #1e90ff;
+    flex-shrink: 0; /* Prevents icon from squishing */
+    margin-right: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
-    color: #ccc;
-    border-radius: 4px;
-    overflow: hidden;
+    border-radius: 8px;
 }
 
-.member-img svg { width: 40%; }
+.member-img svg {
+    width: 35px;
+    height: 35px;
+}
 
-.member h4 { font-size: 1.1rem; margin-bottom: 5px; }
-.member span { color: var(--accent); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; }
+/* --- Text Styling --- */
+.member-info h4 {
+    font-size: 1.2rem;
+    color: #0a0a0a;
+    margin: 0 0 5px 0;
+    text-transform: capitalize;
+}
 
-.member:hover { transform: translateY(-10px); }
+.member-info .role {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #ff9800; /* Orange */
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: block;
+    margin-bottom: 15px;
+}
 
+.member-info p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* --- Mobile Visibility (Responsive) --- */
+@media (max-width: 992px) {
+    .team-grid {
+        grid-template-columns: 1fr; /* Stack cards on tablet/mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .member {
+        flex-direction: column; /* Stack icon on top of text for very small screens */
+        text-align: center;
+        padding: 25px;
+    }
+    
+    .member-img {
+        margin: 0 auto 20px auto;
+    }
+    
+    .inner-title {
+        font-size: 1.8rem;
+    }
+}
+/* --- Individual Member Card --- */
+.member {
+    display: flex;
+    align-items: left; /* Aligns items to the top */
+    padding: 30px;
+    background: #fff;
+    border: 1px solid #eef0f2;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    flex-direction: column;
+    gap:10px;
+}
+
+
+/* Decorative accent line */
+.member::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 0; height: 3px;
+    background: #1e90ff; /* Dodger Blue */
+    transition: width 0.3s ease;
+}
+
+.member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+    border-color: #1e90ff;
+}
+
+.member:hover::before {
+    width: 100%;
+}
+
+/* --- Card Icon/Image --- */
+.member-img {
+    width: 70px;
+    height: 70px;
+    background: #f8f9fa;
+    color: #1e90ff;
+    flex-shrink: 0; /* Prevents icon from squishing */
+    margin-right: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.member-img svg {
+    width: 35px;
+    height: 35px;
+}
+
+/* --- Text Styling --- */
+.member-info h4 {
+    font-size: 1.2rem;
+    color: #0a0a0a;
+    margin: 0 0 5px 0;
+    text-transform: capitalize;
+}
+
+.member-info .role {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #ff9800; /* Orange */
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.member-info p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* --- Mobile Visibility (Responsive) --- */
+@media (max-width: 992px) {
+    .team-grid {
+        grid-template-columns: 1fr; /* Stack cards on tablet/mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .member {
+        flex-direction: column; /* Stack icon on top of text for very small screens */
+        text-align: center;
+    }
+    
+    .member-img {
+        margin: 0 auto 20px auto;
+    }
+    
+    .inner-title {
+        font-size: 1.8rem;
+    }
+}
 /* --- Principles Grid --- */
-.principles-section { padding: 100px 0; }
+.principles-section { padding: 20px 0; }
 
 .values-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(4, 1fr); 
     gap: 30px;
 }
 
@@ -219,24 +425,161 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
+        /* --- FLOATING ENQUIRY SYSTEM --- */
+        .floating-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+        }
+
+        /* Form Popup Card */
+        .enquiry-form-card {
+            width: 320px;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+            padding: 25px;
+            display: none; /* Hidden by default */
+            transform-origin: bottom right;
+            animation: popup 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes popup {
+            from { opacity: 0; transform: scale(0.8) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .enquiry-form-card.active { display: block; }
+
+        .enquiry-form-card h4 {
+            margin: 0 0 5px 0;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+        }
+
+        .enquiry-form-card p {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+       
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; color: dodgerblue; }
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            box-sizing: border-box;
+        }
+        .form-group input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.1); }
+
+      
+        .submit-btn {
+            width: 100%;
+            background:#1e90ff;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 900;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .submit-btn:hover { background: #1670cc; transform: translateY(-2px); }
+
+        /* The main FAB button */
+        .floating-button {
+            background: #1e90ff;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .floating-button:hover {
+            background: orange;
+            transform: scale(1.05);
+        }
+
+        .floating-button.active {
+            background:orange; /* Red to indicate "Close" */
+        }
+
+
+        .icon-text { font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
+
+        /* Quick contact elements */
+        .element-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-end;
+            margin-bottom: 10px;
+        }
+
+        .float-element {
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .float-element.email { background: #25D366; } /* Email Blue */
+        .float-element:hover { transform: translateX(-5px); opacity: 0.9; }
+
+        /* Success Message Overlay */
+        #success-msg {
+            display: none;
+            text-align: center;
+            padding: 20px 0;
+        }
+        #success-msg svg { color: var(--success); margin-bottom: 10px; }
+/* --- Mission & Vision Cards --- */
 /* --- Mission & Vision Cards --- */
 .mv-container {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
     gap: 30px;
     margin-top: 80px;
+    width: 100%; 
 }
 
 .mv-card {
-    background: var(--dark);
-    color: white;
-    padding: 50px 40px;
+    background: white;
+    color: black;
+    padding: 20px; 
     border-radius: 4px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
 }
+.mv-icon { font-size: 2.5rem;}
 
-.mv-icon { font-size: 2.5rem; margin-bottom: 20px; }
-
-.mv-card h3 { margin-bottom: 20px; letter-spacing: 2px; }
+.mv-card h3 { margin-bottom: 5px; letter-spacing: 2px; }
 
 .mv-caption {
     display: block;
@@ -251,7 +594,7 @@ body {
 
 
 /* --- Growth Timeline --- */
-.growth-section { padding: 100px 0; }
+.growth-section { padding: 40px 0; }
 
 .timeline {
     position: relative;
@@ -275,12 +618,14 @@ body {
 
 .event h4 { color: var(--accent); margin-bottom: 10px; }
 
-
 /* --- Footer --- */
 footer {
-    background: #0a0a0a;
-    color: white;
-    padding: 100px 8% 40px;
+    background:white;
+    color:black;
+    font-weight: 600;
+     font-size: 1rem;
+    padding: 40px 2% ;
+    box-shadow: inset 1px 20px 20px 0px rgba(0, 0, 0, 0.1);
 }
 
 .footer-grid {
@@ -289,31 +634,33 @@ footer {
     gap: 60px;
 }
 
-footer h4 { color:orange; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
-footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
+footer h4 { color:#ff9800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
+footer p { color:rgb(12, 3, 3); margin-bottom: 10px; font-size: 0.85rem; }
 
-.footer-bottom {
-    text-align: center;
-    margin-top: 80px;
-    padding-top: 30px;
-    border-top: 1px solid #222;
-    font-size: 0.75rem;
-    color: #555;
+footer a{
+    color:black;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+footer a:hover {
+    color: #ff9800;
 }
 
 
 /* --- Responsive Layout --- */
 @media (max-width: 1024px) {
-    .team-grid { grid-template-columns: repeat(2, 1fr); }
     .values-grid { grid-template-columns: repeat(2, 1fr); }
-    .mv-container { flex-direction: column; }
 }
 
 @media (max-width: 600px) {
-    .team-grid, .values-grid, .footer-grid { grid-template-columns: 1fr; }
-    .about-hero { padding: 60px 0; }
+    .team-grid, .values-grid, .footer-grid, .mv-container { 
+        grid-template-columns: 1fr; 
+    }
+    .about-hero { padding: 40px 0; }
+    .section-title { font-size: 2rem; } /* Makes title fit better on mobile */
 }
-    </style>
+</style>
 </head> 
 <body>
     <nav class="navbar">
@@ -330,7 +677,7 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
             <a href="services.html">Services</a>
             <a href="projects.html">Projects</a>
             <a href="contact.html">Contact</a>
-            <a href="feedback.html">Feedback</a>
+            <a href="newsroom.html">Newsroom</a>
         </div>
     </nav>
 
@@ -350,7 +697,7 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
             <div class="mv-card mission">
                 <div class="mv-icon">🎯</div>
                 <h3>Our Mission</h3>
-                <p>To deconstruct the complexities of real estate through an integrated ecosystem of legal transparency, digital innovation, and architectural excellence.</p>
+                <p>To deconstruct the complexities of real estate through an integrated ecosystem of legal transparency, digital innovation, and architectural excellence. </p>
                 <span class="mv-caption">Empowering Every Square Foot with Absolute Certainty.</span>
             </div>
             <div class="mv-card vision">
@@ -361,7 +708,7 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
             </div>
             <div class="mv-card values">
                 <div class="mv-icon">💎</div>
-                <h3>Our Values</h3>
+                <h3>Core Values</h3>
                 <p>Integrity, Innovation, Humanity, Sustainability, Collaboration, Craftsmanship, Context, Resilience.</p>
                 <span class="mv-caption">The Pillars that Support Every Project We Undertake.</span>
                 </div>
@@ -373,39 +720,47 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
             <div class="team-grid">
                 <div class="member">
                     <div class="member-img">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-                        </svg>
+                        <img src="guru ai.jpg" alt="founder" width="100px" height="90px" style="border-radius: 50%;">
                     </div>
                     <h4>Gurunath shastry mathad</h4>
-                    <span>Founder</span>
+                    <span class="role">Founder</span>
+                    <p>We are a collective of legal experts, architects, and land advisors dedicated to redefining the Bengaluru real estate experience.</p>
                 </div>
                 <div class="member">
                     <div class="member-img">
                         <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg>
                     </div>
                     <h4>Rohith Revanna</h4>
-                    <span>Founder</span>
+                    <span class="role">Co-Founder</span>
+             
+                    <p>We are a collective of legal experts, architects, and land advisors dedicated to redefining the Bengaluru real estate experience.</p>
                 </div>
                 <div class="member">
                     <div class="member-img">
                         <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg>
                     </div>
                     <h4>Nagesh</h4>
-                    <span></span>
+                    <span class="role"></span>
+                  
+                    <p>We are a collective of legal experts, architects, and land advisors dedicated to redefining the Bengaluru real estate experience.</p>
                 </div>
                 <div class="member">
                     <div class="member-img">
                         <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg>
                     </div>
-                    <h4></h4>
-                    <span></span> 
+                    <h4>Gopal</h4>
+                    <span class="role"></span> 
+           
+                    <p>We are a collective of legal experts, architects, and land advisors dedicated to redefining the Bengaluru real estate experience.</p>
                 </div>
                 <div class="member">
                     <div class="member-img">
                         <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg>
                     </div>
-                    <h4></h4>
-                    <span></span>
+                    <h4>Dilip</h4>
+                    <span class="role"></span>
+           
+                      <p>We are a collective of legal experts, architects, and land advisors dedicated to redefining the Bengaluru real estate experience.</p>
                 </div>
             </div>
         </div>
@@ -448,24 +803,75 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
                 </div>    
             </div>
         </div>
-        
-        
-        
-        <div class="growth-section">
-            <h2 class="inner-title light-font">A Decade of Growth</h2>
+ 
+    
+
+<!-- FLOATING ENQUIRY SYSTEM -->
+<div class="floating-container">
+    
+    
+    <!-- The Form Popup -->
+    <div class="enquiry-form-card" id="enquiryForm">
+        <div id="form-content">
+            <h4>Enquire Now</h4>
+            <p>Fill in your details and our property experts will contact you shortly.</p>
+            
+            <form id="leadForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="e.g. Rahul Sharma" required id="userName">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" placeholder="e.g. +91 96117 58973" required id="userPhone">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="e.g. name@example.com" required id="userEmail">
+                </div>
+                <button type="submit" class="submit-btn">Send Enquiry</button>
+            </form>
+        </div>
+
+        <!-- Success View -->
+        <div id="success-msg">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            <h4 style="color: var(--success);">Thank You!</h4>
+            <p>Our team will reach out to you within 24 hours.</p>
+        </div>
+    </div>
+
+    <!-- Quick Links (Visible when form is closed) -->
+    <div class="element-container" id="quickLinks">
+        <a href="https://wa.me/+919611758973" target="_blank" class="float-element email">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592"/></svg>
+            <span>WhatsApp Us</span>
+        </a>
+    </div>
+
+    <!-- The Toggle Button -->
+    <div class="floating-button" id="fabBtn" onclick="toggleEnquiryForm()">
+        <span class="icon-text" id="fabText">Enquire Now</span>
+        <svg id="fabIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    </div>
+</div>
+
+
+<div class="growth-section">
+            <h2 class="inner-title light-font">A Year of Growth</h2>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="year">2026</div>
                     <div class="event">
                         <h4>Going Green</h4>
-                        <p>We received our first LEED Platinum certification for the 'Green Glass' commercial project in Manhattan.</p>
+                        <p>Continuing to redefine the Bengaluru skyline with precision-built properties and transparent advisory services.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="year">2025</div>
                     <div class="event">
                         <h4>The Foundation</h4>
-                        <p>Apti Architecture is founded in a small Brooklyn loft with a mission to simplify urban living.</p>
+                        <p>Apti Reality was founded with a vision to bring architectural precision and legal transparency to the Bengaluru real estate market.</p>
                     </div>
                 </div>
             </div>
@@ -473,39 +879,34 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
     </div>
 </section>
 
-<footer>
+
+ <footer>
     <div class="footer-grid">
         <div>
-            <div class="logo" style="color:dodgerblue;">Apti <span style="color:orange">Reality</span></div>
-            <p style="margin-top:10px; color:#aaa;">Leading integrated architectural and real estate services in India.</p>
-             <br/>
-             <h4>Services</h4>
-            <p>Buy and sell of Properties/sites/plots</p>
-            <p>Loan & Financial Services</p> 
-            <p>Legal Vetting</p> 
-            <p>Digital Marketing</p>
-            <p>Evaluation</option>
-            <p>Property Management</p>
-            <p>Customer Support</p>
-            <p>Construction Support</p>
+             <div class="logo" style="color:#1e90ff;">Apti <span style="color:orange">Reality</span></div>
+            <p style="margin-top:10px; ">Leading integrated architectural and real estate services in India.</p>
+            <p>&copy; 2026 Apti Reality. Built with Precision.</p>
         </div>
         <div>
-            <h4>Quick Links</h4>
-            <p>Site Evaluation</p>
-            <p>Legal Support</p>
-            <p>Construction</p>
+            <h4>Services</h4>
+            <p><a href="services1.html">Buy/Sell</a></p>
+            <p><a href="services2.html">Construction Support</a></p>
+            <p><a href="services3.html">Architecture</a></p>
+            <p><a href="services4.html">Loan & Financial Services</a></p> 
+            <p><a href="services5.html">Legal Vetting</a></p> 
+            <p><a href="services6.html">Property Management</a></p>
+            <p><a href="services7.html">Customer Support</a></p>
+            <p><a href="services8.html">Digital Marketing</a></p>
+            <p><a href="services9.html">Evaluation</a></p>
         </div>
         <div>
-            <h4>Connect</h4>
+            <h4>Contact</h4>
             <p>Phone: +91-9611758973</p>
             <h4>Email:</h4>
             <p>info@aptireality.in</p>
            <h4>Address:</h4>
-            <p>25/1-6, 9th Main Rd, Dasarahalli Main Road, Agrahara, Bengaluru, Karnataka 560079, India</p>
+             <p>25/1-6, 9th Main Rd, Dasarahalli Main Road, Agrahara,<br/> Bengaluru, Karnataka 560079, India</p>
         </div>
-    </div>
-    <div class="footer-bottom">
-        &copy; 2025 Apti Reality Real Estate Solutions. Built with Precision.
     </div>
 </footer>
 
@@ -525,7 +926,68 @@ menuBtn.addEventListener('click', () => {
         menuBtn.innerHTML = '☰';
     }
 });
+// This replaces your existing window.onscroll block
+window.onscroll = function() {
+    let btn = document.querySelector('.floating-container');
+    btn.style.display = "flex"; 
+};
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('.floating-container').style.display = "flex";
+});
+ const formCard = document.getElementById('enquiryForm');
+    const fabBtn = document.getElementById('fabBtn');
+    const fabText = document.getElementById('fabText');
+    const quickLinks = document.getElementById('quickLinks');
+    const formContent = document.getElementById('form-content');
+    const successMsg = document.getElementById('success-msg');
+
+    function toggleEnquiryForm() {
+        const isActive = formCard.classList.contains('active');
+        
+        if (isActive) {
+            // Closing
+            formCard.classList.remove('active');
+            fabBtn.classList.remove('active');
+            fabText.innerText = "Enquire Now";
+            quickLinks.style.display = 'flex';
+        } else {
+            // Opening
+            formCard.classList.add('active');
+            fabBtn.classList.add('active');
+            fabText.innerText = "Close";
+            quickLinks.style.display = 'none';
+        }
+    }
+
+    function handleFormSubmit(e) {
+        e.preventDefault();
+        
+        // Collect Data
+        const formData = {
+            name: document.getElementById('userName').value,
+            phone: document.getElementById('userPhone').value,
+            email: document.getElementById('userEmail').value
+        };
+
+        console.log("Lead Captured:", formData);
+
+        // UI Transition
+        formContent.style.display = 'none';
+        successMsg.style.display = 'block';
+
+        // Automatically close after 3 seconds
+        setTimeout(() => {
+            toggleEnquiryForm();
+            // Reset for next time
+            setTimeout(() => {
+                formContent.style.display = 'block';
+                successMsg.style.display = 'none';
+                document.getElementById('leadForm').reset();
+            }, 500);
+        }, 3000);
+    }
 </script>
 </body>
 </html>

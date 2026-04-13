@@ -1,0 +1,563 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="https://cdn.tailwindcss.com"></script>
+    <title>Newsroom - ServicesArtiect</title>
+    <style>
+         /* --- NAVIGATION --- */
+        .navbar {
+            background: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 5%;
+            padding-right: 5%;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color:dodgerblue;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            margin-left: 25px;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color:#1e90ff;
+            border-bottom: 2px solid  black;
+        }
+
+.menu-toggle {
+    display: none; /* Hide button on desktop */
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+}
+/* --- Mobile/Tablet Media Query (768px and below) --- */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Show the button */
+    }
+
+    .nav-links {
+        display: none; /* Hide the menu by default */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 90px;
+        left: 0;
+        background:white;
+        padding: 20px;
+        box-shadow:0 10px 10px rgba(0,0,0,0.1);
+    }
+
+    /* This class will be added via JavaScript when clicked */
+    .nav-links.active {
+        display: flex;
+        animation: fadeIn 0.3s ease-in;
+    }
+    .nav-links a {
+        margin: 10px 0; /* Space out links vertically on mobile */
+        width: 100%;
+    }
+
+    .navbar {
+        height: auto;
+    }
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .nav-links {
+    
+        flex-wrap: wrap;       
+        justify-content: center;
+        margin-top: 10px;
+    }
+}
+ .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;  
+            overflow: hidden;
+        }
+        .breaking-tag {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .7; }
+        }
+
+/* --- FLOATING ENQUIRY SYSTEM --- */
+        .floating-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+        }
+
+        /* Form Popup Card */
+        .enquiry-form-card {
+            width: 320px;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+            padding: 25px;
+            display: none; /* Hidden by default */
+            transform-origin: bottom right;
+            animation: popup 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes popup {
+            from { opacity: 0; transform: scale(0.8) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .enquiry-form-card.active { display: block; }
+
+        .enquiry-form-card h4 {
+            margin: 0 0 5px 0;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+        }
+
+        .enquiry-form-card p {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; color:dodgerblue; }
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            box-sizing: border-box;
+        }
+        .form-group input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.1); }
+
+       
+        .submit-btn {
+            width: 100%;
+            background:#1e90ff;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 900;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .submit-btn:hover { background: #1670cc; transform: translateY(-2px); }
+
+        /* The main FAB button */
+        .floating-button {
+            background: #1e90ff;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .floating-button:hover {
+            background: orange;
+            transform: scale(1.05);
+        }
+
+        .floating-button.active {
+            background:orange; /* Red to indicate "Close" */
+        }
+
+
+        .icon-text { font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
+
+        /* Quick contact elements */
+        .element-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-end;
+            margin-bottom: 10px;
+        }
+
+        .float-element {
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .float-element.email { background: #25D366; } /* WhatsApp Green */
+        .float-element:hover { transform: translateX(-5px); opacity: 0.9; }
+
+        /* Success Message Overlay */
+        #success-msg {
+            display: none;
+            text-align: center;
+            padding: 20px 0;
+        }
+        #success-msg svg { color: var(--success); margin-bottom: 10px; }
+
+
+
+/* --- Footer --- */
+footer {
+    background:white;
+    color:black;
+    font-weight: 600;
+     font-size: 1rem;
+    padding: 40px 2% ;
+    box-shadow: inset 1px 20px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 60px;
+}
+
+footer h4 { color:#ff9800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
+footer p { color:rgb(12, 3, 3); margin-bottom: 10px; font-size: 0.95rem; }
+
+footer a{
+    color:black;
+    text-decoration: none;
+    transition: 0.3s;
+}
+footer a:hover {
+    color: #ff9800;
+}
+
+
+
+@media (max-width: 600px) {
+     .footer-grid { grid-template-columns: 1fr; }
+}
+  </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+ <nav class="navbar">
+    <div class="logo-container">
+        <img src="aptilogo1.png" alt="apti reality" width="90px" height="90px" style="border-radius: 50%;">
+        <div class="logo">Apti <span style="color:orange">Reality</span></div>
+    </div>
+    
+    <button class="menu-toggle" aria-label="Open Menu">☰</button>
+    
+    <div class="nav-links">
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+        <a href="newsroom.html" class="active">Newsroom</a>
+    </div>
+</nav>
+<body class="bg-slate-50 text-slate-900 font-sans">
+
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200 py-6 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-black tracking-tighter text-indigo-700">APTI REAL ESTATE NEWS</h1>
+                <p id="today-date" class="text-xs font-bold text-slate-400 uppercase tracking-widest"></p>
+            </div>
+            <div class="flex gap-4">
+                <span class="hidden md:flex items-center gap-2 px-3 py-1 bg-red-50 text-red-600 rounded-full text-[10px] font-bold breaking-tag border border-red-100">
+                    <span class="w-1.5 h-1.5 bg-red-600 rounded-full"></span> LIVE MARKET UPDATES
+                </span>
+                <button onclick="window.location.reload()" class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-100">
+                    Refresh Feed
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-12">
+        <!-- Dashboard Header -->
+        <div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div class="border-l-4 border-indigo-600 pl-6">
+                <h2 class="text-4xl font-extrabold mb-2 text-slate-800 tracking-tight">Market Intelligence</h2>
+                <p class="text-slate-500 max-w-xl">April 2026: Consolidation in Tier-1 metros as luxury sales rely on portfolio wealth, while Bengaluru maintains tech-driven growth.</p>
+            </div>
+            <div class="flex gap-3 overflow-x-auto pb-2 md:pb-0">
+                <span class="whitespace-nowrap px-3 py-1 bg-white border border-slate-200 rounded-full text-xs font-semibold text-slate-600">#BengaluruGrowth</span>
+                <span class="whitespace-nowrap px-3 py-1 bg-white border border-slate-200 rounded-full text-xs font-semibold text-slate-600">#LuxuryHousing</span>
+                <span class="whitespace-nowrap px-3 py-1 bg-white border border-slate-200 rounded-full text-xs font-semibold text-slate-600">#MHADA2026</span>
+            </div>
+        </div>
+
+        <!-- News Container -->
+        <div id="news-container" class="news-grid">
+            <!-- News Card 1: Bengaluru Resilience -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 group flex flex-col">
+                <div class="relative h-48 bg-slate-200 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Bengaluru Skyline">
+                    <div class="absolute top-4 left-4 bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded">HOT MARKET</div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-[10px] font-bold text-indigo-600 uppercase tracking-widest bg-indigo-50 px-2 py-0.5 rounded">Knight Frank Report</span>
+                        <span class="text-[10px] text-slate-400">April 13, 2026</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3 leading-snug group-hover:text-indigo-600 transition-colors">Bengaluru Defies National Slowdown with 5% Q1 Sales Growth</h3>
+                    <p class="text-slate-500 text-sm mb-6 line-clamp-3">While India's top cities saw a 4% dip in Q1 2026, Bengaluru's robust tech ecosystem and Global Capability Centres (GCCs) have kept absorption rates positive, specifically in the ₹1-2 Cr segment.</p>
+                    <div class="mt-auto border-t border-slate-50 pt-4">
+                        <span class="text-xs font-bold text-slate-900">Key Takeaway:</span>
+                        <p class="text-xs text-slate-500 italic mt-1">North corridor land prices see 15% annual appreciation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- News Card 2: Luxury Sentiment -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 group flex flex-col">
+                <div class="relative h-48 bg-slate-200 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Luxury Home">
+                </div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-[10px] font-bold text-amber-600 uppercase tracking-widest bg-amber-50 px-2 py-0.5 rounded">Market Sentiment</span>
+                        <span class="text-[10px] text-slate-400">April 13, 2026</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3 leading-snug group-hover:text-indigo-600 transition-colors">25-30% of Luxury Sales At Risk Due to Equity Volatility</h3>
+                    <p class="text-slate-500 text-sm mb-6 line-clamp-3">HDFC Securities reports that luxury buyers reliant on stock market gains are deferring purchases following a 12-15% correction in front-line indices. Deal cycles are elongating in NCR and MMR.</p>
+                    <div class="mt-auto border-t border-slate-50 pt-4">
+                        <span class="text-xs font-bold text-slate-900">Focus:</span>
+                        <p class="text-xs text-slate-500 italic mt-1">Portfolio wealth shifts impacting the high-ticket residential segment.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- News Card 3: MHADA Lottery -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 group flex flex-col">
+                <div class="relative h-48 bg-slate-200 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Construction Mumbai">
+                </div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-[10px] font-bold text-green-600 uppercase tracking-widest bg-green-50 px-2 py-0.5 rounded">Housing Authority</span>
+                        <span class="text-[10px] text-slate-400">April 13, 2026</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3 leading-snug group-hover:text-indigo-600 transition-colors">MHADA Lottery 2026: 16,400 Applications Received for Mumbai Homes</h3>
+                    <p class="text-slate-500 text-sm mb-6 line-clamp-3">The Mumbai housing authority has seen massive traction for its 2,640 affordable units. Prices range from ₹29 Lakh in Mankhurd to a record ₹6.82 Cr for a Tardeo luxury apartment.</p>
+                    <div class="mt-auto border-t border-slate-50 pt-4">
+                        <span class="text-xs font-bold text-slate-900">Deadline:</span>
+                        <p class="text-xs text-slate-500 italic mt-1">Application window closes April 29; Results on May 15, 2026.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- News Card 4: Adani Airport Cities -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 group flex flex-col">
+                <div class="relative h-48 bg-slate-200 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1436491865332-7a61a109c0f2?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Airport Infrastructure">
+                </div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-[10px] font-bold text-purple-600 uppercase tracking-widest bg-purple-50 px-2 py-0.5 rounded">Infrastructure</span>
+                        <span class="text-[10px] text-slate-400">April 11, 2026</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3 leading-snug group-hover:text-indigo-600 transition-colors">Adani Incorporates 4 "Airport City" Subsidiaries for Real Estate</h3>
+                    <p class="text-slate-500 text-sm mb-6 line-clamp-3">Strategic expansion for Jaipur, Lucknow, Mangaluru, and Thiruvananthapuram airports aimed at developing integrated hospitality, commercial, and mixed-use urban ecosystems.</p>
+                    <div class="mt-auto border-t border-slate-50 pt-4">
+                        <span class="text-xs font-bold text-slate-900">Vision:</span>
+                        <p class="text-xs text-slate-500 italic mt-1">Monetizing land banks surrounding major Indian transportation hubs.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- News Card 5: Second Homes -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 group flex flex-col">
+                <div class="relative h-48 bg-slate-200 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Vacation Home">
+                </div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-[10px] font-bold text-sky-600 uppercase tracking-widest bg-sky-50 px-2 py-0.5 rounded">Investment Trends</span>
+                        <span class="text-[10px] text-slate-400">April 13, 2026</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3 leading-snug group-hover:text-indigo-600 transition-colors">Second Homes Pivot to "Hybrid Yield" Assets with 12% Returns</h3>
+                    <p class="text-slate-500 text-sm mb-6 line-clamp-3">Managed villa communities in Goa and Alibaug are transforming from holiday retreats into income generators, with some luxury villas achieving double-digit gross rental yields.</p>
+                    <div class="mt-auto border-t border-slate-50 pt-4">
+                        <span class="text-xs font-bold text-slate-900">Yield Watch:</span>
+                        <p class="text-xs text-slate-500 italic mt-1">Professionally managed properties outperforming traditional rentals.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- News Card 6: Tech & Wellness -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 group flex flex-col">
+                <div class="relative h-48 bg-slate-200 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2923216?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Smart Building">
+                </div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-[10px] font-bold text-teal-600 uppercase tracking-widest bg-teal-50 px-2 py-0.5 rounded">PropTech</span>
+                        <span class="text-[10px] text-slate-400">April 9, 2026</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3 leading-snug group-hover:text-indigo-600 transition-colors">AI-Based Air Purification Debuts in Mumbai Large-Scale Realty</h3>
+                    <p class="text-slate-500 text-sm mb-6 line-clamp-3">Superb Realty partners with deep-tech firm Praan to deploy intelligent indoor air infrastructure across 1M sq ft, signaling a shift toward quantifiable health metrics in luxury design.</p>
+                    <div class="mt-auto border-t border-slate-50 pt-4">
+                        <span class="text-xs font-bold text-slate-900">Innovation:</span>
+                        <p class="text-xs text-slate-500 italic mt-1">Real-time sensing and adaptive purification as a new asset value driver.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FLOATING ENQUIRY SYSTEM -->
+<div class="floating-container">
+    
+    <!-- The Form Popup -->
+    <div class="enquiry-form-card" id="enquiryForm">
+        <div id="form-content">
+            <h4>Enquire Now</h4>
+            <p>Fill in your details and our property experts will contact you shortly.</p>
+            
+            <form id="leadForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="e.g. Rahul Sharma" required id="userName">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" placeholder="e.g. +91 96117 58973" required id="userPhone">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="e.g. name@example.com" required id="userEmail">
+                </div>
+                <button type="submit" class="submit-btn">Send Enquiry</button>
+            </form>
+        </div>
+
+        <!-- Success View -->
+        <div id="success-msg">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            <h4 style="color: var(--success);">Thank You!</h4>
+            <p>Our team will reach out to you within 24 hours.</p>
+        </div>
+    </div>
+
+    <!-- Quick Links (Visible when form is closed) -->
+    <div class="element-container" id="quickLinks">
+        <a href="https://wa.me/+919611758973" target="_blank" class="float-element email">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592"/></svg>
+            <span>WhatsApp Us</span>
+        </a>
+    </div>
+
+    <!-- The Toggle Button -->
+    <div class="floating-button" id="fabBtn" onclick="toggleEnquiryForm()">
+        <span class="icon-text" id="fabText">Enquire Now</span>
+        <svg id="fabIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    </div>
+</div>
+
+
+
+
+
+    </main>
+<footer>
+    <div class="footer-grid">
+        <div>
+            <div class="logo" style="color:#1e90ff;">Apti <span style="color:orange">Reality</span></div>
+            <p style="margin-top:10px; ">Leading integrated architectural and real estate services in India.</p>
+            <p>&copy; 2026 Apti Reality. Built with Precision.</p>
+        </div>
+        <div>
+            <h4>Services</h4>
+            <p><a href="services1.html">Buy/Sell</a></p>
+            <p><a href="services2.html">Construction Support</a></p>
+            <p><a href="services3.html">Architecture</a></p>
+            <p><a href="services4.html">Loan & Financial Services</a></p> 
+            <p><a href="services5.html">Legal Vetting</a></p> 
+            <p><a href="services6.html">Property Management</a></p>
+            <p><a href="services7.html">Customer Support</a></p>
+            <p><a href="services8.html">Digital Marketing</a></p>
+            <p><a href="services9.html">Evaluation</a></p>
+        </div>
+        <div>
+            <h4>Contact</h4>
+            <p>Phone: +91-9611758973</p>
+            <h4>Email:</h4>
+            <p>info@aptireality.in</p>
+           <h4>Address:</h4>
+             <p>25/1-6, 9th Main Rd, Dasarahalli Main Road, Agrahara,<br/> Bengaluru, Karnataka 560079, India</p>
+        </div>
+    </div>
+</footer>
+ <script>
+    const menuBtn = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuBtn.addEventListener('click', () => {
+    // Toggles the visibility
+    navLinks.classList.toggle('active');
+    
+    // Optional: Change icon from ☰ to ✕
+    if (navLinks.classList.contains('active')) {
+        menuBtn.innerHTML = '✕';
+    } else {
+        menuBtn.innerHTML = '☰';
+    }});
+    // Set Today's Date
+        document.getElementById('today-date').innerText = new Date().toLocaleDateString('en-US', {
+            weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+        });
+    </script>
+</body>
+</html>

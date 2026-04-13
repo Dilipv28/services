@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apti Realty | Financial & Loan Services</title>
+    <title>Apti Realty | Evaluation & Site Audits</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #1E90FF;      /* DodgerBlue */
-            --accent: #FFA500;       /* Orange */
-            --success: #008000;      /* Green */
+            --accent: #FF8C00;       /* Action Orange */
+            --success: #32CD32;      /* Growth Green */
             --black: #000000;
             --white: #ffffff;
-            --gray: #f4f4f4;         /* Unified gray variable */
+            --gray: #f4f4f4;         /* Unified brand shadow gray */
             --transition: all 0.3s ease;
         }
 
@@ -123,13 +123,13 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
-        /* --- HEADER (Synced with Brand Style) --- */
+        /* --- HEADER (Brand Synced) --- */
         header {
             background:var(--white);
             color: var(--black);
             padding: 40px 5%;
             text-align: center;
-            border-bottom: 12px solid var(--primary); /* Blue border for brand consistency */
+            border-bottom: 12px solid var(--primary);
         }
 
         header h1 {
@@ -141,10 +141,10 @@
         }
 
         header p {
-            color: var(--accent);
+            color: var(--primary);
             text-transform: uppercase;
             letter-spacing: 5px;
-            font-size: 1rem;
+            font-size: rem;
             margin-top: 15px;
         }
 
@@ -155,79 +155,100 @@
             padding: 80px 5%;
         }
 
-        .finance-grid {
+        .main-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 40px;
         }
 
         .full-width { grid-column: 1 / -1; }
 
-        /* --- CARD STYLING (The Signature Look) --- */
+        /* --- CARD SYSTEM (The Signature Look) --- */
         .card {
-            padding: 50px;
+            padding: 40px;
             border: 1px solid var(--black);
             background: var(--white);
             position: relative;
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
         }
 
         .card:hover {
             border-color: var(--primary);
-            box-shadow: 15px 15px 0px var(--gray); /* Unified offset shadow */
+            box-shadow: 15px 15px 0px var(--gray);
             transform: translate(-5px, -5px);
         }
 
-        .label {
-            display: block;
+        .audit-tag {
+            display: inline-block;
+            color: var(--primary);
             font-weight: 900;
-            color: var(--primary); /* Changed to primary for consistency */
             text-transform: uppercase;
             font-size: 0.75rem;
             letter-spacing: 2px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--black);
+            padding-left: 12px;
         }
 
-        .card h2, .card h3 {
-            font-size: 2.2rem;
+        h2, h3 {
             text-transform: uppercase;
             margin-bottom: 25px;
             line-height: 1.1;
         }
 
+        h2 { font-size: 3rem; }
+        h3 { 
+            font-size: 1.4rem; 
+            color: var(--primary); 
+            min-height: 3.5rem;
+        }
+
         .accent-text { color: var(--primary); font-weight: 600; }
 
-        /* --- BANKING ECOSYSTEM (Styled as Highlight Box) --- */
-        .bank-strip {
+        /* --- METRIC BOXES --- */
+        .metric-box {
             background:whitesmoke;
             color:black;
+            padding: 25px;
+            margin-top: auto; /* Pushes box to bottom of card */
+            border-left: 5px solid var(--success);
+        }
+
+        .metric-box strong {
+            display: block;
+            color: var(--success);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .metric-box ul {
+            list-style: none;
+            font-size: 0.85rem;
+        }
+
+        .metric-box li {
+            padding: 6px 0;
+            border-bottom: 1px solid #333;
+            opacity: 0.8;
+        }
+
+        /* Middle card variations */
+        .main-grid section:nth-child(3) .metric-box { border-left-color: var(--accent); }
+        .main-grid section:nth-child(3) .metric-box strong { color: var(--accent); }
+
+        /* --- HIGHLIGHT BOX --- */
+        .highlight-box {
+            background: var(--gray);
             padding: 60px;
-            text-align: center;
             margin-top: 40px;
         }
 
-        .bank-strip h4 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 900;
-            letter-spacing: -1px;
-            line-height: 1;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .bank-features {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            text-transform: uppercase;
-            font-weight: 700;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            color: var(--accent);
-        }
-
         /* --- FOOTER --- */
-/* --- Footer --- */
+      /* --- Footer --- */
 footer {
     background:white;
     color:black;
@@ -258,15 +279,11 @@ footer a:hover {
 @media (max-width: 600px) {
  .footer-grid { grid-template-columns: 1fr; }
 }
-
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 850px) {
-            .finance-grid { grid-template-columns: 1fr; }
+        @media (max-width: 1000px) {
+            .main-grid { grid-template-columns: 1fr; }
             header h1 { font-size: 2.8rem; }
             .card { padding: 30px; }
-            .bank-strip { padding: 40px 20px; }
-            .bank-features { flex-direction: column; gap: 10px; }
+            h3 { min-height: auto; }
         }
     </style>
 </head>
@@ -281,52 +298,83 @@ footer a:hover {
             <a href="home.html" >Home</a>
             <a href="about.html" >About</a>
             <a href="services.html" class="active">Services</a>
+            <select id="service-dropdown" style="display:none;">
+                <option value="services1.html">Sell/Sale</option>
+                <option value="services2.html">Construction Support</option>
+                <option value="services3.html">Architecture</option>
+                <option value="services4.html">Loan & Financial Services</option>
+                <option value="services5.html">Legal Vetting</option>
+                <option value="services6.html">Property Management</option>
+                <option value="services7.html">Customer Support</option>
+                <option value="services8.html">Digital Marketing</option>
+                <option value="services9.html" selected>Evaluation</option>
+            </select>
             <a href="projects.html">Projects</a>
             <a href="contact.html">Contact</a>
             <a href="newsroom.html">Newsroom</a>
         </div>
     </nav>
     <header>
-        <h1>Loan & Financial Services</h1>
-        <p>Apti Realty Services</p>
+        <h1>Evaluation</h1>
+        <p>Scientific Analysis & Due Diligence</p>
     </header>
 
     <div class="container">
-        <div class="finance-grid">
+        <div class="main-grid">
             
             <section class="card full-width">
-                <span class="label">Integrated Network</span>
-                <h2>Accelerated <span class="accent-text">Processing.</span></h2>
-                <p style="font-size: 1.2rem; margin-bottom: 30px;">
-                    We eliminate the friction of traditional lending. By integrating with <strong> premier banking institutions</strong>, we ensure your capital is ready the moment your property is.
-                </p>
+                <span class="audit-tag">Due Diligence</span>
+                <h2>Beyond the <span class="accent-text">Surface.</span></h2>
+                <p style="font-size: 1.2rem; max-width: 850px;">At <strong>Apti Realty</strong>, we don't just look at a plot; we analyze its potential. Our comprehensive process ensures every site is viable for your specific needs—from high-rise construction to long-term investment holding.</p>
             </section>
 
             <section class="card">
-                <span class="label">Diagnostic</span>
-                <h3>Instant<br>Eligibility</h3>
-                <p>Advanced diagnostic tools to provide immediate assessment of borrowing capacity based on current market volatility and personal asset profiles.</p>
+                <h3>Physical Site Visits</h3>
+                <p>On-ground inspections to verify boundaries, topography, and structural feasibility.</p>
+                <div class="metric-box">
+                    <strong>Key Checks:</strong>
+                    <ul>
+                        <li>Soil Health & Stability</li>
+                        <li>Groundwater Depth</li>
+                        <li>Existing Structures</li>
+                    </ul>
+                </div>
             </section>
 
             <section class="card">
-                <span class="label">Optimization</span>
-                <h3>Low-Rate<br>Refinancing</h3>
-                <p>Strategic interest-rate pivoting. We help you transition existing debt into lower-interest vehicles to maximize long-term savings.</p>
+                <h3>Market Value Analysis</h3>
+                <p>Data-driven valuations based on current demand, historical trends, and liquidity.</p>
+                <div class="metric-box">
+                    <strong>Growth Factors:</strong>
+                    <ul>
+                        <li>Historical Price Trends</li>
+                        <li>Urban Proximity Index</li>
+                        <li>Upcoming Infra Projects</li>
+                    </ul>
+                </div>
             </section>
+
+            <section class="card">
+                <h3>Zone Verification</h3>
+                <p>Alignment checks with government master plans and future urban regulations.</p>
+                <div class="metric-box">
+                    <strong>Legal Verification:</strong>
+                    <ul>
+                        <li>Land Use Classification</li>
+                        <li>FSI/FAR Calculations</li>
+                        <li>Buffer Zone Checks</li>
+                    </ul>
+                </div>
+            </section>
+
+            <div class="full-width highlight-box">
+                <h2 style="font-size: 2rem; margin-bottom: 15px;">Urban Growth & Connectivity Audit</h2>
+                <p style="max-width: 900px; opacity: 0.8;">Location is non-negotiable. Our audits include a <strong> Proximity Report</strong>, detailing access to highways, transit hubs, and healthcare. We calculate the "Urban Shift" to predict how soon the city's expansion will reach your site, maximizing your future ROI.</p>
+            </div>
 
         </div>
-
-        <section class="bank-strip">
-            <span class="label" style="color: var(--accent);">Verified Partners</span>
-            <h4> PAN-INDIA BANKS</h4>
-            <div class="bank-features">
-                <span>&bull; Lowest ROI</span>
-                <span>&bull; Zero Processing Fee*</span>
-                <span>&bull; Flexible Tenure</span>
-            </div>
-        </section>
     </div>
-    
+
  <footer>
     <div class="footer-grid">
         <div>

@@ -3,133 +3,334 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apti Realty | Evaluation & Site Audits</title>
+    <title>Apti Reality | Legal Vetting & Property Registration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #1E90FF;      /* DodgerBlue */
+            --accent: #FFA500;       /* Orange */
+            --success: #008000;      /* Green */
+            --black: #000000;
+            --white: #ffffff;
+            --gray: #f4f4f4;
+            --transition: all 0.3s ease;
+        }
+
+        /* FIX: Global font application for consistency */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Outfit', sans-serif;
+        }
+
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            line-height: 1.6;
-            color: #34495e;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fcfcf9;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
+
+        /* --- NAVIGATION --- */
+        .navbar {
+            background: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 600;
+            margin-left: 25px;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+            border-bottom: 2px solid var(--black);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: var(--black);
+            cursor: pointer;
+        }
+
+        /* --- HEADER --- */
         header {
+            background: var(--white);
+            padding: 60px 5%;
             text-align: center;
-            padding: 50px 20px;
-            background: #4a5d4e; /* Earthy Slate Green */
-            color: white;
-            border-radius: 12px;
-            margin-bottom: 30px;
-        }
-        .container {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 20px;
-        }
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-bottom: 3px solid #a3b18a;
-        }
-        .full-width { grid-column: 1 / -1; }
-        
-        h1, h2, h3 { color: #2d3a30; }
-        header h1 { color: #ffffff; }
-        
-        .audit-tag {
-            background: #e9ecef;
-            color: #4a5d4e;
-            padding: 3px 10px;
-            font-size: 0.8em;
-            font-weight: bold;
-            border-radius: 4px;
-            display: inline-block;
-            margin-bottom: 10px;
+            border-bottom: 12px solid var(--primary);
         }
 
-        .metric-box {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 15px;
+        header h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            line-height: 1;
+        }
+
+        header p {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 1rem;
             margin-top: 15px;
-            font-size: 0.9em;
         }
 
-        .metric-box strong { color: #6b705c; }
+        /* --- GRID & CARDS --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 5%;
+        }
 
+        .main-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .full-width { grid-column: 1 / -1; }
+
+        .card {
+            padding: 50px;
+            border: 1px solid var(--black);
+            background: var(--white);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            box-shadow: 15px 15px 0px var(--gray);
+            transform: translate(-5px, -5px);
+        }
+
+        .legal-tag {
+            display: inline-block;
+            color: var(--primary);
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent);
+            padding-left: 12px;
+        }
+
+        h2, h3 {
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            line-height: 1.1;
+        }
+
+        .accent-text { color: var(--primary); font-weight: 600; }
+
+        /* --- CHECKLIST --- */
+        .check-list {
+            list-style: none;
+            margin-top: 25px;
+        }
+
+        .check-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--gray);
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .check-list li::before {
+            content: "";
+            width: 12px;
+            height: 12px;
+            background: var(--success);
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        /* --- HIGHLIGHT BOX --- */
+        .highlight-box {
+            background:whitesmoke;
+            color:black;
+            padding: 60px;
+            margin-top: 40px;
+        }
+
+        .highlight-box h3 { color: var(--accent); }
+
+        /* --- FOOTER --- */
         footer {
-            text-align: center;
-            margin-top: 50px;
-            color: #999;
-            font-size: 0.85em;
+            background: var(--white);
+            color: var(--black);
+            font-weight: 600;
+            padding: 60px 5%;
+            box-shadow: inset 0px 20px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.5fr;
+            gap: 60px;
+        }
+
+        footer h4 { color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
+        footer p { font-size: 0.85rem; margin-bottom: 10px; }
+        footer a{color:black;text-decoration: none;transition: 0.3s;}
+        footer a:hover { color: var(--accent); }
+        @media (max-width: 600px) {
+             .footer-grid { grid-template-columns: 1fr; }
+}
+
+        /* --- MOBILE --- */
+        @media (max-width: 850px) {
+            .main-grid { grid-template-columns: 1fr; }
+            .menu-toggle { display: block; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                background: var(--white);
+                padding: 20px;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { margin: 10px 0; width: 100%; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
         }
     </style>
 </head>
 <body>
 
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="aptilogo1.png" alt="Apti Reality" width="70" height="70" style="border-radius: 50%;">
+            <div class="logo">Apti <span style="color:orange">Reality</span></div>
+        </div>
+        <button class="menu-toggle">☰</button>
+        <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html" class="active">Services</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
+            <a href="newsroom.html">Newsroom</a>
+        </div>
+    </nav>
+
     <header>
-        <h1>Property Evaluation & Audits</h1>
-        <p>Scientific Analysis for Informed Real Estate Decisions</p>
+        <h1>Legal Vetting</h1>
+        <p>Apti Realty Services</p>
     </header>
 
     <div class="container">
-        <section class="card full-width">
-            <div class="audit-tag">Due Diligence</div>
-            <h2>Beyond the Surface</h2>
-            <p>At <strong>Apti Realty</strong>, we don't just look at a plot; we analyze its potential. Our comprehensive evaluation process ensures that every site is viable for your specific needs—whether it's for high-rise construction, agricultural use, or long-term investment holding.</p>
-        </section>
+        <div class="main-grid">
+            
+            <section class="card full-width">
+                <span class="legal-tag">Protection & Compliance</span>
+                <h2>Secure Your <span class="accent-text">Investment.</span></h2>
+                <p style="font-size: 1.2rem; max-width: 850px;">A property is only as good as its paperwork. Our vetting team ensures every transaction is shielded from future disputes through rigorous audits and professional registration assistance.</p>
+            </section>
 
-        <section class="card">
-            <h3>Physical Site Visits</h3>
-            <p>Our experts conduct on-ground inspections to verify boundaries and topography.</p>
-            <div class="metric-box">
-                <strong>Key Checks:</strong>
-                <ul>
-                    <li>Soil Health & Stability</li>
-                    <li>Groundwater Depth</li>
-                    <li>Existing Structures</li>
+            <section class="card">
+                <h3>EC Review</h3>
+                <p>Deep-dive analysis of the Encumbrance Certificate to ensure freedom from legal liabilities or unpaid mortgages.</p>
+                <ul class="check-list">
+                    <li>Lien and Charge Detection</li>
+                    <li>Owner Chain Validation</li>
                 </ul>
-            </div>
-        </section>
+            </section>
 
-        <section class="card">
-            <h3>Market Value Analysis</h3>
-            <p>We provide a realistic valuation based on current demand and future trends.</p>
-            <div class="metric-box">
-                <strong>Factors:</strong>
-                <ul>
-                    <li>Historical Price Trends</li>
-                    <li>Urban Proximity Index</li>
-                    <li>Upcoming Infra Projects</li>
+            <section class="card">
+                <h3>Sale Deed</h3>
+                <p>Customized legal drafting that protects your interests, ensuring terms and payment schedules are airtight.</p>
+                <ul class="check-list">
+                    <li>Customized Legal Clauses</li>
+                    <li>Property Schedule Precision</li>
                 </ul>
-            </div>
-        </section>
+            </section>
 
-        <section class="card">
-            <h3>Zone Verification</h3>
-            <p>Ensuring your property aligns with government master plans and regulations.</p>
-            <div class="metric-box">
-                <strong>Verification:</strong>
-                <ul>
-                    <li>Land Use Classification</li>
-                    <li>FSI/FAR Calculations</li>
-                    <li>Buffer Zone Checks</li>
-                </ul>
+            <div class="full-width highlight-box">
+                <h3>Hassle-Free Registration</h3>
+                <p style="max-width: 800px; font-size: 1.1rem; opacity: 0.9;">
+                    We provide end-to-end support at the Sub-Registrar's office, from appointment scheduling to the final execution of documents, ensuring <span style="color: var(--primary);">smooth title transfers</span>.
+                </p>
             </div>
-        </section>
-
-        <section class="card full-width">
-            <h2>Urban Growth & Connectivity Audit</h2>
-            <p>Location is non-negotiable. Our audits include a <strong>10km Radius Proximity Report</strong>, detailing access to major highways, public transit hubs, educational institutions, and healthcare facilities. We calculate the "Urban Shift" to predict how soon the city's expansion will reach your site, maximizing your future ROI.</p>
-        </section>
+        </div>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Apti Realty Audit Division. Precision in every acre.</p>
-    </footer>
+ <footer>
+    <div class="footer-grid">
+        <div>
+            <div class="logo" style="color:dodgerblue;">Apti <span style="color:orange">Reality</span></div>
+            <p style="margin-top:10px; ">Leading integrated architectural and real estate services in India.</p>
+             <p>&copy; 2026 Apti Reality. Built with Precision.</p>
+        </div>
+        <div>
+            <h4>Services</h4>
+           <p><a href="services1.html">Buy/Sell</a></p>
+            <p><a href="services2.html">Construction Support</a></p>
+            <p><a href="services3.html">Architecture</a></p>
+            <p><a href="services4.html">Loan & Financial Services</a></p> 
+            <p><a href="services5.html">Legal Vetting</a></p> 
+            <p><a href="services6.html">Property Management</a></p>
+            <p><a href="services7.html">Customer Support</a></p>
+            <p><a href="services8.html">Digital Marketing</a></p>
+            <p><a href="services9.html">Evaluation</a></p>
+        </div>
+        <div>
+            <h4>Contact</h4>
+            <p>Phone: +91-9611758973</p>
+            <h4>Email:</h4>
+            <p>info@aptireality.in</p>
+           <h4>Address:</h4>
+            <p>25/1-6, 9th Main Rd, Dasarahalli Main Road, Agrahara,<br/> Bengaluru, Karnataka 560079, India</p>
+        </div>
+    </div>
+</footer>
 
+    <script>
+        const menuBtn = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuBtn.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+    </script>
 </body>
 </html>

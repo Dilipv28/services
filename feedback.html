@@ -354,8 +354,8 @@ input:focus, textarea:focus {
 
 /* --- Footer --- */
 footer {
-    background: #0a0a0a;
-    color: white;
+    background:black;
+    color:white;
     padding: 100px 8% 40px;
 }
 
@@ -365,8 +365,8 @@ footer {
     gap: 60px;
 }
 
-footer h4 { color:orange; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
-footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
+footer h4 { color:#ff9800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
+footer p { color:white; margin-bottom: 10px; font-size: 0.85rem; }
 
 .footer-bottom {
     text-align: center;
@@ -374,8 +374,20 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
     padding-top: 30px;
     border-top: 1px solid #222;
     font-size: 0.75rem;
-    color: #555;
+    color:white;
 }
+footer a{
+    color:dodgerblue;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+footer a:hover {
+    color: #ff9800;
+}
+
+
+
 /* --- Responsive Layout --- */
 @media (max-width: 1024px) {
     .team-grid { grid-template-columns: repeat(2, 1fr); }
@@ -427,7 +439,7 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
             <a href="services.html">Services</a>
             <a href="projects.html">Projects</a>
             <a href="contact.html">Contact</a>
-            <a href="feedback.html" class="active">Feedback</a>
+            <a href="newsroom.html">Newsroom</a>
         </div>
     </nav>
 
@@ -566,13 +578,13 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
         </div>
     </section>
 
-<footer>
+ <footer>
     <div class="footer-grid">
         <div>
             <div class="logo" style="color:dodgerblue;">Apti <span style="color:orange">Reality</span></div>
-            <p style="margin-top:10px; color:#aaa;">Leading integrated architectural and real estate services in India.</p>
+            <p style="margin-top:10px; ">Leading integrated architectural and real estate services in India.</p>
              <br/>
-             <h4>Services</h4>
+            <h4>Services</h4>
             <p>Buy and sell of Properties/sites/plots</p>
             <p>Loan & Financial Services</p> 
             <p>Legal Vetting</p> 
@@ -584,9 +596,10 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
         </div>
         <div>
             <h4>Quick Links</h4>
-            <p>Site Evaluation</p>
-            <p>Legal Support</p>
-            <p>Construction</p>
+            <p><a href="services3.html">Legal Support</a></p>
+            <p><a  href="services5.html">Site Evaluation</a></p>
+            <p><a href="services8.html">Construction</a></p>
+            <p><a href="feedback.html">Feedback</a></p>
         </div>
         <div>
             <h4>Connect</h4>
@@ -601,7 +614,6 @@ footer p { color: #999; margin-bottom: 10px; font-size: 0.85rem; }
         &copy; 2025 Apti Reality Real Estate Solutions. Built with Precision.
     </div>
 </footer>
-     
     <script>
        // 1. Handle Independent Rating Selection
 document.querySelectorAll('.rating-options').forEach(group => {
