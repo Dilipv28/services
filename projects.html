@@ -15,6 +15,11 @@
             --text-muted: #666666;
             --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
         
         body{
             font-family: sans-serif;
@@ -624,7 +629,7 @@ footer {
     gap: 60px;
 }
 
-footer h4 { color:#ff9800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
+footer h4 { color:#ff9800; text-transform: uppercase; letter-spacing: 2px;margin-bottom: 6px;  }
 footer p { color:rgb(12, 3, 3); margin-bottom: 10px; font-size: 0.85rem; }
 
 footer a{
@@ -636,6 +641,7 @@ footer a{
 footer a:hover {
     color: #ff9800;
 }
+
 
 /* --- Responsive Layout --- */
 @media (max-width: 1024px) {
@@ -770,21 +776,20 @@ footer a:hover {
         </div>
         <div class="project-card">
             <div class="project-image">
-                <img src="" alt="">  
+                <img src="img6.jpg" alt="SLV Sunshine ">  
                 <div class="project-overlay">
                     <div class="project-details">
                         <span class="project-cat">Residential</span>
-                        <h3></h3>
-                        <p></p>
-                        <p></p>
+                        <h3>SLV Sunshine</h3>
+                        <p>SLV Sunshine Jakkuru by SLV Sunshine Estates Pvt Ltd is a Apartment in Jakkuru, Bangalore.</p>
                         <ul class="project-meta">
-                            <li><strong>Location:</strong></li>
-                            <li><strong>Area:</strong></li>
-                            <li><strong>Status:</strong></li>
-                              <li></li>
-                              <li></li>
+                            <li><strong>Location:</strong> Jakkuru, Bangalore</li>
+                            <li><strong>Area:</strong> ₹10,999 Per Sq. Ft</li>
+                            <li><strong>Status:</strong> 100% Clear Title</li>
+                              <li>Lowest Price Guaranteed</li>
+                              <li>Full Service Support</li>
                         </ul>
-                        <a href="" class="view-project">View Details →</a>
+                        <a href="pro5.html" class="view-project">View Details →</a>
                     </div>
                 </div>
             </div>
@@ -865,13 +870,13 @@ footer a:hover {
  <footer>
     <div class="footer-grid">
         <div>
-            <div class="logo" style="color:#1e90ff;">Apti <span style="color:orange">Reality</span></div>
+            <div class="logo" style="color:dodgerblue;">Apti <span style="color:orange">Reality</span></div>
             <p style="margin-top:10px; ">Leading integrated architectural and real estate services in India.</p>
-            <p>&copy; 2026 Apti Reality. Built with Precision.</p>
+             <p>&copy; 2026 Apti Reality. Built with Precision.</p>
         </div>
         <div>
             <h4>Services</h4>
-            <p><a href="services1.html">Buy/Sell</a></p>
+           <p><a href="services1.html">Buy/Sell</a></p>
             <p><a href="services2.html">Construction Support</a></p>
             <p><a href="services3.html">Architecture</a></p>
             <p><a href="services4.html">Loan & Financial Services</a></p> 
@@ -882,17 +887,20 @@ footer a:hover {
             <p><a href="services9.html">Evaluation</a></p>
         </div>
         <div>
-            <h4>Contact</h4>
+            <h4>Contact:</h4>
             <p>Phone: +91-9611758973</p>
+            <p>Phone:+91-80-23150050</p>
             <h4>Email:</h4>
             <p>info@aptireality.in</p>
            <h4>Address:</h4>
-             <p>25/1-6, 9th Main Rd, Dasarahalli Main Road, Agrahara,<br/> Bengaluru, Karnataka 560079, India</p>
+            <p>25/1-6, 9th Main Rd, Dasarahalli Main Road, Agrahara,<br/> Bengaluru, Karnataka 560079, India</p>
         </div>
     </div>
 </footer>
 
+
 <script>
+    //1.menus shuffle//
 document.addEventListener('DOMContentLoaded', function() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
@@ -920,7 +928,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
+//2.toggle menu//
 const menuBtn = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 
@@ -933,15 +941,13 @@ menuBtn.addEventListener('click', () => {
         menuBtn.innerHTML = '☰';
     }
 });
-// This replaces your existing window.onscroll block
+
+//3.floating button//
 window.onscroll = function() {
     let btn = document.querySelector('.floating-container');
-    // We remove the "if (pageYOffset > 300)" condition 
-    // so it is ALWAYS flex/visible.
     btn.style.display = "flex"; 
 };
 
-// Call it once on page load to ensure it's there immediately
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.floating-container').style.display = "flex";
 });
